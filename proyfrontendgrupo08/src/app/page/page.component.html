@@ -1,0 +1,76 @@
+<main>
+        <section class="hero-banner">
+            <div class="hero-content">
+                <h2>Viví lo mejores <span class="highlight-text">eventos</span> de la provincia</h2>
+            </div>
+        </section>
+
+        <section class="shows-section dark-bg">
+            <div class="container ">
+                <h2 class="section-title white-text">Nuevos shows</h2>
+                <div class="shows-grid">
+                <div *ngFor="let show of EventosNuevos" class="show-card light-theme">
+                    <div class="card-image-container">
+                    <img [src]="show.imagenUrl" [alt]="show.nombre" class="card-image">
+                    </div>
+                    <div class="card-content">
+                    <h3>{{ show.nombre }}</h3>
+                    <p class="show-date">{{ show.fecha | date: 'dd MMMM yyyy' }}</p>
+                    <div class="card-actions">
+                        <a href="#" class="info-link">Más Info</a>
+                        <a href="#" class="buy-button blue-button">Comprar</a>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="shows-section dark-bg">
+            <div class="container">
+                <div class="section-header">
+                <h2 class="section-title white-text">Próximos shows</h2>
+                </div>
+                <div class="shows-grid">
+                <div *ngFor="let show of EventosProximos" class="show-card dark-theme">
+                    <div class="card-image-container">
+                    <img [src]="show.imagenUrl" [alt]="show.nombre" class="card-image">
+                    </div>
+                    <div class="card-content">
+                    <h3>{{ show.nombre }}</h3>
+                    <p class="show-date">{{ show.fecha | date: 'dd MMMM yyyy' }}</p>
+                    <div class="card-actions">
+                        <a href="#" class="info-link">Más Info</a>
+                        <a href="#" class="buy-button dark-blue-button">Comprar</a>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </section>
+        <section class="info-section dark-bg">
+            <div class="container info-grid">
+                <div class="info-block blue-bg">
+                    <div class="info-text">
+                        <h2>Cómo llegar</h2>
+                        <p>Conocé los medios de transporte que llegan a Movistar Arena</p>
+                        <a href="#" class="info-button light-button">Ver más</a>
+                    </div>
+                    <div class="info-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                </div>
+
+                <div class="info-block purple-bg">
+                    <div class="info-text">
+                        <h2>Estacionamiento</h2>
+                        <p>Encontrá estacionamiento para tu show</p>
+                        <a href="#" class="info-button light-button">Reservar</a>
+                    </div>
+                    <div class="info-icon">
+                        <i class="fas fa-car"></i>
+                        </div>
+                </div>
+            </div>
+        </section>
+    </main>
