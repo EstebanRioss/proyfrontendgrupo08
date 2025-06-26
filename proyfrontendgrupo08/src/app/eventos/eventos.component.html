@@ -1,0 +1,45 @@
+<main>
+  <section class="shows-header-banner">
+    <div class="shows-header-content">
+      <h1>eventos</h1>
+    </div>
+  </section>
+
+  <section class="upcoming-shows-section dark-bg">
+    <div class="container">
+      <div class="upcoming-shows-header">
+        <h2 class="section-title white-text">Todos los eventos</h2>
+        <div class="filter-controls">
+          <label for="show-filter" class="sr-only">Filtrar eventos por:</label>
+          <select id="show-filter" class="show-filter-select" [(ngModel)]="categoriaSeleccionada">
+            <option value="all">Todos</option>
+            <option *ngFor="let categoria of Categorias" [value]="categoria._id">{{ categoria.nombre }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="shows-grid">
+        <div
+          class="show-card dark-theme"
+          *ngFor="let evento of EventosFiltrados()"
+        >
+          <div class="card-image-container">
+            <img
+              [src]="evento.imagenUrl || 'https://via.placeholder.com/350x200/000000/ffffff?text=Evento'"
+              [alt]="evento.nombre"
+              class="card-image"
+            />
+          </div>
+          <div class="card-content">
+            <h3>{{ evento.nombre }}</h3>
+            <p class="show-date">{{ evento.fecha | date: 'dd MMMM yyyy' }}</p>
+            <div class="card-actions">
+              <a href="#" class="info-link">Más Info</a>
+              <a href="#" class="buy-button dark-blue-button">Comprar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
