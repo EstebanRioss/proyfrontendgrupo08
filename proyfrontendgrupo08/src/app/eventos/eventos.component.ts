@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import { CategoriaEvento } from '../models/categoria-evento';
 import { Evento } from '../models/evento';
 import { EventosService } from '../service/eventos.service';
@@ -12,6 +13,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './eventos.component.css'
 })
 export class EventosComponent {
+
     Categorias : Array<CategoriaEvento>;
     Eventos : Array<Evento>;
     categoriaSeleccionada: string = 'all';
@@ -54,5 +56,4 @@ export class EventosComponent {
       if (this.categoriaSeleccionada === 'all') return this.Eventos;
       return this.Eventos.filter(ev => ev.categoriaId === this.categoriaSeleccionada);
     }
-
 }
