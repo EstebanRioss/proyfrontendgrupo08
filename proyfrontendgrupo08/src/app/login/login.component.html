@@ -26,7 +26,6 @@
 
       <div class="form-group">
         <label for="password">Contraseña</label>
-        <!-- CORRECCIÓN: Usar "contraseña" (con ñ) -->
         <input type="password" id="password" formControlName="contraseña" placeholder="********">
   
         <div *ngIf="loginForm.get('contraseña')?.invalid && loginForm.get('contraseña')?.touched" class="error-message">

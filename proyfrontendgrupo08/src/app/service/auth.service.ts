@@ -46,23 +46,23 @@ export class AuthService {
         );
     }
 
-    login(credentials: { email: string, contraseña: string }): Observable<Usuario> {
-        return this.http.post<AuthResponse>(`${this.apiUrl}/login`, credentials).pipe(
-            switchMap(response => {
-                if (response && response.status === '1') {
-                    if (isPlatformBrowser(this.platformId)) {
-                        sessionStorage.setItem('token', response.token);
-                    }
-                    return this.fetchAndStoreUser(response.userId);
-                } else {
-                    return throwError(() => new Error(response.msg || 'Credenciales inválidas'));
-                }
-            }),
-            tap(user => {
-                console.log('Usuario autenticado y datos guardados:', user);
-            })
-        );
-    }
+     login(credentials: { email: string, contraseña: string }): Observable<Usuario> {
+        return this.http.post<AuthResponse>(`${this.apiUrl}/login`, credentials).pipe(
+            switchMap(response => {
+                if (response && response.status === '1') {
+                    if (isPlatformBrowser(this.platformId)) {
+                        sessionStorage.setItem('token', response.token);
+                    }
+                    return this.fetchAndStoreUser(response.userId);
+                } else {
+                    return throwError(() => new Error(response.msg || 'Credenciales inválidas'));
+                }
+            }),
+            tap(user => {
+                console.log('Usuario autenticado y datos guardados:', user);
+            })
+        );
+    }
 
     googleLogin(googleUserData: any): Observable<Usuario> {
         return this.http.post<AuthResponse>(`${this.apiUrl}/google-signin`, googleUserData).pipe(
@@ -139,4 +139,5 @@ export class AuthService {
             })
         );
     }
+    
 }

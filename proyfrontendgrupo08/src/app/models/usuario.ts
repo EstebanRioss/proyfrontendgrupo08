@@ -6,5 +6,5 @@ export class Usuario {
     rol!: 'usuario' | 'organizador' | 'administrador';
     estado?: boolean;
     telefono?: string;
-    contrasena?: string;
+    contraseña?: string;
 }
