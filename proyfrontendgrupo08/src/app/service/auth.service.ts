@@ -1,6 +1,6 @@
 import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, BehaviorSubject, of, throwError } from 'rxjs';
 import { tap, switchMap, catchError } from 'rxjs/operators';
 import { Usuario } from '../models/usuario';
@@ -35,6 +35,17 @@ export class AuthService {
         return this.currentUserSubject.value;
     }
 
+    // ✅ NUEVO MÉTODO PARA REGISTRO CON FORMULARIO
+    register(userData: Partial<Usuario>): Observable<any> {
+        return this.http.post<any>(`${this.apiUrl}/`, userData).pipe(
+            catchError((error: HttpErrorResponse) => {
+                // Pasa el mensaje de error específico del backend
+                const errorMsg = error.error?.msg || 'Error en el registro. Inténtalo de nuevo.';
+                return throwError(() => new Error(errorMsg));
+            })
+        );
+    }
+
     login(credentials: { email: string, contraseña: string }): Observable<Usuario> {
         return this.http.post<AuthResponse>(`${this.apiUrl}/login`, credentials).pipe(
             switchMap(response => {
@@ -53,6 +64,29 @@ export class AuthService {
         );
     }
 
+    googleLogin(googleUserData: any): Observable<Usuario> {
+        return this.http.post<AuthResponse>(`${this.apiUrl}/google-signin`, googleUserData).pipe(
+            switchMap(response => {
+                if (response && response.status === '1') {
+                    if (isPlatformBrowser(this.platformId)) {
+                        sessionStorage.setItem('token', response.token);
+                    }
+                    return this.fetchAndStoreUser(response.userId);
+                } else {
+                    return throwError(() => new Error(response.msg || 'Error en el inicio de sesión con Google.'));
+                }
+            }),
+            catchError((error: HttpErrorResponse) => {
+                const errorMsg = error.error?.msg || 'Error en el inicio de sesión con Google.';
+                return throwError(() => new Error(errorMsg));
+            }),
+            tap(user => {
+                console.log('Usuario de Google autenticado y datos guardados:', user);
+            })
+        );
+    }
+    
+    // ... (El resto de tus métodos: fetchAndStoreUser, logout, isLoggedIn, etc. se mantienen igual)
     private fetchAndStoreUser(userId: string): Observable<Usuario> {
         return this.http.get<Usuario>(`${this.apiUrl}/${userId}`).pipe(
             tap(user => {
@@ -81,7 +115,7 @@ export class AuthService {
         }
         return null;
     }
-
+    
     getUserRole(): string | null {
         return this.currentUserValue?.rol || null;
     }
