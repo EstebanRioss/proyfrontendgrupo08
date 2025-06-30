@@ -1,153 +1,151 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
-/* Estilos para el navbar principal */
 .navbar {
-    position: fixed; /* Hace que el navbar sea fijo */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #2c3e50; /* Fondo oscuro casi negro como en la imagen */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada pero suave */
+    background-color: #2c3e50;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     z-index: 1000;
-    padding: 10px 0; /* Espaciado interno superior e inferior */
+    padding: 10px 0;
     display: flex;
-    justify-content: center; /* Centrar el contenido del navbar */
+    justify-content: center;
     align-items: center;
 }
 
 .navbar-container {
     display: flex;
-    justify-content: space-between; /* Espacia el menú y el logo */
+    justify-content: space-between;
     align-items: center;
-    max-width: 1200px; /* Ancho máximo para el contenido */
-    width: 90%; /* Ancho responsivo */
-    padding: 0 20px; /* Espaciado a los lados */
+    max-width: 1200px;
+    width: 90%;
+    padding: 0 20px;
 }
 
-/* Estilos para el menú de navegación */
 .navbar-menu {
-    list-style: none; /* Quita los puntos de la lista */
+    list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
     align-items: center;
+    gap: 35px;
 }
 
-.navbar-menu li {
-    margin-right: 35px; /* Espacio entre los elementos del menú */
-}
-
-/* Estilos para los elementos del menú */
 .navbar-item {
-    color: #ecf0f1; /* Color de texto claro */
-    text-decoration: none; /* Quita el subrayado */
-    font-size: 1.05em; /* Tamaño de fuente ligeramente más grande */
-    font-weight: 500; /* Peso de fuente medio */
-    padding: 8px 0; /* Espaciado vertical para el hover */
-    position: relative; /* Para la animación de la línea inferior */
-    transition: color 0.3s ease-in-out, transform 0.2s ease-out; /* Animaciones */
+    color: #ecf0f1;
+    text-decoration: none;
+    font-size: 1.05em;
+    font-weight: 500;
+    padding: 8px 0;
+    position: relative;
+    transition: color 0.3s ease-in-out, transform 0.2s ease-out;
 }
 
 .navbar-item:hover {
-    color:  #ae9ece ; /* Un azul brillante al pasar el ratón */
-    transform: translateY(-2px); /* Pequeño levantamiento al pasar el ratón */
+    color: #ae9ece;
+    transform: translateY(-2px);
 }
 
-/* Animación de línea inferior para los elementos del menú (excluyendo el botón) */
 .navbar-item:not(.navbar-button)::after {
     content: '';
     position: absolute;
     width: 0;
     height: 2px;
-    background:  #ae9ece ; /* Color de la línea de la animación */
+    background: #ae9ece;
     left: 0;
     bottom: 0;
-    transition: width 0.3s ease-out; /* Transición para el ancho de la línea */
+    transition: width 0.3s ease-out;
 }
 
 .navbar-item:not(.navbar-button):hover::after {
-    width: 100%; /* La línea se expande al 100% al pasar el ratón */
+    width: 100%;
 }
 
-/* Estilos para el botón 'Contact' */
 .navbar-button {
-    background-color: #ecf0f1; /* Fondo blanco para el botón */
-    color: #2c3e50; /* Color de texto oscuro para el botón */
-    padding: 10px 25px; /* Más padding para que parezca un botón */
-    border-radius: 25px; /* Bordes muy redondeados */
-    font-weight: 600; /* Texto en negrita */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Sombra para el botón */
-    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, transform 0.2s ease-out, box-shadow 0.3s ease-in-out; /* Animaciones */
-    border: 2px solid transparent; /* Borde transparente para transición */
+    background-color: #ecf0f1;
+    color: #2c3e50;
+    padding: 10px 25px;
+    border-radius: 25px;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+    border: 2px solid transparent;
 }
 
 .navbar-button:hover {
-    background-color:  #ae9ece ; /* Azul al pasar el ratón */
-    color: #020202; /* Texto blanco al pasar el ratón */
-    transform: translateY(-3px); /* Se levanta un poco más */
-    box-shadow: 0 4px 15px  #ae9ece ; /* Sombra con color azul */
-    border-color: #000000; /* Borde blanco al pasar el ratón */
+    background-color: #ae9ece;
+    color: #020202;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px #ae9ece;
+    border-color: #000000;
 }
 
-/* Estilos para el logo */
 .navbar-logo-container {
-    margin-left: auto; /* Empuja el logo a la derecha */
     display: flex;
     align-items: center;
-    padding-left: 20px; /* Espacio entre el menú y el logo */
 }
 
 .navbar-logo {
-    width: 50px; /* Tamaño del logo */
+    width: 50px;
     height: 50px;
-    border-radius: 50%; /* Hacer el logo circular */
-    object-fit: cover; /* Asegura que la imagen cubra el área */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); /* Sombra sutil para el logo */
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Animaciones para el logo */
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .navbar-logo:hover {
-    transform: scale(1.08) rotate(5deg); /* Ligeramente más grande y rota un poco */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25); /* Sombra más intensa al pasar el ratón */
+    transform: scale(1.08) rotate(5deg);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
 }
 
-/* Estilos para el contenido de ejemplo */
-.content-placeholder {
-    max-width: 1000px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #fff;
+.user-profile-menu {
+    position: relative;
+    cursor: pointer;
+}
+
+.user-greeting {
+    padding: 8px 15px;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #34495e;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    line-height: 1.6;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    padding: 10px 0;
+    min-width: 160px;
+    z-index: 1001;
+    margin-top: 10px;
 }
 
-/* Media Queries para responsividad */
-@media (max-width: 768px) {
-    .navbar-menu {
-        /* Para pantallas más pequeñas, podrías ocultar el menú y usar un icono de hamburguesa */
-        display: none;
-    }
+.user-profile-menu:hover .dropdown-menu {
+    display: block;
+}
 
-    .navbar-container {
-        justify-content: center; /* Centrar solo el logo si el menú está oculto */
-    }
+.dropdown-item {
+    display: block;
+    padding: 12px 20px;
+    color: #ecf0f1;
+    text-decoration: none;
+    font-size: 0.95em;
+    transition: background-color 0.2s ease-in-out;
+}
 
-    .navbar-logo-container {
-        margin-left: 0; /* Quitar el margen si el menú no está presente */
-        padding-left: 0;
-    }
+.dropdown-item:hover {
+    background-color: #4a627a;
+}
 
-    .navbar {
-        padding: 8px 0; /* Menos padding en pantallas pequeñas */
-    }
-
-    .navbar-logo {
-        width: 45px;
-        height: 45px;
-    }
-
-    body {
-        padding-top: 70px; /* Ajustar padding para pantallas pequeñas */
-    }
+.logout-button {
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
 }
