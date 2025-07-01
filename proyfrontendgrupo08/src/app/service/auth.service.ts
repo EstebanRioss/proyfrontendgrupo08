@@ -1,7 +1,7 @@
 import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
-import { Observable, BehaviorSubject, of, throwError } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable, BehaviorSubject, throwError } from 'rxjs';
 import { tap, switchMap, catchError } from 'rxjs/operators';
 import { Usuario } from '../models/usuario';
 
@@ -12,6 +12,10 @@ export interface AuthResponse {
     userId: string;
     email: string;
     rol: string;
+}
+
+export interface ConfirmationResponse {
+  msg: string;
 }
 
 @Injectable({
@@ -35,6 +39,15 @@ export class AuthService {
         return this.currentUserSubject.value;
     }
 
+    register(userData: Partial<Usuario>): Observable<any> {
+        return this.http.post<any>(`${this.apiUrl}/`, userData).pipe(
+            catchError((error: HttpErrorResponse) => {
+                const errorMsg = error.error?.msg || 'Error en el registro. Inténtalo de nuevo.';
+                return throwError(() => new Error(errorMsg));
+            })
+        );
+    }
+
     login(credentials: { email: string, contraseña: string }): Observable<Usuario> {
         return this.http.post<AuthResponse>(`${this.apiUrl}/login`, credentials).pipe(
             switchMap(response => {
@@ -46,11 +59,40 @@ export class AuthService {
                 } else {
                     return throwError(() => new Error(response.msg || 'Credenciales inválidas'));
                 }
-            }),
-            tap(user => {
-                console.log('Usuario autenticado y datos guardados:', user);
             })
         );
+    }
+
+    googleLogin(googleUserData: any): Observable<Usuario> {
+        return this.http.post<AuthResponse>(`${this.apiUrl}/google-signin`, googleUserData).pipe(
+            switchMap(response => {
+                if (response && response.status === '1') {
+                    if (isPlatformBrowser(this.platformId)) {
+                        sessionStorage.setItem('token', response.token);
+                    }
+                    return this.fetchAndStoreUser(response.userId);
+                } else {
+                    return throwError(() => new Error(response.msg || 'Error en el inicio de sesión con Google.'));
+                }
+            }),
+            catchError((error: HttpErrorResponse) => {
+                const errorMsg = error.error?.msg || 'Error en el inicio de sesión con Google.';
+                return throwError(() => new Error(errorMsg));
+            })
+        );
+    }
+    
+    confirmarEmail(token: string): Observable<ConfirmationResponse> {
+      return this.http.get<ConfirmationResponse>(`${this.apiUrl}/confirmar/${token}`).pipe(
+        catchError((error: HttpErrorResponse) => {
+          const errorMsg = error.error?.msg || 'Error al confirmar la cuenta.';
+          return throwError(() => new Error(errorMsg));
+        })
+      );
+    }
+  
+    aprobarRol(usuarioId: string): Observable<any> {
+      return this.http.put(`${this.apiUrl}/aprobar-rol/${usuarioId}`, {});
     }
 
     private fetchAndStoreUser(userId: string): Observable<Usuario> {
@@ -81,7 +123,7 @@ export class AuthService {
         }
         return null;
     }
-
+    
     getUserRole(): string | null {
         return this.currentUserValue?.rol || null;
     }
@@ -92,17 +134,5 @@ export class AuthService {
             return userJson ? JSON.parse(userJson) : null;
         }
         return null;
-    }
-
-    updateUser(userId: string, userData: Partial<Usuario>): Observable<any> {
-        return this.http.put(`${this.apiUrl}/${userId}`, userData).pipe(
-            tap((response: any) => {
-                const updatedUser = response.usuario;
-                if (isPlatformBrowser(this.platformId)) {
-                    sessionStorage.setItem('currentUser', JSON.stringify(updatedUser));
-                }
-                this.currentUserSubject.next(updatedUser);
-            })
-        );
     }
 }

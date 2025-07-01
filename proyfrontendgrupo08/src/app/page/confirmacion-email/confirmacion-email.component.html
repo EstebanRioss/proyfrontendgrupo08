@@ -1,0 +1,25 @@
+<div class="confirmation-container">
+  <div class="confirmation-card">
+    
+    <div *ngIf="estado === 'cargando'" class="loading-state">
+      <h2>Verificando...</h2>
+      <p>{{ mensaje }}</p>
+      <div class="spinner"></div>
+    </div>
+
+    <div *ngIf="estado === 'exito'" class="success-message">
+      <div class="icon">✅</div>
+      <h2>¡Cuenta Verificada!</h2>
+      <p>{{ mensaje }}</p>
+      <a routerLink="/login" class="btn-action">Ir a Iniciar Sesión</a>
+    </div>
+
+    <div *ngIf="estado === 'error'" class="error-message">
+      <div class="icon">❌</div>
+      <h2>Error de Verificación</h2>
+      <p>{{ mensaje }}</p>
+      <a routerLink="/signin" class="btn-action">Volver a Registrarse</a>
+    </div>
+
+  </div>
+</div>
