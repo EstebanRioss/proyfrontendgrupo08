@@ -11,3 +11,4 @@ export const routes: Routes = [
     {path: 'eventos', component: EventosComponent},
     {path: 'evento/:id', component: EventoComponent},
     { path: 'login', component: LoginComponent } 
+  ]
