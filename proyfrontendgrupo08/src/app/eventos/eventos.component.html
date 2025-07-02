@@ -35,7 +35,7 @@
             <h3>{{ evento.nombre }}</h3>
             <p class="show-date">{{ evento.fecha | date: 'dd MMMM yyyy' }}</p>
             <div class="card-actions">
-              <a href="#" class="info-link">Más Info</a>
+              <a (click)="detalles(evento)" class="info-link">Más Info</a>
               <a href="#" class="buy-button dark-blue-button">Comprar</a>
             </div>
           </div>

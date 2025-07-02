@@ -8,7 +8,6 @@ import { Observable } from 'rxjs';
 export class PageService {
 
   constructor(private _http: HttpClient) { }
-
   
   public getNuevosEventos():Observable<any>{
       let httpOpttions = {

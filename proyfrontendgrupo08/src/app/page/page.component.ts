@@ -3,17 +3,19 @@ import { Component, OnInit } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { PageService } from '../service/page.service';
 import { Evento } from '../models/evento';
+import { RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pages',
-  imports: [CommonModule],
+  imports: [CommonModule,RouterModule],
   templateUrl: './page.component.html',
   styleUrl: './page.component.css'
 })
 export class PagesComponent{
   EventosNuevos : Array<Evento>;
   EventosProximos : Array<Evento>;
-  constructor(private service  : PageService){
+  constructor(private service  : PageService,private router : Router){
     this.EventosNuevos = new  Array<Evento>();
     this.EventosProximos = new Array<Evento>();
     this.getEventosNuevos();
@@ -33,6 +35,10 @@ export class PagesComponent{
     }
   );
 }
+
+detalles(evento : Evento){
+      this.router.navigate(['evento', evento._id])
+    }
 
 getEventosProximos() {
   this.service.getProximosEventos().subscribe(
