@@ -1,0 +1,73 @@
+.sidebar {
+    background-color: var(--admin-sidebar-bg); /* Fondo oscuro para el sidebar */
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    flex-shrink: 0; /* Evita que el sidebar se encoja */
+    width: 250px; /* Ancho fijo del sidebar */
+    animation: slideInLeft 0.6s ease-out forwards; /* Animación de entrada deslizante */
+    opacity: 0; /* Estado inicial para la animación */
+    transform: translateX(-30px); /* Estado inicial para la animación */
+}
+
+@keyframes slideInLeft {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.sidebar h2 {
+    font-size: 1.5em;
+    color: var(--accent-blue); /* Título "Seleccione una opción" en azul */
+    margin-bottom: 25px;
+    text-align: center;
+    border-bottom: 2px solid var(--border-color); /* Separador visual */
+    padding-bottom: 15px;
+    font-weight: 600;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar li {
+    margin-bottom: 10px;
+}
+
+.sidebar button {
+    background-color: var(--admin-button-bg); /* Fondo de los botones del sidebar */
+    color: var(--text-light);
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    width: 100%;
+    text-align: left;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    display: block; /* Asegura que ocupe todo el ancho */
+    font-weight: 500;
+    animation: fadeInButton 0.4s ease-out forwards; /* Animación de entrada para cada botón */
+    opacity: 0; /* Estado inicial para la animación */
+}
+
+/* Animación de retraso para los botones del sidebar (opcional, si quieres un efecto escalonado) */
+.sidebar li:nth-child(1) button { animation-delay: 0.1s; }
+.sidebar li:nth-child(2) button { animation-delay: 0.2s; }
+.sidebar li:nth-child(3) button { animation-delay: 0.3s; }
+.sidebar li:nth-child(4) button { animation-delay: 0.4s; }
+
+
+@keyframes fadeInButton {
+    from { opacity: 0; transform: translateX(-10px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.sidebar button:hover {
+    background-color: var(--admin-button-hover);
+    transform: translateX(5px); /* Deslizamiento sutil al hover */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}

@@ -1,0 +1,98 @@
+.upcoming-shows-section {
+    padding: 0; /* Elimina padding propio, ya que el content-area tiene padding */
+    background-color: transparent; /* No tiene fondo propio, toma el del content-area */
+    flex-grow: 1; /* Para que ocupe el espacio disponible si es necesario */
+}
+
+/* Grid de las tarjetas de entrada */
+.shows-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* adaptable */
+    gap: 25px;
+    padding: 0;
+}
+
+/* Tarjetas individuales de Entrada */
+.show-card.dark-theme { /* Reutiliza la clase, pero modifica */
+    background-color: var(--admin-button-bg); /* Fondo más oscuro para las tarjetas de entrada */
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Espacia el contenido y las acciones */
+    animation: scaleIn 0.5s ease-out forwards; /* Animación de entrada */
+    opacity: 0; /* Estado inicial para la animación */
+    transform: scale(0.9); /* Estado inicial para la animación */
+}
+
+@keyframes scaleIn {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.show-card.dark-theme:hover {
+    transform: translateY(-5px); /* Ligeramente levantado al hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+.show-card.dark-theme .card-content {
+    padding: 20px;
+    text-align: center; /* Centrar contenido de la tarjeta */
+}
+
+.show-card.dark-theme h3 {
+    font-size: 1.4em;
+    margin-bottom: 5px;
+    color: var(--text-light);
+    word-break: break-word; /* Para nombres largos */
+}
+
+.show-card.dark-theme h4 { /* Para el eventoId */
+    font-size: 1em;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+    font-weight: normal;
+}
+
+.show-card.dark-theme .show-date { /* Para el precio */
+    font-size: 1.3em;
+    font-weight: bold;
+    color: var(--accent-green); /* Precio en verde */
+    margin-bottom: 15px;
+}
+
+.show-card.dark-theme .card-actions {
+    display: flex;
+    justify-content: center; /* Centrar botones */
+    gap: 15px; /* Espacio entre botones */
+    padding: 15px 20px;
+    border-top: 1px solid var(--border-color); /* Separador visual */
+}
+
+.show-card.dark-theme .info-link { /* Para Modificar/Eliminar */
+    background-color: var(--accent-blue); /* Botones azules */
+    color: var(--text-light);
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-weight: 500;
+}
+
+.show-card.dark-theme .info-link:last-child { /* Por si hay un segundo botón como Eliminar */
+    background-color: #e74c3c; /* Rojo para eliminar */
+}
+
+.show-card.dark-theme .info-link:hover {
+    background-color: var(--accent-blue-hover);
+    transform: translateY(-2px);
+}
+
+.show-card.dark-theme .info-link:last-child:hover {
+    background-color: #c0392b; /* Rojo más oscuro para eliminar */
+}

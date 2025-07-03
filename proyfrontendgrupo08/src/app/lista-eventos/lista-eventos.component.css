@@ -1,0 +1,60 @@
+.content-section {
+    background-color: #2c2c2c; /* Fondo de cada sección, ligeramente más claro */
+    padding: 25px;
+    border-radius: 8px;
+    margin-bottom: 25px; /* Espacio entre secciones */
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.3); /* Sombra para elevar la sección */
+    border: 1px solid #3a3a3a; /* Borde sutil */
+}
+
+.content-section h2 {
+    color: #b39ddb; /* Morado suave para subtítulos */
+    margin-bottom: 20px;
+    border-bottom: 2px solid #3a3a3a; /* Línea divisoria más oscura */
+    padding-bottom: 10px;
+    font-size: 1.6em;
+    font-weight: 600;
+}
+
+/* Estilos para Tablas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 25px;
+    background-color: #2c2c2c; /* Fondo de la tabla */
+    border-radius: 8px;
+    overflow: hidden; /* Para que los bordes redondeados afecten la tabla */
+}
+
+table thead tr {
+    background-color: #3a3a3a; /* Fondo para la cabecera de la tabla */
+    color: #f0f0f0;
+}
+
+table th,
+table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #3a3a3a; /* Bordes de celdas */
+}
+
+table th {
+    font-weight: 600;
+    font-size: 0.95em;
+    text-transform: uppercase;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #313131; /* Un color ligeramente diferente para filas pares */
+}
+
+table tbody tr:hover {
+    background-color: #3a3a3a; /* Fondo al pasar el ratón por las filas */
+    cursor: pointer;
+}
+
+/* Estilos para párrafos informativos dentro de la sección */
+p {
+    color: #bdbdbd; /* Color de texto más suave para párrafos */
+    margin-bottom: 15px;
+}
