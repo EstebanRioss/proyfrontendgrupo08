@@ -1,0 +1,41 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+
+      <div class="card shadow-sm">
+        <img src="https://cdn-icons-png.flaticon.com/512/10698/10698816.png" class="card-img-top" alt="Imagen del evento">
+        <div class="card-body">
+          <h2 class="card-title text-center mb-4">Pagar Boletos</h2>
+          
+          <form (ngSubmit)="onSubmit()" #paymentForm="ngForm">
+            
+            <div class="mb-3">
+              <label for="eventName" class="form-label">Nombre del Evento</label>
+              <input type="text" id="eventName" class="form-control" name="eventName" [(ngModel)]="orderData.event_name" required>
+            </div>
+            
+            <div class="mb-3">
+              <label for="ticketPrice" class="form-label">Precio del Boleto (AR$)</label>
+              <input type="number" id="ticketPrice" class="form-control" name="ticketPrice" [(ngModel)]="orderData.ticket_price" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="quantity" class="form-label">Cantidad</label>
+              <input type="number" id="quantity" class="form-control" name="quantity" [(ngModel)]="orderData.quantity" min="1" required>
+            </div>
+            
+            <div class="d-grid">
+              <button type="submit" class="btn btn-primary btn-lg" [disabled]="paymentForm.invalid || isProcessing">
+                {{ isProcessing ? 'Procesando...' : 'Generar Link de Pago' }}
+              </button>
+            </div>
+          </form>
+          
+          <div id="wallet_container" class="mt-4"></div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
