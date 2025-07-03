@@ -4,19 +4,18 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PaymentService } from './services/payment.service';
 
-// Declaramos la variable global de MercadoPago
 declare var MercadoPago: any;
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, FormsModule], // Quitamos RouterOutlet que no se usa
+  imports: [CommonModule, FormsModule], 
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit { // Implementa OnInit
+export class AppComponent implements OnInit { 
 
-  private mp: any; // Solo declaramos la propiedad aquí
+  private mp: any; 
   isProcessing = false;
 
   orderData = {
@@ -26,11 +25,7 @@ export class AppComponent implements OnInit { // Implementa OnInit
   };
 
   constructor(private paymentService: PaymentService) {}
-
-  // ngOnInit se ejecuta después de que el componente se carga
   ngOnInit(): void {
-    // Inicializamos MercadoPago aquí, de forma segura
-    // ¡¡IMPORTANTE!! Reemplaza con tu Public Key
     this.mp = new MercadoPago('APP_USR-f24a6b9c-b19c-4378-9b8f-4595f209b94d', { locale: 'es-AR' });
   }
 
