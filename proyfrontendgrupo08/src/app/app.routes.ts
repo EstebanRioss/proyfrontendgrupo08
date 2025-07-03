@@ -1,17 +1,16 @@
 import { Routes } from '@angular/router';
 import { PagesComponent } from './page/page.component';
 import { EventosComponent } from './eventos/eventos.component';
-
-import { EventoComponent } from './evento/evento.component';
 import { LoginComponent } from './login/login.component';
 import { SigninComponent } from './signin/signin.component';
-
+import { ConfirmacionEmailComponent } from './page/confirmacion-email/confirmacion-email.component';
 export const routes: Routes = [
     { path: '', redirectTo: 'inicio', pathMatch: 'full' },
-    {path: 'inicio', component: PagesComponent},
-    {path: 'eventos', component: EventosComponent},
-    {path: 'evento/:id', component: EventoComponent},
-    { path: 'login', component: LoginComponent },
+    { path: 'inicio', component: PagesComponent},
+    { path: 'eventos', component: EventosComponent},
+    // ¡Añade esta línea!
     { path: 'login', component: LoginComponent},
-    { path: 'signin', component: SigninComponent}
-  ]
+    { path: 'signin', component: SigninComponent},
+    { path: 'confirmar-email/:token', component: ConfirmacionEmailComponent}
+
+];

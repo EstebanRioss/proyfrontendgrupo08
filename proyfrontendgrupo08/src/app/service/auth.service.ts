@@ -1,7 +1,7 @@
 import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, BehaviorSubject, of, throwError } from 'rxjs';
+import { Observable, BehaviorSubject, throwError } from 'rxjs';
 import { tap, switchMap, catchError } from 'rxjs/operators';
 import { Usuario } from '../models/usuario';
 
@@ -12,6 +12,10 @@ export interface AuthResponse {
     userId: string;
     email: string;
     rol: string;
+}
+
+export interface ConfirmationResponse {
+  msg: string;
 }
 
 @Injectable({
@@ -35,34 +39,29 @@ export class AuthService {
         return this.currentUserSubject.value;
     }
 
-    // ✅ NUEVO MÉTODO PARA REGISTRO CON FORMULARIO
     register(userData: Partial<Usuario>): Observable<any> {
         return this.http.post<any>(`${this.apiUrl}/`, userData).pipe(
             catchError((error: HttpErrorResponse) => {
-                // Pasa el mensaje de error específico del backend
                 const errorMsg = error.error?.msg || 'Error en el registro. Inténtalo de nuevo.';
                 return throwError(() => new Error(errorMsg));
             })
         );
     }
 
-     login(credentials: { email: string, contraseña: string }): Observable<Usuario> {
-        return this.http.post<AuthResponse>(`${this.apiUrl}/login`, credentials).pipe(
-            switchMap(response => {
-                if (response && response.status === '1') {
-                    if (isPlatformBrowser(this.platformId)) {
-                        sessionStorage.setItem('token', response.token);
-                    }
-                    return this.fetchAndStoreUser(response.userId);
-                } else {
-                    return throwError(() => new Error(response.msg || 'Credenciales inválidas'));
-                }
-            }),
-            tap(user => {
-                console.log('Usuario autenticado y datos guardados:', user);
-            })
-        );
-    }
+    login(credentials: { email: string, contraseña: string }): Observable<Usuario> {
+        return this.http.post<AuthResponse>(`${this.apiUrl}/login`, credentials).pipe(
+            switchMap(response => {
+                if (response && response.status === '1') {
+                    if (isPlatformBrowser(this.platformId)) {
+                        sessionStorage.setItem('token', response.token);
+                    }
+                    return this.fetchAndStoreUser(response.userId);
+                } else {
+                    return throwError(() => new Error(response.msg || 'Credenciales inválidas'));
+                }
+            })
+        );
+    }
 
     googleLogin(googleUserData: any): Observable<Usuario> {
         return this.http.post<AuthResponse>(`${this.apiUrl}/google-signin`, googleUserData).pipe(
@@ -79,14 +78,23 @@ export class AuthService {
             catchError((error: HttpErrorResponse) => {
                 const errorMsg = error.error?.msg || 'Error en el inicio de sesión con Google.';
                 return throwError(() => new Error(errorMsg));
-            }),
-            tap(user => {
-                console.log('Usuario de Google autenticado y datos guardados:', user);
             })
         );
     }
     
-    // ... (El resto de tus métodos: fetchAndStoreUser, logout, isLoggedIn, etc. se mantienen igual)
+    confirmarEmail(token: string): Observable<ConfirmationResponse> {
+      return this.http.get<ConfirmationResponse>(`${this.apiUrl}/confirmar/${token}`).pipe(
+        catchError((error: HttpErrorResponse) => {
+          const errorMsg = error.error?.msg || 'Error al confirmar la cuenta.';
+          return throwError(() => new Error(errorMsg));
+        })
+      );
+    }
+  
+    aprobarRol(usuarioId: string): Observable<any> {
+      return this.http.put(`${this.apiUrl}/aprobar-rol/${usuarioId}`, {});
+    }
+
     private fetchAndStoreUser(userId: string): Observable<Usuario> {
         return this.http.get<Usuario>(`${this.apiUrl}/${userId}`).pipe(
             tap(user => {
@@ -127,17 +135,4 @@ export class AuthService {
         }
         return null;
     }
-
-    updateUser(userId: string, userData: Partial<Usuario>): Observable<any> {
-        return this.http.put(`${this.apiUrl}/${userId}`, userData).pipe(
-            tap((response: any) => {
-                const updatedUser = response.usuario;
-                if (isPlatformBrowser(this.platformId)) {
-                    sessionStorage.setItem('currentUser', JSON.stringify(updatedUser));
-                }
-                this.currentUserSubject.next(updatedUser);
-            })
-        );
-    }
-    
 }
