@@ -17,7 +17,7 @@
                     <h3>{{ show.nombre }}</h3>
                     <p class="show-date">{{ show.fecha | date: 'dd MMMM yyyy' }}</p>
                     <div class="card-actions">
-                        <a href="#" class="info-link">Más Info</a>
+                        <a (click)="detalles(show)" class="info-link">Más Info</a>
                         <a href="#" class="buy-button blue-button">Comprar</a>
                     </div>
                     </div>
@@ -40,7 +40,7 @@
                     <h3>{{ show.nombre }}</h3>
                     <p class="show-date">{{ show.fecha | date: 'dd MMMM yyyy' }}</p>
                     <div class="card-actions">
-                        <a href="#" class="info-link">Más Info</a>
+                        <a (click)="detalles(show)" class="info-link">Más Info</a>
                         <a href="#" class="buy-button dark-blue-button">Comprar</a>
                     </div>
                     </div>
@@ -63,13 +63,13 @@
 
                 <div class="info-block purple-bg">
                     <div class="info-text">
-                        <h2>Estacionamiento</h2>
-                        <p>Encontrá estacionamiento para tu show</p>
-                        <a href="#" class="info-button light-button">Reservar</a>
+                        <h2>Entradas Digitales</h2>
+                        <p>Accedé al show con tu ticket desde el celular</p>
+                        <a href="#" class="info-button light-button">Ver entrada</a>
                     </div>
                     <div class="info-icon">
-                        <i class="fas fa-car"></i>
-                        </div>
+                        <i class="fas fa-ticket-alt"></i>
+                    </div>
                 </div>
             </div>
         </section>

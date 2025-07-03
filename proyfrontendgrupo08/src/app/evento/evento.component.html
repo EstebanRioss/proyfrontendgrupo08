@@ -1,0 +1,70 @@
+<div class="event-details-page" *ngIf="evento">
+  <header class="event-header">
+    <div class="container">
+      <h1 class="event-title">{{ evento.nombre }}</h1>
+    </div>
+  </header>
+
+  <section class="event-hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-left">
+          <div class="event-poster">
+            <img [src]="evento.imagenUrl || 'https://via.placeholder.com/600x350?text=Sin+imagen'" 
+                 [alt]="'Poster del evento ' + evento.nombre">
+          </div>
+          <div class="countdown" *ngIf="countdown">
+            <i class="far fa-clock"></i> Faltan:
+            <span class="countdown-days">{{ countdown.dias }}</span> Días |
+            <span class="countdown-hours">{{ countdown.horas }}</span> Horas |
+            <span class="countdown-minutes">{{ countdown.minutos }}</span> Minutos |
+            <span class="countdown-seconds">{{ countdown.segundos }}</span> Segundos
+          </div>
+        </div>
+        <div class="hero-right">
+          <div class="buy-section">
+            <div class="price-info">
+              <span class="price-label">Capacidad Total</span>
+              <span class="price">{{ evento.capacidadTotal }} personas</span>
+            </div>
+            <div class="date-location">
+              <div class="date">
+                <span class="day">{{ evento.fecha | date:'dd' }}</span>
+                <span class="month">{{ evento.fecha | date:'MMMM' }}</span>
+                <span class="weekday">{{ evento.fecha | date:'EEEE' }}</span>
+              </div>
+              <div class="time-location">
+                <i class="far fa-calendar-alt"></i> A las <span class="time">{{ evento.fecha | date:'HH:mm' }}</span> |
+                <i class="fas fa-map-marker-alt"></i> En <span class="location">{{ evento.ubicacionNombre }}</span>
+              </div>
+            </div>
+            <button class="buy-button primary-button">
+              <i class="fas fa-ticket-alt"></i> Comprar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="event-info dark-bg">
+    <div class="container">
+      <h2 class="section-title">Acerca del evento</h2>
+      <p><strong>{{ evento.nombre | uppercase }}</strong></p>
+      <p>{{ evento.descripcion }}</p>
+    </div>
+  </section>
+
+  <section class="how-to-arrive dark-bg" *ngIf="mapaUrl">
+  <div class="container">
+    <h2 class="section-title">Cómo llegar</h2>
+    <p>Ubicación: {{ evento.ubicacionNombre }}</p>
+    <div class="map-placeholder">
+      <iframe 
+        width="100%" height="400" frameborder="0" style="border:0"
+        [src]="mapaUrl" allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+</section>
+</div>

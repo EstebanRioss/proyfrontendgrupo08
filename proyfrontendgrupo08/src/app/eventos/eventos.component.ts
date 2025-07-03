@@ -5,10 +5,12 @@ import { Evento } from '../models/evento';
 import { EventosService } from '../service/eventos.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-eventos',
-  imports: [CommonModule,FormsModule],
+  imports: [CommonModule,FormsModule,RouterModule],
   templateUrl: './eventos.component.html',
   styleUrl: './eventos.component.css'
 })
@@ -18,7 +20,7 @@ export class EventosComponent {
     Eventos : Array<Evento>;
     categoriaSeleccionada: string = 'all';
     
-    constructor(private service  : EventosService){
+    constructor(private service  : EventosService , private router : Router){
       this.Categorias = new  Array<CategoriaEvento>();
       this.Eventos = new Array<Evento>();
       this.getCategorias();
@@ -50,6 +52,10 @@ export class EventosComponent {
         });
        }
       );
+    }
+
+    detalles(evento : Evento){
+      this.router.navigate(['evento', evento._id])
     }
 
     EventosFiltrados(): Evento[] {
