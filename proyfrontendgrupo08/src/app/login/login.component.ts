@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { AuthService, AuthResponse } from '../service/auth.service';
-import { Usuario } from '../models/usuario';
+import { AuthService } from '../service/auth.service';
+import { GoogleLoginComponent } from '../signin/google-login/google-login.component';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +11,8 @@ import { Usuario } from '../models/usuario';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    RouterLink
+    RouterLink,
+    GoogleLoginComponent
   ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
@@ -27,7 +28,8 @@ export class LoginComponent implements OnInit {
   ) {
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
-      contraseña: new FormControl('', [Validators.required, Validators.minLength(6)])
+      // CORRECCIÓN: Usar "contraseña" (con ñ)
+      contraseña: new FormControl('', [Validators.required])
     });
   }
 
@@ -42,19 +44,18 @@ export class LoginComponent implements OnInit {
       this.loginForm.markAllAsTouched();
       return;
     }
-
     this.isLoading = true;
     this.errorMessage = null;
 
+    // CORRECCIÓN: Ahora se puede pasar el valor del formulario directamente
     this.authService.login(this.loginForm.value).subscribe({
-      next: (user: Usuario) => {
+      next: (user) => {
         this.isLoading = false;
         this.router.navigate(['/inicio']);
       },
       error: (err: Error) => {
         this.isLoading = false;
-        this.errorMessage = err.message || 'Error de conexión. Inténtalo más tarde.';
-        console.error('Error en el login:', err);
+        this.errorMessage = err.message;
       }
     });
   }
