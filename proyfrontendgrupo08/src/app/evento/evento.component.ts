@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Evento } from '../models/evento';
-import { EventoService } from '../service/evento.service';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer } from '@angular/platform-browser';
 import { SafeResourceUrl } from '@angular/platform-browser';
+import { EventosService } from '../service/eventos.service';
 
 @Component({
   selector: 'app-evento',
@@ -19,14 +19,14 @@ export class EventoComponent {
   id : string = "";
   mapaUrl: SafeResourceUrl | null = null;
 
-  constructor(private activatedRoute : ActivatedRoute,private service : EventoService,private sanitizer: DomSanitizer){
+  constructor(private activatedRoute : ActivatedRoute,private serviceE : EventosService,private sanitizer: DomSanitizer){
     this.cargarEvento();
   }
 
   cargarEvento(): void {
     this.activatedRoute.params.subscribe(params => {
       this.id = params['id'];
-      this.service.getEvento(this.id).subscribe(result => {
+      this.serviceE.getEvento(this.id).subscribe(result => {
         if (result) {
           // Asignar correctamente los datos
           this.evento = {

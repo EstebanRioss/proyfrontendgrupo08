@@ -1,0 +1,20 @@
+<section class="upcoming-shows-section dark-bg">
+    <div class="container">
+        <h2 class="section-title white-text">Todos los Usuarios</h2>
+      <div class="shows-grid">
+        <div
+          class="show-card dark-theme"
+          *ngFor="let s of Usuarios"
+        >
+          <div class="card-content">
+            <h3>{{ s.nombre || s.apellido}}</h3>
+            <p class="show-date">{{ s.email }}</p>
+            <div class="card-actions">
+              <a (click)="Modificar(s)" class="info-link">Modificar</a>
+              <a (click)="Eliminar(s)" class="info-link">Eliminar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>

@@ -1,0 +1,46 @@
+.content-section {
+    background-color: #2c2c2c; /* Fondo de cada sección, ligeramente más claro */
+    padding: 25px;
+    border-radius: 8px;
+    margin-bottom: 25px; /* Espacio entre secciones */
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.3); /* Sombra para elevar la sección */
+    border: 1px solid #3a3a3a; /* Borde sutil */
+}
+
+.content-section h2 {
+    color: #b39ddb; /* Morado suave para subtítulos */
+    margin-bottom: 20px;
+    border-bottom: 2px solid #3a3a3a; /* Línea divisoria más oscura */
+    padding-bottom: 10px;
+    font-size: 1.6em;
+    font-weight: 600;
+}
+
+/* Estilos para la lista desordenada de categorías */
+ul { /* Asegúrate de que tu HTML de categories-list use solo <ul> */
+    list-style-type: none; /* Quitamos los puntos por defecto */
+    padding: 0;
+    margin-top: 20px;
+}
+
+ul li {
+    background-color: #313131; /* Fondo para cada elemento de la lista */
+    margin-bottom: 10px;
+    padding: 12px 15px;
+    border-radius: 6px;
+    border: 1px solid #3a3a3a;
+    transition: background-color 0.3s ease;
+    color: #f0f0f0; /* Color de texto para los ítems */
+    font-size: 1.05em;
+}
+
+ul li:hover {
+    background-color: #3a3a3a;
+    cursor: pointer;
+}
+
+/* Estilos para párrafos informativos dentro de la sección */
+p {
+    color: #bdbdbd; /* Color de texto más suave para párrafos */
+    margin-bottom: 15px;
+}

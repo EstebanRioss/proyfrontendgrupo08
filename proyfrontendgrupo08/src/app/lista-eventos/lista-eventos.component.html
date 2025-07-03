@@ -1,0 +1,28 @@
+<section class="upcoming-shows-section dark-bg">
+  <div class="container">
+    <h2 class="section-title white-text">Todos los eventos</h2>
+
+    <div class="shows-grid">
+      <div class="show-card dark-theme" *ngFor="let evento of Eventos">
+        <div class="card-image-container">
+          <img
+            [src]="evento.imagenUrl || 'https://via.placeholder.com/350x200/000000/ffffff?text=Evento'"
+            [alt]="evento.nombre"
+            class="card-image"
+          />
+        </div>
+
+        <div class="card-content">
+          <h3>{{ evento.nombre }}</h3>
+          <p class="show-date">{{ evento.fecha | date: 'dd MMMM yyyy' }}</p>
+
+          <div class="card-actions">
+            <a (click)="Modificar(evento)" class="info-link">Modificar</a>
+            <a (click)="Eliminar(evento)" class="info-link">Eliminar</a>
+          </div>
+        </div>
+      </div>
+    </div> <!-- cierre shows-grid -->
+
+  </div> <!-- cierre container -->
+</section>

@@ -5,16 +5,14 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class EventoService {
+export class CategoriaService {
 
-  constructor(private _http: HttpClient) { }
-
-  public getEvento(id : string):Observable<any>{
+  constructor(private  _http : HttpClient) { }
+    public getCategorias():Observable<any>{
       let httpOpttions = {
         headers : new HttpHeaders({}),
         params: new HttpParams()
       }
-      return this._http.get("http://localhost:3000/api/eventos/" + id, httpOpttions);
+      return this._http.get("http://localhost:3000/api/categoria", httpOpttions);
   }
-
 }

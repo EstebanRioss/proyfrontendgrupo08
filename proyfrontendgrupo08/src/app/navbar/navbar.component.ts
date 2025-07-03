@@ -38,4 +38,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.authService.logout();
     this.router.navigate(['/inicio']);
   }
+
+  gestion(): void {
+    this.authService.logout();
+    this.router.navigate(['/gestion']);
+  }
+
 }

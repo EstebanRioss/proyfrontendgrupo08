@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
+import { CategoriaService } from '../service/categoria.service';
 
 @Component({
   selector: 'app-eventos',
@@ -20,7 +21,7 @@ export class EventosComponent {
     Eventos : Array<Evento>;
     categoriaSeleccionada: string = 'all';
     
-    constructor(private service  : EventosService , private router : Router){
+    constructor(private serviceE  : EventosService,private serviceC  : CategoriaService , private router : Router){
       this.Categorias = new  Array<CategoriaEvento>();
       this.Eventos = new Array<Evento>();
       this.getCategorias();
@@ -28,7 +29,7 @@ export class EventosComponent {
     }
   
     getCategorias() {
-    this.service.getCategorias().subscribe(
+    this.serviceC.getCategorias().subscribe(
       result => {
         console.log(result);
         let vcate: CategoriaEvento = new CategoriaEvento();
@@ -41,7 +42,7 @@ export class EventosComponent {
       );
     }
     getEvento(){
-    this.service.getEventos().subscribe(
+    this.serviceE.getEventos().subscribe(
       result => {
         console.log(result);
         let vevento: Evento = new Evento();
