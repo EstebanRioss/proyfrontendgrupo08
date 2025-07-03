@@ -9,6 +9,7 @@ export class EventosService {
   
   constructor(private _http: HttpClient) { }
   
+  
   public getCategorias():Observable<any>{
       let httpOpttions = {
         headers : new HttpHeaders({}),
