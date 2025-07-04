@@ -58,7 +58,7 @@ export class ListaEventosComponent  implements OnInit, OnDestroy{
     }
 
     Crear(){
-      this.router.navigate(['evento/crear'])
+      this.router.navigate(['evento/nuevo'])
     }
     
     Modificar(evento : Evento){

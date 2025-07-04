@@ -20,8 +20,6 @@ export class UsuarioService {
       return this._http.get("http://localhost:3000/api/usuarios/" , httpOpttions);
   }
 
-<<<<<<< Updated upstream
-=======
   public getUsuario(id : string ,token : string | null ): Observable<any>{
     let httpOpttions = {
         headers : new HttpHeaders({
@@ -40,5 +38,4 @@ export class UsuarioService {
       return this._http.get("http://localhost:3000/api/usuarios/confirmar/" + token , httpOpttions);
   }
 
->>>>>>> Stashed changes
 }

@@ -1,30 +1,30 @@
 <section class="user-table-section">
-  <div class="overflow-x-auto bg-white shadow-md rounded-lg p-6">
-    <h2 class="text-2xl font-bold text-gray-800 mb-6">Todas las categorías</h2>
-    <div class="boton-contenedor">
-        <button class="boton-anadir" (click)="Crear()">
-          <i class="bi bi-plus-circle-fill"></i>
-          Añadir Categoria
-        </button>
+  <div class="table-container">
+    <h2 class="section-title">Todas las categorías</h2>
+    <div class="actions-container">
+      <button class="btn-add" (click)="Crear()">
+        <i class="bi bi-plus-circle-fill"></i>
+        Añadir Categoría
+      </button>
     </div>
-    <div class="overflow-x-auto">
-      <table class="text-sm text-left border-collapse w-full">
-        <thead class="bg-gray-100 text-gray-700 uppercase text-xs">
+    <div class="table-wrapper">
+      <table class="categories-table">
+        <thead>
           <tr>
-            <th class="py-5 px-6">Nombre</th>
-            <th class="py-5 px-6">Descripción</th>
-            <th class="py-5 px-6">Acciones</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Acciones</th>
           </tr>
         </thead>
-        <tbody class="text-gray-800">
-          <tr *ngFor="let c of Categorias" class="border-b hover:bg-gray-50">
-            <td class="py-4 px-6 font-medium">{{ c.nombre }}</td>
-            <td class="py-4 px-6">{{ c.descripcion }}</td>
-            <td class="py-4 px-6 flex flex-wrap gap-3 mt-1">
+        <tbody>
+          <tr *ngFor="let c of Categorias">
+            <td>{{ c.nombre }}</td>
+            <td>{{ c.descripcion }}</td>
+            <td class="actions-cell">
               <button class="btn-action" (click)="Modificar(c)">
                 <i class="fas fa-edit"></i> Modificar
               </button>
-              <button class="btn-action delete" (click)="Eliminar(c)">
+              <button class="btn-action btn-delete" (click)="Eliminar(c)">
                 <i class="fas fa-trash-alt"></i> Eliminar
               </button>
             </td>

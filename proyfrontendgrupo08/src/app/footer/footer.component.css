@@ -4,130 +4,150 @@ body {
     margin: 0;
     font-family: 'Roboto', sans-serif;
     line-height: 1.6;
-    color: #333;
+    color: #2e2e3e;
+    background-color: #f9f8ff;
 }
 
-/* Estilos para la sección superior del footer */
+/* Footer top */
 .footer-top {
-    background-color: #e5e3d7; /* Color de fondo claro como en la imagen */
-    padding: 40px 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05); /* Separador sutil */
+    background: linear-gradient(135deg, #ede9f7, #c6b9f5);
+    padding: 50px 0;
+    border-bottom: 1px solid rgba(105, 91, 172, 0.15);
+    box-shadow: inset 0 10px 20px rgba(255, 255, 255, 0.7);
 }
 
 .footer-container {
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 25px;
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
-    padding: 0 20px;
+    flex-wrap: wrap;
+    gap: 40px;
 }
 
 .footer-item {
-    flex: 1; /* Permite que los ítems ocupen espacio equitativamente */
-    min-width: 280px; /* Ancho mínimo para evitar que se aprieten demasiado */
-    margin-bottom: 30px; /* Espacio entre ítems en modo responsivo */
-    text-align: center; /* Centrar texto por defecto */
+    flex: 1;
+    min-width: 280px;
+    margin-bottom: 35px;
+    text-align: center;
     padding: 0 15px;
+    color: #443d6b;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border-radius: 15px;
+}
+
+.footer-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(134, 102, 230, 0.4);
+    background: rgba(204, 179, 255, 0.15);
 }
 
 .footer-item .icon-text {
     display: flex;
     align-items: center;
-    justify-content: center; /* Centrar en el ítem */
-    margin-bottom: 10px;
+    justify-content: center;
+    margin-bottom: 15px;
 }
 
 .footer-item .icon-wrapper {
-    background-color: #2c3e50; /* Color púrpura para el círculo del icono */
+    background: linear-gradient(135deg, #6749cc, #9c7ef5);
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Animación de icono */
+    margin-right: 20px;
+    box-shadow: 0 6px 14px rgba(103, 73, 204, 0.6);
+    transition: transform 0.35s ease-in-out, box-shadow 0.35s ease-in-out;
 }
 
 .footer-item .icon-wrapper:hover {
-    transform: translateY(-5px) rotate(5deg); /* Efecto de levantamiento y rotación */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-7px) rotate(10deg);
+    box-shadow: 0 10px 30px rgba(120, 90, 230, 0.8);
 }
 
 .footer-item .icon-wrapper i {
     color: #fff;
-    font-size: 24px;
+    font-size: 28px;
 }
 
 .footer-item h3 {
-    color: #2c3e50; /* Color de texto del título como en la imagen */
-    font-size: 1.5em;
-    margin: 0;
+    font-size: 1.8em;
     font-weight: 700;
+    margin: 0;
+    color: #4a3d8c;
+    letter-spacing: 0.05em;
+    text-shadow: 0 1px 4px rgba(102, 80, 190, 0.6);
 }
 
 .footer-item .subtitle {
-    color: #2c3e50;
-    font-size: 1.1em;
-    margin: 0;
-    font-weight: 400;
+    font-size: 1.2em;
+    margin: 6px 0 0 0;
+    font-weight: 500;
+    color: #6b5ec8;
+    letter-spacing: 0.02em;
 }
 
 .footer-item .description {
-    color: #666;
-    font-size: 0.9em;
-    margin-top: 10px;
+    font-size: 1em;
+    color: #6b65a9;
+    margin-top: 12px;
+    line-height: 1.4;
+    opacity: 0.85;
 }
 
 /* Redes sociales */
 .social-icons {
-    margin-top: 15px;
+    margin-top: 20px;
     display: flex;
     justify-content: center;
+    gap: 15px;
 }
 
 .social-icon {
-    display: inline-flex; /* Para centrar el icono dentro */
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(135deg, #7053ff, #9b7aff);
+    color: #fff;
+    font-size: 1.3em;
+    border-radius: 50%;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
-    background-color: #2c3e50; /* Color púrpura */
-    color: #fff;
-    text-decoration: none; 
-    border-radius: 50%;
-    font-size: 1.2em;
-    margin: 0 8px;
-    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out; /* Animaciones */
+    transition: all 0.35s ease;
+    box-shadow: 0 5px 15px rgba(121, 88, 255, 0.6);
+    cursor: pointer;
 }
 
 .social-icon:hover {
-    transform: scale(1.1) translateY(-3px); /* Crece y se levanta */
-    background-color: #2c3e50; /* Tono de púrpura diferente al pasar el ratón */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transform: scale(1.15) translateY(-5px);
+    box-shadow: 0 12px 35px rgba(146, 112, 255, 0.9);
+    background: linear-gradient(135deg, #a586ff, #c9bcff);
 }
 
-/* Contacto */
+/* Contacto email */
 .contact-email {
-    color: #2c3e50;
+    color: #5f4bd8;
     text-decoration: none;
-    font-weight: 500;
-    font-size: 1.1em;
-    transition: color 0.3s ease-in-out, transform 0.2s ease-in-out; /* Animación */
+    font-weight: 600;
+    font-size: 1.2em;
+    transition: color 0.35s ease, transform 0.25s ease;
+    display: inline-block;
 }
 
 .contact-email:hover {
-    color: #2c3e50; /* Se oscurece al pasar el ratón */
-    transform: translateY(-2px); /* Ligeramente hacia arriba */
+    color: #7e63ff;
+    transform: translateY(-3px);
 }
 
-/* Estilos para la sección inferior del footer */
+/* Footer bottom */
 .footer-bottom {
-    background-color: #2c3e50; /* Color púrpura oscuro como en la imagen */
-    color: #fff;
-    padding: 30px 0;
+    background: #4a3d8c;
+    color: #e3dfff;
+    padding: 35px 0;
+    box-shadow: inset 0 8px 20px rgba(65, 50, 120, 0.7);
 }
 
 .footer-bottom .footer-container {
@@ -135,35 +155,38 @@ body {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    padding: 0 25px;
 }
 
 .footer-brand {
     display: flex;
     align-items: center;
-    margin-right: 30px; /* Espacio a la derecha del logo */
-    margin-bottom: 20px; /* Espacio para responsividad */
+    margin-bottom: 20px;
 }
 
 .paseshow-logo {
-    height: 40px; /* Altura del logo */
-    margin-right: 10px;
-    transition: transform 0.3s ease-in-out; /* Animación para el logo */
+    height: 45px;
+    margin-right: 15px;
+    filter: drop-shadow(0 0 3px rgba(145, 117, 255, 0.8));
+    transition: transform 0.3s ease;
 }
 
 .paseshow-logo:hover {
-    transform: scale(1.05); /* Ligeramente más grande al pasar el ratón */
+    transform: scale(1.08) rotate(-3deg);
 }
 
 .copyright {
-    font-size: 0.9em;
-    opacity: 0.8;
+    font-size: 0.95em;
+    opacity: 0.7;
+    letter-spacing: 0.03em;
 }
 
+/* Enlaces footer */
 .footer-links,
 .footer-my-account {
     flex: 1;
-    min-width: 180px; /* Ancho mínimo para los bloques de enlaces */
-    margin-bottom: 20px;
+    min-width: 180px;
+    margin-bottom: 25px;
 }
 
 .footer-links ul,
@@ -171,83 +194,101 @@ body {
     list-style: none;
     padding: 0;
     margin: 0;
-}
-
-.footer-links li,
-.footer-my-account li {
-    margin-bottom: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
 .footer-links a,
 .footer-my-account a {
-    color: #fff;
+    color: #d1c4ff;
+    font-size: 1em;
+    opacity: 0.85;
     text-decoration: none;
-    font-size: 0.95em;
-    opacity: 0.9;
     position: relative;
-    transition: opacity 0.3s ease-in-out, transform 0.2s ease-in-out; /* Animaciones para enlaces */
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.footer-links a::after,
+.footer-my-account a::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: #b494ff;
+    border-radius: 2px;
+    transition: width 0.3s ease;
 }
 
 .footer-links a:hover,
 .footer-my-account a:hover {
     opacity: 1;
-    transform: translateX(5px); /* Desliza a la derecha al pasar el ratón */
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3); /* Sombra de texto sutil */
+    transform: translateX(7px);
+    color: #fff;
+}
+
+.footer-links a:hover::after,
+.footer-my-account a:hover::after {
+    width: 100%;
 }
 
 /* Código QR */
 .footer-qr {
     text-align: center;
-    margin-left: auto; /* Empuja el QR a la derecha */
+    margin-left: auto;
     margin-bottom: 20px;
-    position: relative; /* Para el label */
+    position: relative;
 }
 
 .qr-code {
-    width: 80px;
-    height: 80px;
-    background-color: #fff; /* Fondo blanco para el QR */
-    padding: 5px;
-    border-radius: 5px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Animación QR */
+    width: 90px;
+    height: 90px;
+    background-color: #fff;
+    padding: 8px;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    cursor: pointer;
 }
 
 .qr-code:hover {
-    transform: scale(1.1) rotate(2deg); /* Crece y rota un poco */
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    transform: scale(1.15) rotate(4deg);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
 }
 
 .qr-label {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) rotate(-90deg); /* Rota el texto */
-    font-size: 0.7em;
-    font-weight: bold;
-    color: #fff;
-    text-shadow: 0 0 5px rgba(0,0,0,0.5); /* Sombra para mejor lectura */
-    z-index: 1; /* Asegura que el texto esté encima */
-    white-space: nowrap; /* Evita que el texto se rompa */
-    pointer-events: none; /* Permite hacer clic a través del texto al QR */
-    transition: transform 0.3s ease-in-out; /* Animación para el texto */
-    padding-left: 90px; /* Para que quede al lado del QR */
+    transform: translate(-50%, -50%) rotate(-90deg);
+    font-size: 0.75em;
+    font-weight: 700;
+    color: #f0e6ff;
+    text-shadow: 0 0 7px rgba(50, 15, 120, 0.6);
+    z-index: 1;
+    white-space: nowrap;
+    pointer-events: none;
+    padding-left: 100px;
+    transition: transform 0.3s ease;
 }
 
-
-/* Media Queries para Responsividad */
+/* Responsividad */
 @media (max-width: 992px) {
     .footer-container {
-        justify-content: center; /* Centrar ítems en pantallas medianas */
+        justify-content: center;
+        gap: 30px;
     }
 
     .footer-item {
-        flex: 0 0 45%; /* Dos columnas en pantallas medianas */
-        margin-bottom: 25px;
+        flex: 0 0 45%;
+        margin-bottom: 30px;
     }
 
     .footer-bottom .footer-container {
-        flex-direction: column; /* Apilar elementos en la sección inferior */
+        flex-direction: column;
         text-align: center;
     }
 
@@ -255,59 +296,57 @@ body {
     .footer-links,
     .footer-my-account,
     .footer-qr {
-        margin-right: 0;
-        margin-bottom: 20px;
+        margin: 0 0 25px 0;
     }
 
     .footer-links ul,
     .footer-my-account ul {
-        display: flex;
         flex-wrap: wrap;
         justify-content: center;
     }
 
     .footer-links li,
     .footer-my-account li {
-        margin: 0 10px 10px 10px; /* Espacio entre los elementos de la lista cuando se envuelven */
+        margin: 0 12px 10px 12px;
     }
 
     .footer-qr {
-        margin-left: 0; /* Quitar margen para centrar */
+        margin-left: 0;
     }
 
     .qr-label {
-        transform: translate(-50%, 0%); /* Ajustar posición del label */
+        transform: translate(-50%, 0);
         left: 50%;
         top: auto;
-        bottom: -25px; /* Colocar debajo del QR */
+        bottom: -28px;
         padding-left: 0;
-        transform: none; /* Desactivar rotación */
+        rotate: 0deg;
     }
 }
 
 @media (max-width: 600px) {
     .footer-item {
-        flex: 0 0 90%; /* Una columna en pantallas pequeñas */
+        flex: 0 0 90%;
     }
 
     .footer-top {
-        padding: 30px 0;
+        padding: 35px 0;
     }
 
     .footer-item h3 {
-        font-size: 1.3em;
+        font-size: 1.4em;
     }
 
     .footer-item .subtitle {
-        font-size: 1em;
+        font-size: 1.1em;
     }
 
     .footer-item .icon-wrapper {
-        width: 45px;
-        height: 45px;
+        width: 50px;
+        height: 50px;
     }
 
     .footer-item .icon-wrapper i {
-        font-size: 20px;
+        font-size: 22px;
     }
 }

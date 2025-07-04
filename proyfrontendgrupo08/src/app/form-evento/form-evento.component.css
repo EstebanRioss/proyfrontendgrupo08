@@ -1,62 +1,105 @@
 .formulario-evento {
-  max-width: 600px;
-  margin: 2rem auto;
-  background: #ffffff;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(180deg, #3b4a69, #2a3751);
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 30px 25px;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(41, 39, 74, 0.9);
+  font-family: 'Roboto', sans-serif;
+  color: #e0e0ff;
+  box-sizing: border-box;
 }
 
 .formulario-evento h2 {
-  margin-bottom: 1.5rem;
-  font-size: 24px;
-  color: #333;
   text-align: center;
+  color: #a58eff;
+  font-weight: 700;
+  font-size: 1.9rem;
+  margin-bottom: 25px;
+  text-shadow: 0 0 8px #7a5effaa;
+  user-select: none;
 }
 
-.form-group {
+.formulario-evento .form-group {
+  margin-bottom: 18px;
   display: flex;
   flex-direction: column;
-  margin-bottom: 1.2rem;
 }
 
-.form-group label {
-  margin-bottom: 0.5rem;
+.formulario-evento label {
+  margin-bottom: 6px;
   font-weight: 600;
-  color: #555;
+  color: #c4baff;
+  user-select: none;
 }
 
-.form-group input,
-.form-group textarea,
-.form-group select {
-  padding: 0.6rem 1rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 15px;
-  outline: none;
-  transition: border 0.3s;
-}
-
-.form-group input:focus,
-.form-group textarea:focus,
-.form-group select:focus {
-  border-color: #4f46e5;
-}
-
-button[type="submit"] {
-  width: 100%;
-  background: linear-gradient(to right, #2563eb, #4f46e5);
-  color: white;
-  font-weight: 600;
-  padding: 0.8rem;
-  border: none;
+.formulario-evento input[type="text"],
+.formulario-evento input[type="datetime-local"],
+.formulario-evento input[type="number"],
+.formulario-evento input[type="file"],
+.formulario-evento textarea,
+.formulario-evento select {
+  padding: 10px 14px;
+  font-size: 1rem;
   border-radius: 10px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background 0.3s ease;
+  border: 1.8px solid #585e8c;
+  background: #2e3650;
+  color: #e0e0ff;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+  font-family: inherit;
 }
 
-button[type="submit"]:hover {
-  background: linear-gradient(to right, #1e40af, #4338ca);
+.formulario-evento input[type="file"] {
+  padding: 6px 10px;
+}
+
+.formulario-evento textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.formulario-evento input[type="text"]:focus,
+.formulario-evento input[type="datetime-local"]:focus,
+.formulario-evento input[type="number"]:focus,
+.formulario-evento textarea:focus,
+.formulario-evento select:focus,
+.formulario-evento input[type="file"]:focus {
+  outline: none;
+  border-color: #7a5eff;
+  box-shadow: 0 0 8px #7a5effaa;
+}
+
+.formulario-evento img {
+  max-width: 200px;
+  margin-top: 10px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(122, 94, 255, 0.5);
+  user-select: none;
+}
+
+.formulario-evento button {
+  width: 100%;
+  padding: 14px 0;
+  background-color: #7a5eff;
+  border: none;
+  border-radius: 12px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.15rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  user-select: none;
+  margin-top: 15px;
+}
+
+.formulario-evento button:hover {
+  background-color: #5f4db8;
+  box-shadow: 0 0 15px #7a5effaa;
+}
+
+.formulario-evento button:disabled {
+  background-color: #4c3e92;
+  cursor: not-allowed;
+  box-shadow: none;
 }

@@ -56,7 +56,7 @@ export class EventosComponent {
     }
 
     detalles(evento : Evento){
-      this.router.navigate(['evento', evento._id])
+      this.router.navigate(['evento/ver', evento._id])
     }
 
     EventosFiltrados(): Evento[] {

@@ -1,96 +1,109 @@
-:root {
-  --admin-sidebar-bg: #2f3e50;
-  --admin-button-bg: #364759;
-  --accent-blue: #60a5fa; /* Azul para títulos o detalles */
-  --text-light: #f9fafb;
-  --border-color: #3b4c5e;
-}
-
-/* === SIDEBAR === */
 .sidebar {
-  background-color: var(--admin-sidebar-bg);
-
-  padding-top: 50px;
-  border-radius: 0 16px 16px 0;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  width: 300px;
-  height: 600px;
-  flex-shrink: 0;
+  width: 250px;
+  background: linear-gradient(180deg, #2c3e50, #1a2a3a);
+  color: #e0e0ff;
+  padding: 25px 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(41, 39, 74, 0.8);
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  animation: slideInLeft 0.6s ease-out forwards;
-  opacity: 0;
-  transform: translateX(-30px);
-  position: sticky; /* opcional si querés que quede fijo al hacer scroll */
-  top: 0;
+  gap: 25px;
+  user-select: none;
+  font-family: 'Roboto', sans-serif;
 }
 
-@keyframes slideInLeft {
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+.sidebar .text-center {
+  text-align: center;
+  border-bottom: 1px solid #444c66;
+  padding-bottom: 20px;
 }
 
 .sidebar h2 {
-  font-size: 1.4em;
-  color: var(--accent-blue);
-  margin-bottom: 25px;
-  text-align: center;
-  border-bottom: 2px solid var(--border-color);
-  padding-bottom: 15px;
-  font-weight: 600;
+  font-size: 1.8em;
+  font-weight: 700;
+  margin: 0;
+  color: #a58eff;
+  text-shadow: 0 0 8px #7a5effaa;
+}
+
+.sidebar p {
+  font-size: 0.95em;
+  color: #9b87ff;
+  font-weight: 500;
+  margin-top: 4px;
+  text-transform: capitalize;
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 4px #5a00ffbb;
 }
 
 .sidebar ul {
   list-style: none;
   padding: 0;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.sidebar li {
-  margin-bottom: 12px;
-}
-
-.sidebar button {
-  background-color: var(--admin-button-bg);
-  color: var(--text-light);
+.sidebar-btn {
+  background: transparent;
   border: none;
-  padding: 12px 20px;
-  border-radius: 8px;
-  width: 100%;
-  text-align: left;
-  font-size: 1.05em;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  color: #c4baff;
+  font-size: 1.1em;
+  font-weight: 600;
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-weight: 500;
-  opacity: 0;
-  animation: fadeInButton 0.4s ease-out forwards;
+  gap: 12px;
+  padding: 10px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.2s ease;
+  box-shadow: inset 0 0 0 0 transparent;
+  user-select: none;
 }
 
-/* Icono en botones (FontAwesome o similar) */
-.sidebar button i {
-  font-size: 1.2em;
+.sidebar-btn i {
+  font-size: 1.25em;
+  color: #7a5effaa;
+  transition: color 0.3s ease;
 }
 
-/* Animación escalonada */
-.sidebar li:nth-child(1) button { animation-delay: 0.1s; }
-.sidebar li:nth-child(2) button { animation-delay: 0.2s; }
-.sidebar li:nth-child(3) button { animation-delay: 0.3s; }
-.sidebar li:nth-child(4) button { animation-delay: 0.4s; }
-
-@keyframes fadeInButton {
-  from { opacity: 0; transform: translateX(-10px); }
-  to { opacity: 1; transform: translateX(0); }
+/* Hover y foco */
+.sidebar-btn:hover,
+.sidebar-btn:focus {
+  background-color: #5a00ff33;
+  color: #fff;
+  box-shadow: 0 0 12px #7a5effaa;
+  outline: none;
+  transform: translateX(5px);
 }
 
-/* Hover moderno */
-.sidebar button:hover {
-  background-color: #3d536b;
-  transform: translateX(2px);
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+.sidebar-btn:hover i,
+.sidebar-btn:focus i {
+  color: #c4baff;
+}
+
+/* Botón activo simulado con clase (opcional) */
+.sidebar-btn.active {
+  background-color: #7a5effaa;
+  color: #fff;
+  box-shadow: 0 0 15px #a58effee;
+  transform: translateX(5px);
+}
+
+.sidebar-btn.active i {
+  color: #e0d8ff;
+}
+
+/* Responsive - para pantallas pequeñas */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    padding: 20px 15px;
+    border-radius: 0;
+  }
 }
