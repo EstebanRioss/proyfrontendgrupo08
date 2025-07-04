@@ -1,20 +1,31 @@
-<section class="upcoming-shows-section dark-bg">
-    <div class="container">
-        <h2 class="section-title white-text">Todos las categorias</h2>
-      <div class="shows-grid">
-        <div
-          class="show-card dark-theme"
-          *ngFor="let c of Categorias"
-        >
-          <div class="card-content">
-            <h3>{{ c.nombre }}</h3>
-            <p class="show-date">{{ c.descripcion }}</p>
-            <div class="card-actions">
-              <a (click)="Modificar(c)" class="info-link">Modificar</a>
-              <a (click)="Eliminar(c)" class="info-link">Eliminar</a>
-            </div>
-          </div>
-        </div>
-      </div>
+<section class="user-table-section">
+  <div class="overflow-x-auto bg-white shadow-md rounded-lg p-6">
+    <h2 class="text-2xl font-bold text-gray-800 mb-6">Todas las categorías</h2>
+
+    <div class="overflow-x-auto">
+      <table class="text-sm text-left border-collapse w-full">
+        <thead class="bg-gray-100 text-gray-700 uppercase text-xs">
+          <tr>
+            <th class="py-5 px-6">Nombre</th>
+            <th class="py-5 px-6">Descripción</th>
+            <th class="py-5 px-6">Acciones</th>
+          </tr>
+        </thead>
+        <tbody class="text-gray-800">
+          <tr *ngFor="let c of Categorias" class="border-b hover:bg-gray-50">
+            <td class="py-4 px-6 font-medium">{{ c.nombre }}</td>
+            <td class="py-4 px-6">{{ c.descripcion }}</td>
+            <td class="py-4 px-6 flex flex-wrap gap-3 mt-1">
+              <button class="btn-action" (click)="Modificar(c)">
+                <i class="fas fa-edit"></i> Modificar
+              </button>
+              <button class="btn-action delete" (click)="Eliminar(c)">
+                <i class="fas fa-trash-alt"></i> Eliminar
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+  </div>
 </section>

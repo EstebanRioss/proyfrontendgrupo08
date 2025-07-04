@@ -1,0 +1,27 @@
+<section class="user-table-section" *ngIf="currentUser">
+  <div>
+    <h2 class="text-2xl font-bold text-gray-800 mb-6">Resumen General</h2>
+
+    <div class="grid">
+      <div style="background-color: #bfdbfe; color: #1e40af;" *ngIf="currentUser.rol === 'administrador'" >
+        <h3>Usuarios</h3>
+        <p>{{ totalUsuarios }}</p>
+      </div>
+
+      <div style="background-color: #bbf7d0; color: #166534;" *ngIf="currentUser.rol === 'administrador'">
+        <h3>Eventos</h3>
+        <p>{{ totalEventos }}</p>
+      </div>
+
+      <div style="background-color: #fef3c7; color: #92400e;" >
+        <h3>Entradas</h3>
+        <p>{{ totalEntradas }}</p>
+      </div>
+
+      <div style="background-color: #fecaca; color: #991b1b;">
+        <h3>Ganancias</h3>
+        <p>${{ totalGanancias | number:'1.2-2' }}</p>
+      </div>
+    </div>
+  </div>
+</section>

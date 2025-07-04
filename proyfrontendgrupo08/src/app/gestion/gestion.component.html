@@ -1,16 +1,22 @@
-<div class="container admin-panel-container" *ngIf="currentUser">
+<div class="admin-panel-container" *ngIf="currentUser">
   <app-sidebar (optionSelected)="onOptionSelected($event)"></app-sidebar>
-  <main class="admin-panel-container">
-    <h1>Bienvenido al Panel de Administración</h1>
+  <main class="container">
+    
+    <h1 class="text-2xl font-bold text-gray-800 mb-6">Bienvenido al Panel de Administración</h1>
+    <ng-container *ngIf="selectedOption === 'general'">
+      <app-general></app-general>
+    </ng-container>
     <ng-container *ngIf="selectedOption === 'users' && currentUser.rol === 'administrador'">
       <app-lista-usuarios></app-lista-usuarios>
     </ng-container>
     <ng-container *ngIf="selectedOption === 'events'">
       <app-lista-eventos></app-lista-eventos>
     </ng-container>
+
     <ng-container *ngIf="selectedOption === 'categories' && currentUser.rol === 'administrador'">
       <app-lista-categorias></app-lista-categorias>
     </ng-container>
+
     <ng-container *ngIf="selectedOption === 'posts'">
       <app-lista-entradas></app-lista-entradas>
     </ng-container>

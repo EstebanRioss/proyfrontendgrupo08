@@ -1,22 +1,16 @@
-.container.admin-panel-container {
-    display: flex; /* Para que el sidebar y el contenido estén lado a lado */
-    gap: 30px; /* Espacio entre el sidebar y el contenido */
-    padding-top: 50px;
-    min-height: calc(100vh - 150px); /* Ajusta según la altura de tu navbar/footer */
-    background-color: var(--primary-dark-bg); /* Fondo oscuro general para el panel */
-    animation: fadeIn 0.8s ease-out; /* Animación de desvanecimiento al aparecer */
-    opacity: 1; /* Estado inicial para la animación */
-    color: black;
+.admin-panel-container {
+  display: flex;
+  height: auto;
+  padding-top: 10px;
+  background-color: #f4f6fa;
+  font-family: 'Segoe UI', sans-serif;
+  gap: 24px;
+  padding-left: 16px;
+  width: auto;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
 
-/* Estilos de los contenedores generales para asegurar consistencia */
-.container { /* Puede que ya lo tengas, ajusta si es necesario */
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+.main-content {
+  background-color: #f4f6fa;
+  
 }
