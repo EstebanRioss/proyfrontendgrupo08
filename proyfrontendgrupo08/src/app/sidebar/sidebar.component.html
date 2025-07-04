@@ -1,5 +1,10 @@
+<<<<<<< Updated upstream
 <aside class="sidebar bg-white shadow-lg px-6 py-8 w-64 flex flex-col justify-start" *ngIf="currentUser">
     <div class="text-center mb-8">
+=======
+<aside class="sidebar bg-white shadow-lg px-6 py-8 w-64 flex flex-col justify-start" *ngIf="currentUser && (currentUser.rol == 'administrador' || currentUser.rol == 'organizador') ">
+    <div class="text-center">
+>>>>>>> Stashed changes
       <h2 class="text-xl font-semibold">{{ currentUser.nombre }}</h2>
       <p class="text-sm text-gray-500">{{ currentUser.rol }}</p>
     </div>
@@ -10,7 +15,7 @@
         </button>
       </li>
       <li>
-        <button class="sidebar-btn" (click)="selectOption('users')">
+        <button class="sidebar-btn" (click)="selectOption('users')" *ngIf="currentUser.rol == 'administrador'">
           <i class="fas fa-user-circle mr-2"></i> Usuarios
         </button>
       </li>
@@ -20,7 +25,7 @@
         </button>
       </li>
       <li>
-        <button class="sidebar-btn" (click)="selectOption('categories')">
+        <button class="sidebar-btn" (click)="selectOption('categories')" *ngIf="currentUser.rol == 'administrador'">
           <i class="fas fa-th-large mr-2"></i> Categorías
         </button>
       </li>

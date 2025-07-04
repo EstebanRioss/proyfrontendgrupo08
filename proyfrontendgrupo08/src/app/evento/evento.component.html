@@ -1,9 +1,14 @@
 <div class="event-details-page" *ngIf="evento">
   <header class="event-header">
-    <div class="container">
-      <h1 class="event-title">{{ evento.nombre }}</h1>
+  <div class="container">
+    <h1 class="event-title">{{ evento.nombre }}</h1>
+    <div class="event-meta">
+      <span class="badge"><i class="fas fa-calendar-day"></i> {{ evento.fecha | date: 'fullDate' }}</span>
+      <span class="badge"><i class="fas fa-users"></i> {{ evento.capacidadTotal }} personas</span>
+      <span class="badge"><i class="fas fa-map-marker-alt"></i> {{ evento.ubicacionNombre }}</span>
     </div>
-  </header>
+  </div>
+</header>
 
   <section class="event-hero">
     <div class="container">
@@ -47,11 +52,13 @@
     </div>
   </section>
 
-  <section class="event-info dark-bg">
+  <section class="event-info dark-bg organizer-info">
     <div class="container">
       <h2 class="section-title">Acerca del evento</h2>
       <p><strong>{{ evento.nombre | uppercase }}</strong></p>
       <p>{{ evento.descripcion }}</p>
+      <p><strong>Categoría:</strong> {{ evento.categoriaId }}</p>
+      <p><strong>Organizado por:</strong> {{ evento.organizadorId }}</p>
     </div>
   </section>
 
