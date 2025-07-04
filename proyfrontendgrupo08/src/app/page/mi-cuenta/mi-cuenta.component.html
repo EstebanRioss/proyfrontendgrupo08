@@ -11,7 +11,6 @@
               <div class="mb-3">
                 <label for="email" class="form-label fw-bold">Email</label>
                 <input type="email" id="email" class="form-control" [value]="usuario.email">
-                <div class="form-text">Tu email es tu identificador y no puede ser modificado.</div>
               </div>
               <div class="mb-4">
                 <label for="rol" class="form-label fw-bold">Rol</label>
@@ -47,10 +46,10 @@
               <div class="mb-3">
                 <label for="telefono" class="form-label">Teléfono</label>
                 <input type="tel" id="telefono" formControlName="telefono" class="form-control"
-                       placeholder="Ej: 1123456789 (opcional)"
+                       placeholder="Ej: 3881234567 (opcional)"
                        [ngClass]="{ 'is-invalid': telefono?.invalid && telefono?.touched }">
                 <div *ngIf="telefono?.invalid && telefono?.touched" class="invalid-feedback">
-                  <div *ngIf="telefono?.errors?.['pattern']">Ingresa un número de teléfono válido.</div>
+                  <div *ngIf="telefono?.errors?.['pattern']">Ingresá un número de teléfono válido.</div>
                 </div>
               </div>
               
@@ -63,8 +62,58 @@
                   {{ isLoading ? 'Guardando...' : 'Guardar Cambios' }}
                 </button>
               </div>
-
             </form>
+
+            <div *ngIf="!usuario.googleId">
+
+              <hr class="my-4">
+
+              <form [formGroup]="passwordForm" (ngSubmit)="onPasswordSubmit()" novalidate>
+                <h4 class="mb-3">Cambiar Contraseña</h4>
+
+                <div class="mb-3">
+                  <label for="contrasenaActual" class="form-label">Contraseña Actual</label>
+                  <input type="password" id="contrasenaActual" formControlName="contrasenaActual" class="form-control"
+                         [ngClass]="{ 'is-invalid': contrasenaActual?.invalid && contrasenaActual?.touched }">
+                  <div *ngIf="contrasenaActual?.invalid && contrasenaActual?.touched" class="invalid-feedback">
+                    <div *ngIf="contrasenaActual?.errors?.['required']">La contraseña actual es requerida.</div>
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="nuevaContrasena" class="form-label">Nueva Contraseña</label>
+                  <input type="password" id="nuevaContrasena" formControlName="nuevaContrasena" class="form-control"
+                         [ngClass]="{ 'is-invalid': nuevaContrasena?.invalid && nuevaContrasena?.touched }">
+                  <div *ngIf="nuevaContrasena?.invalid && nuevaContrasena?.touched" class="invalid-feedback">
+                    <div *ngIf="nuevaContrasena?.errors?.['required']">La nueva contraseña es requerida.</div>
+                    <div *ngIf="nuevaContrasena?.errors?.['minlength']">Debe tener al menos 8 caracteres.</div>
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="confirmarContrasena" class="form-label">Confirmar Nueva Contraseña</label>
+                  <input type="password" id="confirmarContrasena" formControlName="confirmarContrasena" class="form-control"
+                         [ngClass]="{ 'is-invalid': (confirmarContrasena?.invalid && confirmarContrasena?.touched) || (passwordForm.errors?.['passwordMismatch'] && confirmarContrasena?.touched) }">
+                  <div *ngIf="confirmarContrasena?.invalid && confirmarContrasena?.touched" class="invalid-feedback">
+                    <div *ngIf="confirmarContrasena?.errors?.['required']">Debés confirmar la contraseña.</div>
+                  </div>
+                  <div *ngIf="passwordForm.errors?.['passwordMismatch'] && confirmarContrasena?.touched" class="invalid-feedback">
+                      Las contraseñas no coinciden.
+                  </div>
+                </div>
+                
+                <div *ngIf="mensajeExitoPass" class="alert alert-success mt-3">{{ mensajeExitoPass }}</div>
+                <div *ngIf="mensajeErrorPass" class="alert alert-danger mt-3">{{ mensajeErrorPass }}</div>
+
+                <div class="d-grid mt-4">
+                  <button type="submit" class="btn btn-secondary" [disabled]="passwordForm.invalid || isPasswordLoading">
+                    <span *ngIf="isPasswordLoading" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                    {{ isPasswordLoading ? 'Cambiando...' : 'Cambiar Contraseña' }}
+                  </button>
+                </div>
+              </form>
+            </div>
+
           </div>
 
           <ng-template #loading>
