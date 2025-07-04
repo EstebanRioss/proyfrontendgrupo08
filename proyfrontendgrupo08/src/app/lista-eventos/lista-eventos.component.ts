@@ -36,28 +36,25 @@ export class ListaEventosComponent  implements OnInit, OnDestroy{
     }
     }
 
-    getEvento(){
-    if(this.currentUser?.rol == "organizador"){
-      this.service.getEventosPorOrganizador(this.currentUser._id).subscribe(result =>{
-        let vevento: Evento = new Evento();
-        result.forEach((element: any) => {
+    getEvento() {
+      this.Eventos = [];
+
+      this.service.getEventos().subscribe(result => {
+        // Si es organizador, filtramos por su ID
+        let eventosFiltrados = result;
+
+        if (this.currentUser?.rol === "organizador") {
+          eventosFiltrados = result.filter((evento: any) =>
+            evento.organizadorId === this.currentUser?._id
+          );
+        }
+
+        eventosFiltrados.forEach((element: any) => {
+          const vevento = new Evento();
           Object.assign(vevento, element);
           this.Eventos.push(vevento);
-          vevento = new Evento();
         });
-      })
-      return
-    }
-    this.service.getEventos().subscribe(
-      result => {
-        let vevento: Evento = new Evento();
-        result.forEach((element: any) => {
-          Object.assign(vevento, element);
-          this.Eventos.push(vevento);
-          vevento = new Evento();
-        });
-       }
-      );
+      });
     }
 
     Crear(){

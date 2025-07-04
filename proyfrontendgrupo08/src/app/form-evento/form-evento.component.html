@@ -37,8 +37,9 @@
   </div>
 
   <div class="form-group">
-    <label>Imagen (URL)</label>
-    <input type="text" [(ngModel)]="evento.imagenUrl" name="imagenUrl" />
+    <label>Imagen *</label>
+    <input type="file" (change)="onFileSelected($event)" accept="image/*" />
+    <img *ngIf="evento.imagenUrl" [src]="evento.imagenUrl" alt="Vista previa" style="max-width: 200px; margin-top: 10px;">
   </div>
 
   <div class="form-group">

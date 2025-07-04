@@ -32,6 +32,21 @@ export class FormEventoComponent implements OnInit {
     }
   }
 
+  onFileSelected(event: any): void {
+    const file = event.target.files[0];
+
+    if (file) {
+      const reader = new FileReader();
+
+      reader.onload = (e: any) => {
+        // Esto guarda la imagen como base64 en imagenUrl
+        this.evento.imagenUrl = e.target.result;
+      };
+
+      reader.readAsDataURL(file);
+    }
+  }
+
   cargarEvento(id: string): void {
     this.serviceE.getEvento(id).subscribe({
       next: (evento) => {

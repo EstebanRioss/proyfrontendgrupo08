@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { DomSanitizer } from '@angular/platform-browser';
 import { SafeResourceUrl } from '@angular/platform-browser';
 import { EventosService } from '../service/eventos.service';
+import { UsuarioService } from '../service/usuario.service';
 
 @Component({
   selector: 'app-evento',
@@ -18,6 +19,8 @@ export class EventoComponent {
   countdown: { dias: number; horas: number; minutos: number; segundos: number } | null = null;
   id : string = "";
   mapaUrl: SafeResourceUrl | null = null;
+  categoria: string = "";
+  organizador: string = "";
 
   constructor(private activatedRoute : ActivatedRoute,private serviceE : EventosService,private sanitizer: DomSanitizer){
     this.cargarEvento();
@@ -39,7 +42,6 @@ export class EventoComponent {
             const url = `https://maps.google.com/maps?q=${this.evento.latitud},${this.evento.longitud}&z=15&output=embed`;
             this.mapaUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
           }
-
           this.iniciarCountdown();
         } else {
           console.error('Evento no encontrado.');

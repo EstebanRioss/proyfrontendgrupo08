@@ -6,6 +6,12 @@ import { SignupComponent } from './signup/signup.component';
 import { ConfirmacionEmailComponent } from './page/confirmacion-email/confirmacion-email.component';
 import { GestionComponent } from './gestion/gestion.component';
 import { MiCuentaComponent } from './page/mi-cuenta/mi-cuenta.component';
+<<<<<<< Updated upstream
+=======
+import { FormEventoComponent } from './form-evento/form-evento.component';
+import { FormCategoriaComponent } from './form-categoria/form-categoria.component';
+import { EventoComponent } from './evento/evento.component';
+>>>>>>> Stashed changes
 export const routes: Routes = [
     { path: '', redirectTo: 'inicio', pathMatch: 'full' },
     { path: 'inicio', component: PagesComponent},
@@ -14,7 +20,8 @@ export const routes: Routes = [
     { path: 'signup', component: SignupComponent},
     { path: 'confirmar-email/:token', component: ConfirmacionEmailComponent},
     { path: 'gestion', component: GestionComponent},
-    { path:'micuenta', component: MiCuentaComponent},
+    { path: 'micuenta', component: MiCuentaComponent},
+    { path: 'evento/:id', component : EventoComponent},
     { path: 'evento/crear', component: FormEventoComponent},
     { path: 'evento/editar/:id', component: FormEventoComponent},
     { path: 'categoria/crear', component: FormCategoriaComponent},

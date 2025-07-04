@@ -14,7 +14,7 @@
                     Hola, {{ currentUser.nombre }}
                 </span>
                 <div class="dropdown-menu">
-                    <a routerLink="/mi-cuenta" class="dropdown-item">Mi Cuenta</a>
+                    <a [routerLink]="['/micuenta']" class="dropdown-item">Mi Cuenta</a>
                     <a *ngIf="currentUser.rol === 'administrador' || currentUser.rol === 'organizador' " [routerLink]="['/gestion']" class="dropdown-item">
                         Gestión
                     </a>
