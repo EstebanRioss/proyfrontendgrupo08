@@ -7,4 +7,5 @@ export class Usuario {
     estado?: boolean;
     telefono?: string;
     contraseña?: string;
+    googleId?: string;
 }
