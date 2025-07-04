@@ -1,31 +1,31 @@
-<section class="user-table-section ">
-  <div class="overflow-x-auto bg-white shadow-md rounded-lg p-6">
-    <h2 class="text-2xl font-bold text-gray-800 mb-6">Lista de Usuarios</h2>
+<section class="user-table-section">
+  <div class="table-container">
+    <h2 class="section-title">Lista de Usuarios</h2>
 
-    <div class="overflow-x-auto">
-      <table class="text-sm text-left border-collapse">
-        <thead class="bg-gray-100 text-gray-700 uppercase text-xs">
+    <div class="table-wrapper">
+      <table class="users-table">
+        <thead>
           <tr>
-            <th class="py-5 px-6">#</th>
-            <th class="py-5 px-6">Nombre</th>
-            <th class="py-5 px-6">Email</th>
-            <th class="py-5 px-6">Telefono</th>
-            <th class="py-5 px-6">Rol</th>
-            <th class="py-5 px-6">Acciones</th>
+            <th>#</th>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Teléfono</th>
+            <th>Rol</th>
+            <th>Acciones</th>
           </tr>
         </thead>
-        <tbody class="text-gray-800">
-          <tr *ngFor="let s of Usuarios; let i = index" class="border-b hover:bg-gray-50">
-            <td class="py-4 px-6 font-semibold text-blue-600">#{{ i + 1 }}</td>
-            <td class="py-4 px-6 font-medium">{{ s.nombre }} {{ s.apellido }}</td>
-            <td class="py-4 px-6">{{ s.email }}</td>
-            <td class="py-4 px-6">{{ s.telefono }}</td>
-            <td class="py-4 px-6">{{ s.rol }}</td>
-            <td class="py-4 px-6 flex flex-wrap gap-3 mt-1">
+        <tbody>
+          <tr *ngFor="let s of Usuarios; let i = index">
+            <td class="index-cell">#{{ i + 1 }}</td>
+            <td>{{ s.nombre }} {{ s.apellido }}</td>
+            <td>{{ s.email }}</td>
+            <td>{{ s.telefono }}</td>
+            <td>{{ s.rol }}</td>
+            <td class="actions-cell">
               <button class="btn-action" (click)="Modificar(s)">
                 <i class="fas fa-edit"></i> Modificar
               </button>
-              <button class="btn-action delete" (click)="Eliminar(s)">
+              <button class="btn-action btn-delete" (click)="Eliminar(s)">
                 <i class="fas fa-trash-alt"></i> Eliminar
               </button>
             </td>

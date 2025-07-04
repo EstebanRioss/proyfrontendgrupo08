@@ -1,30 +1,37 @@
 <nav class="navbar">
-    <div class="navbar-container">
-        <ul class="navbar-menu">
-            <li><a [routerLink]="['/inicio']" class="navbar-item">Inicio</a></li>
-            <li><a [routerLink]="['/eventos']" class="navbar-item">Eventos</a></li>
-            <li><a href="#projects" class="navbar-item">Contactar</a></li>
+  <div class="navbar-container">
 
-            <li *ngIf="!currentUser">
-                <a routerLink="/login" class="navbar-item navbar-button">Iniciar Sesion</a>
-            </li>
-
-            <li *ngIf="currentUser" class="user-profile-menu">
-                <span class="navbar-item user-greeting">
-                    Hola, {{ currentUser.nombre }}
-                </span>
-                <div class="dropdown-menu">
-                    <a [routerLink]="['/micuenta']" class="dropdown-item">Mi Cuenta</a>
-                    <a *ngIf="currentUser.rol === 'administrador' || currentUser.rol === 'organizador' " [routerLink]="['/gestion']" class="dropdown-item">
-                        Gestión
-                    </a>
-                    <a (click)="logout()" class="dropdown-item logout-button">Cerrar Sesión</a>
-                </div>
-            </li>
-        </ul>
-
-        <div class="navbar-logo-container">
-            <img src="assets/img/logo.png" alt="Logo" class="navbar-logo">
-        </div>
+    <!-- Logo primero -->
+    <div class="navbar-logo-container">
+      <img src="assets/img/logo.png" alt="Entradix Logo" class="navbar-logo">
     </div>
+
+    <!-- Menú centrado -->
+    <ul class="navbar-menu">
+      <li><a [routerLink]="['/inicio']" class="navbar-item">Inicio</a></li>
+      <li><a [routerLink]="['/eventos']" class="navbar-item">Eventos</a></li>
+      <li><a href="#contacto" class="navbar-item">Contacto</a></li>
+    </ul>
+
+    <!-- Acciones a la derecha -->
+    <ul class="navbar-menu">
+      <li *ngIf="!currentUser">
+        <a routerLink="/login" class="navbar-item navbar-button">Iniciar Sesión</a>
+      </li>
+
+      <li *ngIf="currentUser" class="user-profile-menu">
+        <span class="navbar-item user-greeting">
+          Hola, {{ currentUser.nombre }}
+        </span>
+        <div class="dropdown-menu">
+          <a [routerLink]="['/micuenta']" class="dropdown-item">Mi Cuenta</a>
+          <a *ngIf="currentUser.rol === 'administrador' || currentUser.rol === 'organizador'" [routerLink]="['/gestion']" class="dropdown-item">
+            Gestión
+          </a>
+          <a (click)="logout()" class="dropdown-item logout-button">Cerrar Sesión</a>
+        </div>
+      </li>
+    </ul>
+
+  </div>
 </nav>

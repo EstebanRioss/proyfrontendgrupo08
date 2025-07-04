@@ -1,14 +1,14 @@
 <div class="event-details-page" *ngIf="evento">
   <header class="event-header">
-  <div class="container">
-    <h1 class="event-title">{{ evento.nombre }}</h1>
-    <div class="event-meta">
-      <span class="badge"><i class="fas fa-calendar-day"></i> {{ evento.fecha | date: 'fullDate' }}</span>
-      <span class="badge"><i class="fas fa-users"></i> {{ evento.capacidadTotal }} personas</span>
-      <span class="badge"><i class="fas fa-map-marker-alt"></i> {{ evento.ubicacionNombre }}</span>
+    <div class="container">
+      <h1 class="event-title">{{ evento.nombre }}</h1>
+      <div class="event-meta">
+        <span class="badge"><i class="fas fa-calendar-day"></i> {{ evento.fecha | date: 'fullDate' }}</span>
+        <span class="badge"><i class="fas fa-users"></i> {{ evento.capacidadTotal }} personas</span>
+        <span class="badge"><i class="fas fa-map-marker-alt"></i> {{ evento.ubicacionNombre }}</span>
+      </div>
     </div>
-  </div>
-</header>
+  </header>
 
   <section class="event-hero">
     <div class="container">
@@ -26,6 +26,7 @@
             <span class="countdown-seconds">{{ countdown.segundos }}</span> Segundos
           </div>
         </div>
+
         <div class="hero-right">
           <div class="buy-section">
             <div class="price-info">
@@ -63,15 +64,15 @@
   </section>
 
   <section class="how-to-arrive dark-bg" *ngIf="mapaUrl">
-  <div class="container">
-    <h2 class="section-title">Cómo llegar</h2>
-    <p>Ubicación: {{ evento.ubicacionNombre }}</p>
-    <div class="map-placeholder">
-      <iframe 
-        width="100%" height="400" frameborder="0" style="border:0"
-        [src]="mapaUrl" allowfullscreen>
-      </iframe>
+    <div class="container">
+      <h2 class="section-title">Cómo llegar</h2>
+      <p>Ubicación: {{ evento.ubicacionNombre }}</p>
+      <div class="map-placeholder">
+        <iframe 
+          width="100%" height="400" frameborder="0" style="border:0"
+          [src]="mapaUrl" allowfullscreen>
+        </iframe>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 </div>

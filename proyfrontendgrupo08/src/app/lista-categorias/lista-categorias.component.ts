@@ -32,7 +32,7 @@ export class ListaCategoriasComponent {
     }
 
     Crear (){
-      this.router.navigate(['categoria/crear'])
+      this.router.navigate(['categoria/nueva'])
     }
 
     Modificar(c : CategoriaEvento){

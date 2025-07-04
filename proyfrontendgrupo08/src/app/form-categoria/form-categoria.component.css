@@ -1,59 +1,86 @@
 .formulario-categoria {
-  max-width: 500px;
-  margin: 2rem auto;
-  padding: 2rem;
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(180deg, #3b4a69, #2a3751);
+  max-width: 450px;
+  margin: 40px auto;
+  padding: 30px 25px;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(41, 39, 74, 0.9);
+  font-family: 'Roboto', sans-serif;
+  color: #e0e0ff;
+  box-sizing: border-box;
 }
 
 .formulario-categoria h2 {
   text-align: center;
-  margin-bottom: 1.5rem;
-  color: #333;
+  color: #a58eff;
+  font-weight: 700;
+  font-size: 1.9rem;
+  margin-bottom: 25px;
+  text-shadow: 0 0 8px #7a5effaa;
+  user-select: none;
 }
 
-.form-group {
+.formulario-categoria .form-group {
+  margin-bottom: 18px;
   display: flex;
   flex-direction: column;
-  margin-bottom: 1.2rem;
 }
 
-.form-group label {
-  margin-bottom: 0.5rem;
+.formulario-categoria label {
+  margin-bottom: 6px;
   font-weight: 600;
-  color: #444;
+  color: #c4baff;
+  user-select: none;
 }
 
-.form-group input,
-.form-group textarea {
-  padding: 0.6rem 1rem;
-  border: 1px solid #ccc;
+.formulario-categoria input[type="text"],
+.formulario-categoria textarea {
+  padding: 10px 14px;
+  font-size: 1rem;
   border-radius: 10px;
-  font-size: 15px;
-  transition: border 0.3s ease;
+  border: 1.8px solid #585e8c;
+  background: #2e3650;
+  color: #e0e0ff;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+  font-family: inherit;
+  resize: vertical;
+  min-height: 70px;
 }
 
-.form-group input:focus,
-.form-group textarea:focus {
-  border-color: #4f46e5;
+.formulario-categoria textarea {
+  min-height: 100px;
+}
+
+.formulario-categoria input[type="text"]:focus,
+.formulario-categoria textarea:focus {
   outline: none;
+  border-color: #7a5eff;
+  box-shadow: 0 0 8px #7a5effaa;
 }
 
-button[type="submit"] {
+.formulario-categoria button {
   width: 100%;
-  background: linear-gradient(to right, #4f46e5, #6366f1);
-  color: white;
-  font-weight: 600;
-  padding: 0.8rem;
+  padding: 14px 0;
+  background-color: #7a5eff;
   border: none;
-  border-radius: 10px;
-  font-size: 16px;
+  border-radius: 12px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.15rem;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  user-select: none;
+  margin-top: 20px;
 }
 
-button[type="submit"]:hover {
-  background: linear-gradient(to right, #4338ca, #4f46e5);
+.formulario-categoria button:hover {
+  background-color: #5f4db8;
+  box-shadow: 0 0 15px #7a5effaa;
+}
+
+.formulario-categoria button:disabled {
+  background-color: #4c3e92;
+  cursor: not-allowed;
+  box-shadow: none;
 }

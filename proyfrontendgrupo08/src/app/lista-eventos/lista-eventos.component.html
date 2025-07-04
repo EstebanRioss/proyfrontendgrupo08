@@ -1,45 +1,43 @@
 <section class="user-table-section">
-  <div class="overflow-x-auto bg-white shadow-md rounded-lg p-6">
-    <h2 class="text-2xl font-bold text-gray-800 mb-6">Todos los eventos</h2>
-    <div class="flex justify-end mb-4">
-      <div class="boton-contenedor">
-        <button class="boton-anadir" (click)="Crear()">
-          <i class="bi bi-plus-circle-fill"></i>
-          Añadir Evento
-        </button>
-      </div>
+  <div class="table-container">
+    <h2 class="section-title">Todos los eventos</h2>
+    <div class="actions-container">
+      <button class="btn-add" (click)="Crear()">
+        <i class="bi bi-plus-circle-fill"></i>
+        Añadir Evento
+      </button>
     </div>
-    <div class="overflow-x-auto">
-      <table class="text-sm text-left border-collapse w-full">
-        <thead class="bg-gray-100 text-gray-700 uppercase text-xs">
+    <div class="table-wrapper">
+      <table class="events-table">
+        <thead>
           <tr>
-            <th class="py-5 px-6">Nombre</th>
-            <th class="py-5 px-6">Fecha</th>
-            <th class="py-5 px-6">Logo del evento</th>
-            <th class="py-5 px-6">Cantidad de personas</th>
-            <th class="py-5 px-6">Ubicacion</th>
-            <th class="py-5 px-6">Organizador</th>
-            <th class="py-5 px-6">Categoria</th>
-            <th class="py-5 px-6">Acciones</th>
+            <th>Nombre</th>
+            <th>Fecha</th>
+            <th>Logo del evento</th>
+            <th>Cantidad de personas</th>
+            <th>Ubicación</th>
+            <th>Organizador</th>
+            <th>Categoría</th>
+            <th>Acciones</th>
           </tr>
         </thead>
-        <tbody class="text-gray-800">
-          <tr *ngFor="let evento of Eventos" class="border-b hover:bg-gray-50">
-            <td class="py-4 px-6 font-medium">{{ evento.nombre }}</td>
-            <td class="py-4 px-6">{{ evento.fecha | date: 'dd MMMM yyyy' }}</td>
-            <td class="py-4 px-6">
-              <img [src]="evento.imagenUrl || 'https://via.placeholder.com/100x60/000000/ffffff?text=Evento'" 
-                   [alt]="evento.nombre" class="w-24 h-auto rounded shadow" />
+        <tbody>
+          <tr *ngFor="let evento of Eventos">
+            <td>{{ evento.nombre }}</td>
+            <td>{{ evento.fecha | date: 'dd MMMM yyyy' }}</td>
+            <td>
+              <img [src]="evento.imagenUrl || 'https://via.placeholder.com/100x60/000000/ffffff?text=Evento'"
+                   [alt]="evento.nombre" class="event-logo" />
             </td>
-            <td class="py-4 px-6 font-medium">{{ evento.capacidadTotal }}</td>
-            <td class="py-4 px-6 font-medium">{{ evento.ubicacionNombre }}</td>
-            <td class="py-4 px-6 font-medium">{{ evento.organizadorId }}</td>
-            <td class="py-4 px-6 font-medium">{{ evento.categoriaId }}</td>
-            <td class="py-4 px-6 flex flex-wrap gap-3 mt-1">
+            <td>{{ evento.capacidadTotal }}</td>
+            <td>{{ evento.ubicacionNombre }}</td>
+            <td>{{ evento.organizadorId }}</td>
+            <td>{{ evento.categoriaId }}</td>
+            <td class="actions-cell">
               <button class="btn-action" (click)="Modificar(evento)">
                 <i class="fas fa-edit"></i> Modificar
               </button>
-              <button class="btn-action delete" (click)="Eliminar(evento)">
+              <button class="btn-action btn-delete" (click)="Eliminar(evento)">
                 <i class="fas fa-trash-alt"></i> Eliminar
               </button>
             </td>

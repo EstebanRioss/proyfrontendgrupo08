@@ -37,7 +37,7 @@ export class PagesComponent{
 }
 
 detalles(evento : Evento){
-      this.router.navigate(['evento', evento._id])
+      this.router.navigate(['evento/ver', evento._id])
     }
 
 getEventosProximos() {

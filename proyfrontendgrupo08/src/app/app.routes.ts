@@ -6,26 +6,30 @@ import { SignupComponent } from './signup/signup.component';
 import { ConfirmacionEmailComponent } from './page/confirmacion-email/confirmacion-email.component';
 import { GestionComponent } from './gestion/gestion.component';
 import { MiCuentaComponent } from './page/mi-cuenta/mi-cuenta.component';
-<<<<<<< Updated upstream
-=======
 import { FormEventoComponent } from './form-evento/form-evento.component';
 import { FormCategoriaComponent } from './form-categoria/form-categoria.component';
 import { EventoComponent } from './evento/evento.component';
->>>>>>> Stashed changes
+
 export const routes: Routes = [
     { path: '', redirectTo: 'inicio', pathMatch: 'full' },
-    { path: 'inicio', component: PagesComponent},
-    { path: 'eventos', component: EventosComponent},
-    { path: 'login', component: LoginComponent},
-    { path: 'signup', component: SignupComponent},
-    { path: 'confirmar-email/:token', component: ConfirmacionEmailComponent},
-    { path: 'gestion', component: GestionComponent},
-    { path: 'micuenta', component: MiCuentaComponent},
-    { path: 'evento/:id', component : EventoComponent},
-    { path: 'evento/crear', component: FormEventoComponent},
-    { path: 'evento/editar/:id', component: FormEventoComponent},
-    { path: 'categoria/crear', component: FormCategoriaComponent},
-    { path: 'categoria/editar/:id', component: FormCategoriaComponent},
+    { path: 'inicio', component: PagesComponent },
+    { path: 'eventos', component: EventosComponent },
+    { path: 'evento/ver/:id', component: EventoComponent },        // antes: evento/:id
+
+    { path: 'login', component: LoginComponent },
+    { path: 'registro', component: SignupComponent },               // antes: signup
+    { path: 'confirmar-email/:token', component: ConfirmacionEmailComponent },
+
+    { path: 'micuenta', component: MiCuentaComponent },
+    { path: 'gestion', component: GestionComponent },
+
+    // Formularios de Evento
+    { path: 'evento/nuevo', component: FormEventoComponent },       // antes: evento/crear
+    { path: 'evento/editar/:id', component: FormEventoComponent },  // sin cambios pero mejor ubicado
+
+    // Formularios de Categoría
+    { path: 'categoria/nueva', component: FormCategoriaComponent },      // antes: categoria/crear
+    { path: 'categoria/editar/:id', component: FormCategoriaComponent }
 
 
 ];

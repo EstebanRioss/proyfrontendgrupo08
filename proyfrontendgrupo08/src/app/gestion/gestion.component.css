@@ -1,16 +1,87 @@
-.admin-panel-container {
+.layout {
   display: flex;
-  height: auto;
-  padding-top: 10px;
-  background-color: #f4f6fa;
-  font-family: 'Segoe UI', sans-serif;
-  gap: 24px;
-  padding-left: 16px;
-  width: auto;
+  min-height: 100vh; /* altura completa */
+  font-family: Arial, sans-serif;
+  display: flex;
+  min-height: 100vh;
+  background: #121823; /* Fondo oscuro suave para todo el panel */
+  color: #e0e0ff;
+  font-family: 'Roboto', sans-serif;
+  padding: 20px;
+  gap: 30px;
 }
 
+main.container {
+  flex: 1;
+  background: #1a2a3a;
+  border-radius: 16px;
+  padding: 30px 40px;
+  box-shadow: 0 10px 30px rgba(41, 39, 74, 0.8);
+  overflow-y: auto;
+  max-height: calc(100vh - 60px);
+  display: flex;
+  flex-direction: column;
+  animation: fadeInSlide 0.7s ease forwards;
+  height: 50%;
+}
 
-.main-content {
-  background-color: #f4f6fa;
-  
+/* Título principal */
+main.container h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #ae9ece;
+  text-shadow: 0 0 8px #7a5effbb;
+  user-select: none;
+}
+
+/* Animación de entrada para el main */
+@keyframes fadeInSlide {
+  0% {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Contenido dinámico dentro del main: espacio y fluidez */
+main.container > ng-container {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+/* Scroll personalizado para el main */
+main.container::-webkit-scrollbar {
+  width: 8px;
+}
+
+main.container::-webkit-scrollbar-track {
+  background: #1a2a3a;
+  border-radius: 8px;
+}
+
+main.container::-webkit-scrollbar-thumb {
+  background: #7a5effaa;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+main.container::-webkit-scrollbar-thumb:hover {
+  background: #a58effee;
+}
+
+/* Responsive: en pantallas pequeñas se apila verticalmente */
+@media (max-width: 900px) {
+  :host {
+    flex-direction: column;
+    padding: 15px;
+  }
+
+  main.container {
+    max-height: none;
+    padding: 20px;
+  }
 }

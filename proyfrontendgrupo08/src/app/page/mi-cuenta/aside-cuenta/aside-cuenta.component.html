@@ -1,0 +1,15 @@
+<aside class="aside-cuenta" *ngIf="currentUser">
+  <h3 class="aside-title">Mi Cuenta</h3>
+  <ul class="aside-menu">
+    <li>
+      <button class="aside-btn" (click)="selectOption('datos')">
+        <i class="fas fa-user mr-2"></i> Mis datos personales
+      </button>
+    </li>
+    <li>
+      <button class="aside-btn" (click)="selectOption('entradas')">
+        <i class="fas fa-ticket-alt mr-2"></i> Mis entradas
+      </button>
+    </li>
+  </ul>
+</aside>

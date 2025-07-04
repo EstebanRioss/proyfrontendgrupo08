@@ -1,99 +1,170 @@
-.btn-action {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-
-  padding: 10px 18px; /* 🔼 Más grande y con más espacio */
-  margin-top: 10px; /* 🔼 Más espacio arriba */
-
-  border: 1px solid #2f3e50;
-  border-radius: 8px;
-
-  background-color: transparent;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #2f3e50;
-
-  cursor: pointer;
-  transition: background-color 0.25s ease, transform 0.15s ease, box-shadow 0.2s ease;
+/* Contenedor general */
+.user-table-section {
+  padding: 20px;
+  background: #1a2a3a;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(41, 39, 74, 0.8);
+  color: #e0e0ff;
+  font-family: 'Roboto', sans-serif;
 }
 
-.boton-contenedor {
+/* Contenedor interno para scroll horizontal si hace falta */
+.table-container {
+  overflow-x: auto;
+}
+
+/* Título */
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: #ae9ece;
+  text-shadow: 0 0 8px #7a5effbb;
+  user-select: none;
+}
+
+/* Contenedor botones de acciones */
+.actions-container {
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 1rem;
+  margin-bottom: 20px;
 }
 
-.boton-anadir {
+/* Botón añadir evento */
+.btn-add {
+  background-color: #7a5eff;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 12px;
+  cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  background: linear-gradient(to right, #2563eb, #4f46e5); /* azul-índigo */
+  gap: 8px;
+  transition: background-color 0.3s ease;
+  user-select: none;
+}
+
+.btn-add i {
+  font-size: 1.2rem;
+}
+
+.btn-add:hover {
+  background-color: #a58eff;
+}
+
+/* Tabla */
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.events-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  color: #e0e0ff;
+}
+
+/* Cabecera */
+.events-table thead tr {
+  background-color: #283950;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: #9ea7be;
+  user-select: none;
+}
+
+.events-table th, .events-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #3b4a66;
+  vertical-align: middle;
+  text-align: left;
+}
+
+/* Filas cuerpo */
+.events-table tbody tr {
+  transition: background-color 0.3s ease;
+  cursor: default;
+}
+
+.events-table tbody tr:hover {
+  background-color: #394b6a;
+}
+
+/* Imagen logo evento */
+.event-logo {
+  width: 100px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}
+
+/* Celda de acciones */
+.actions-cell {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-top: 14px;
+}
+
+/* Botones de acción */
+.btn-action {
+  background-color: #7a5eff;
   color: white;
-  font-weight: 600;
-  padding: 0.6rem 1.5rem;
   border: none;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.9rem;
   cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background-color 0.3s ease;
+  user-select: none;
 }
 
-.boton-anadir:hover {
-  background: linear-gradient(to right, #1d4ed8, #4338ca); /* azul más oscuro */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+.btn-action i {
+  font-size: 1rem;
 }
 
-.boton-anadir i {
-  font-size: 18px;
+/* Botón eliminar */
+.btn-delete {
+  background-color: #e06c75;
+}
+
+.btn-delete:hover {
+  background-color: #ff858d;
 }
 
 .btn-action:hover {
-  background-color: #e2e8f0;
-  transform: translateY(-1px);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  background-color: #a58eff;
 }
 
-.btn-action:active {
-  transform: scale(0.97);
-}
-
-/* Botón de eliminar */
-.btn-action.delete {
-  color: #b91c1c;
-  border-color: #b91c1c;
-}
-
-.btn-action.delete:hover {
-  background-color: #fee2e2;
-  color: #991b1b;
-  box-shadow: 0 2px 6px rgba(185, 28, 28, 0.2);
-}
-.user-table-section > div {
-  background-color: #fff;
-  border-radius: 16px;
-  padding: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  width: auto;
-  text-align: center;
-  padding-left: 50px;
-  padding-right: 50px;
-}
-
-table td, table th {
-  padding: 16px 24px; /* 16px vertical, 24px horizontal */
-}
-
-table {
-  border-collapse: separate;
-  border-spacing: 0 16px;
-}
-
-table tr {
-  background-color: white;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  border-radius: 8px;
-  overflow: hidden; /* funciona si las celdas tienen background también */
+/* Responsive para tabla */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 1.6rem;
+  }
+  .btn-add {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+  }
+  .events-table th, .events-table td {
+    padding: 10px 8px;
+    font-size: 0.8rem;
+  }
+  .event-logo {
+    width: 80px;
+  }
+  .actions-cell {
+    gap: 6px;
+  }
+  .btn-action {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+  }
 }
