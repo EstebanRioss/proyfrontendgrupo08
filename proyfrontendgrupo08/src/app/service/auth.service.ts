@@ -155,4 +155,12 @@ export class AuthService {
       })
     );
   }
+  cambiarContrasena(userId: string, datosContrasena: any): Observable<{ msg: string }> {
+    return this.http.put<{ msg: string }>(`${this.apiUrl}/cambiar-contrasena/${userId}`, datosContrasena).pipe(
+      catchError((error: HttpErrorResponse) => {
+        const errorMsg = error.error?.msg || 'Error al cambiar la contraseña.';
+        return throwError(() => new Error(errorMsg));
+      })
+    );
+  }
 }
