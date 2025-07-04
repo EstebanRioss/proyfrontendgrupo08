@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
-import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
+import { ReactiveFormsModule, FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { GoogleLoginComponent } from './google-login/google-login.component';
 import { AuthService } from '../service/auth.service';
 import { EmailService, EmailVerificationResponse } from '../service/email.service';
 import { debounceTime, distinctUntilChanged, switchMap, tap } from 'rxjs/operators';
+import { UsuarioService } from '../service/usuario.service';
 
 @Component({
   selector: 'app-signin',
@@ -21,6 +22,9 @@ import { debounceTime, distinctUntilChanged, switchMap, tap } from 'rxjs/operato
 })
 export class SigninComponent implements OnInit {
 
+  codigoForm!: FormGroup;
+  codigoError: string = '';
+  isCheckingCodigo = false;
   registerForm: FormGroup;
   isLoading = false;
   errorMessage: string | null = null;
@@ -32,8 +36,13 @@ export class SigninComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private emailService: EmailService
+    private emailService: EmailService,
+    private serviceU : UsuarioService,
+    private fb: FormBuilder
   ) {
+    this.codigoForm = this.fb.group({
+      codigo: ['', [Validators.required, Validators.pattern(/^\d{6}$/)]]
+    });
     this.registerForm = new FormGroup({
       nombre: new FormControl('', [Validators.required]),
       apellido: new FormControl('', [Validators.required]),
@@ -46,6 +55,27 @@ export class SigninComponent implements OnInit {
 
   ngOnInit(): void {
     this.onEmailChanges();
+  }
+
+  onCodigoSubmit() {
+  if (this.codigoForm.invalid) return;
+
+  this.isCheckingCodigo = true;
+  const codigoIngresado = this.codigoForm.value.codigo;
+
+  // Llamada al backend para confirmar el código
+  this.serviceU.confirmarUsuario(codigoIngresado)
+    .subscribe({
+      next: res => {
+        this.isCheckingCodigo = false;
+        alert('Cuenta verificada con éxito');
+        // Podés redirigir o mostrar otra cosa aquí
+      },
+      error: err => {
+        this.isCheckingCodigo = false;
+        this.codigoError = err.error.message || 'Código incorrecto.';
+      }
+    });
   }
 
   private onEmailChanges(): void {
