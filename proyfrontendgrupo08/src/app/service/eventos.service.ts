@@ -17,6 +17,14 @@ export class EventosService {
       return this._http.get("http://localhost:3000/api/eventos", httpOpttions);
   }
 
+  public getEventosPorOrganizador(id : string):Observable<any>{
+      let httpOpttions = {
+        headers : new HttpHeaders({}),
+        params: new HttpParams()
+      }
+      return this._http.get("http://localhost:3000/api/eventos/organizador/" + id, httpOpttions);
+  }
+
   public getNuevosEventos():Observable<any>{
       let httpOpttions = {
         headers : new HttpHeaders({}),

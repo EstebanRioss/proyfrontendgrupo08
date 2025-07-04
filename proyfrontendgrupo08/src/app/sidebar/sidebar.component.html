@@ -1,9 +1,33 @@
-<aside class="sidebar">
-  <h2>Seleccione una opcion</h2>
-  <ul>
-    <li><button type="button" (click)="selectOption('users')">Usuarios</button></li>
-    <li><button type="button" (click)="selectOption('events')">Eventos</button></li>
-    <li><button type="button" (click)="selectOption('categories')">Categorías</button></li>
-    <li><button type="button" (click)="selectOption('posts')">Entradas</button></li>
-  </ul>
+<aside class="sidebar bg-white shadow-lg px-6 py-8 w-64 flex flex-col justify-start" *ngIf="currentUser">
+    <div class="text-center mb-8">
+      <h2 class="text-xl font-semibold">{{ currentUser.nombre }}</h2>
+      <p class="text-sm text-gray-500">{{ currentUser.rol }}</p>
+    </div>
+    <ul class="space-y-4">
+      <li>
+        <button class="sidebar-btn" (click)="selectOption('general')">
+          <i class="fas fa-home mr-2"></i> General
+        </button>
+      </li>
+      <li>
+        <button class="sidebar-btn" (click)="selectOption('users')">
+          <i class="fas fa-user-circle mr-2"></i> Usuarios
+        </button>
+      </li>
+      <li>
+        <button class="sidebar-btn" (click)="selectOption('events')">
+          <i class="fas fa-calendar-day mr-2"></i> Eventos
+        </button>
+      </li>
+      <li>
+        <button class="sidebar-btn" (click)="selectOption('categories')">
+          <i class="fas fa-th-large mr-2"></i> Categorías
+        </button>
+      </li>
+      <li>
+        <button class="sidebar-btn" (click)="selectOption('posts')">
+          <i class="fas fa-file-alt mr-2"></i> Entradas
+        </button>
+      </li>
+    </ul>
 </aside>

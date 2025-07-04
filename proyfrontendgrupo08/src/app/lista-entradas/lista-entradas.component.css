@@ -1,98 +1,68 @@
-.upcoming-shows-section {
-    padding: 0; /* Elimina padding propio, ya que el content-area tiene padding */
-    background-color: transparent; /* No tiene fondo propio, toma el del content-area */
-    flex-grow: 1; /* Para que ocupe el espacio disponible si es necesario */
+.btn-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  padding: 10px 18px; /* 🔼 Más grande y con más espacio */
+  margin-top: 10px; /* 🔼 Más espacio arriba */
+
+  border: 1px solid #2f3e50;
+  border-radius: 8px;
+
+  background-color: transparent;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #2f3e50;
+
+  cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.15s ease, box-shadow 0.2s ease;
 }
 
-/* Grid de las tarjetas de entrada */
-.shows-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* adaptable */
-    gap: 25px;
-    padding: 0;
+.btn-action:hover {
+  background-color: #e2e8f0;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
-/* Tarjetas individuales de Entrada */
-.show-card.dark-theme { /* Reutiliza la clase, pero modifica */
-    background-color: var(--admin-button-bg); /* Fondo más oscuro para las tarjetas de entrada */
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* Espacia el contenido y las acciones */
-    animation: scaleIn 0.5s ease-out forwards; /* Animación de entrada */
-    opacity: 0; /* Estado inicial para la animación */
-    transform: scale(0.9); /* Estado inicial para la animación */
+.btn-action:active {
+  transform: scale(0.97);
 }
 
-@keyframes scaleIn {
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
+/* Botón de eliminar */
+.btn-action.delete {
+  color: #b91c1c;
+  border-color: #b91c1c;
 }
 
-.show-card.dark-theme:hover {
-    transform: translateY(-5px); /* Ligeramente levantado al hover */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+.btn-action.delete:hover {
+  background-color: #fee2e2;
+  color: #991b1b;
+  box-shadow: 0 2px 6px rgba(185, 28, 28, 0.2);
+}
+.user-table-section > div {
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  width: auto;
+  text-align: center;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
-.show-card.dark-theme .card-content {
-    padding: 20px;
-    text-align: center; /* Centrar contenido de la tarjeta */
+table td, table th {
+  padding: 16px 24px; /* 16px vertical, 24px horizontal */
 }
 
-.show-card.dark-theme h3 {
-    font-size: 1.4em;
-    margin-bottom: 5px;
-    color: var(--text-light);
-    word-break: break-word; /* Para nombres largos */
+table {
+  border-collapse: separate;
+  border-spacing: 0 16px;
 }
 
-.show-card.dark-theme h4 { /* Para el eventoId */
-    font-size: 1em;
-    color: var(--text-muted);
-    margin-bottom: 10px;
-    font-weight: normal;
-}
-
-.show-card.dark-theme .show-date { /* Para el precio */
-    font-size: 1.3em;
-    font-weight: bold;
-    color: var(--accent-green); /* Precio en verde */
-    margin-bottom: 15px;
-}
-
-.show-card.dark-theme .card-actions {
-    display: flex;
-    justify-content: center; /* Centrar botones */
-    gap: 15px; /* Espacio entre botones */
-    padding: 15px 20px;
-    border-top: 1px solid var(--border-color); /* Separador visual */
-}
-
-.show-card.dark-theme .info-link { /* Para Modificar/Eliminar */
-    background-color: var(--accent-blue); /* Botones azules */
-    color: var(--text-light);
-    padding: 8px 15px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-size: 0.9em;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    font-weight: 500;
-}
-
-.show-card.dark-theme .info-link:last-child { /* Por si hay un segundo botón como Eliminar */
-    background-color: #e74c3c; /* Rojo para eliminar */
-}
-
-.show-card.dark-theme .info-link:hover {
-    background-color: var(--accent-blue-hover);
-    transform: translateY(-2px);
-}
-
-.show-card.dark-theme .info-link:last-child:hover {
-    background-color: #c0392b; /* Rojo más oscuro para eliminar */
+table tr {
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  overflow: hidden; /* funciona si las celdas tienen background también */
 }

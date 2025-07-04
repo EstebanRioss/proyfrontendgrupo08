@@ -9,10 +9,11 @@ import { Usuario } from '../models/usuario';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../service/auth.service';
 import { Router } from '@angular/router';
+import { GeneralComponent } from '../general/general.component';
 
 @Component({
   selector: 'app-gestion',
-  imports: [ListaCategoriasComponent,ListaEntradasComponent,ListaEventosComponent,ListaUsuariosComponent,SidebarComponent,CommonModule],
+  imports: [ListaCategoriasComponent,ListaEntradasComponent,ListaEventosComponent,ListaUsuariosComponent,SidebarComponent,CommonModule,GeneralComponent],
   templateUrl: './gestion.component.html',
   styleUrl: './gestion.component.css'
 })

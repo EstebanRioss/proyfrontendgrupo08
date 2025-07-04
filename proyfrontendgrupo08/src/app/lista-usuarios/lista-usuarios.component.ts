@@ -26,13 +26,14 @@ export class ListaUsuariosComponent implements OnInit, OnDestroy {
     this.userSubscription = this.authService.currentUser.subscribe(user => {
       this.currentUser = user;
     });
-  }
 
-  ngOnDestroy(): void {
+    }
+
+    ngOnDestroy(): void {
     if (this.userSubscription) {
       this.userSubscription.unsubscribe();
     }
-  }
+    }
 
     getUsuarios(){
         this.service.getUsuarios(this.authService.getToken()).subscribe(

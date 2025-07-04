@@ -1,20 +1,33 @@
-<section class="upcoming-shows-section dark-bg">
-  <div class="container">
-    <h2 class="section-title white-text">Todas las Entradas</h2>
+<section class="user-table-section">
+  <div class="overflow-x-auto bg-white shadow-md rounded-lg p-6">
+    <h2 class="text-2xl font-bold text-gray-800 mb-6">Todas las Entradas</h2>
 
-    <div class="shows-grid">
-      <div class="show-card dark-theme" *ngFor="let e of Entradas">
-        <div class="card-content">
-          <h3>{{ e.nombre }}</h3>
-          <h4>{{ e.eventoId }}</h4>
-          <p class="show-date">${{ e.precio }}</p>
-
-          <div class="card-actions">
-            <a (click)="Modificar(e)" class="info-link">Modificar</a>
-            <a (click)="Eliminar(e)" class="info-link">Eliminar</a>
-          </div>
-        </div>
-      </div>
+    <div class="overflow-x-auto">
+      <table class="text-sm text-left border-collapse w-full">
+        <thead class="bg-gray-100 text-gray-700 uppercase text-xs">
+          <tr>
+            <th class="py-5 px-6">Nombre</th>
+            <th class="py-5 px-6">Evento ID</th>
+            <th class="py-5 px-6">Precio</th>
+            <th class="py-5 px-6">Acciones</th>
+          </tr>
+        </thead>
+        <tbody class="text-gray-800">
+          <tr *ngFor="let e of Entradas" class="border-b hover:bg-gray-50">
+            <td class="py-4 px-6 font-medium">{{ e.nombre }}</td>
+            <td class="py-4 px-6">{{ e.eventoId }}</td>
+            <td class="py-4 px-6">${{ e.precio }}</td>
+            <td class="py-4 px-6 flex flex-wrap gap-3 mt-1">
+              <button class="btn-action" (click)="Modificar(e)">
+                <i class="fas fa-edit"></i> Modificar
+              </button>
+              <button class="btn-action delete" (click)="Eliminar(e)">
+                <i class="fas fa-trash-alt"></i> Eliminar
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </section>
