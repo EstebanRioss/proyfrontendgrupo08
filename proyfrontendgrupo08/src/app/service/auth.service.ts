@@ -135,4 +135,24 @@ export class AuthService {
         }
         return null;
     }
+  updateUsuario(userId: string, userData: Partial<Usuario>): Observable<{ msg: string, usuario: Usuario }> {
+    return this.http.put<{ msg: string, usuario: Usuario }>(`${this.apiUrl}/${userId}`, userData).pipe(
+      tap(response => {
+        const currentUser = this.currentUserSubject.value;
+        if (currentUser && currentUser._id === userId) {
+          const updatedUser = { ...currentUser, ...response.usuario };
+          
+          if (isPlatformBrowser(this.platformId)) {
+            sessionStorage.setItem('currentUser', JSON.stringify(updatedUser));
+          }
+          
+          this.currentUserSubject.next(updatedUser);
+        }
+      }),
+      catchError((error: HttpErrorResponse) => {
+        const errorMsg = error.error?.msg || 'Error al actualizar el usuario.';
+        return throwError(() => new Error(errorMsg));
+      })
+    );
+  }
 }
