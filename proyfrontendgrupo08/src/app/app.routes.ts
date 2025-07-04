@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { SigninComponent } from './signin/signin.component';
 import { ConfirmacionEmailComponent } from './page/confirmacion-email/confirmacion-email.component';
 import { GestionComponent } from './gestion/gestion.component';
+import { MiCuentaComponent } from './page/mi-cuenta/mi-cuenta.component';
 export const routes: Routes = [
     { path: '', redirectTo: 'inicio', pathMatch: 'full' },
     { path: 'inicio', component: PagesComponent},
@@ -13,6 +14,8 @@ export const routes: Routes = [
     { path: 'login', component: LoginComponent},
     { path: 'signin', component: SigninComponent},
     { path: 'confirmar-email/:token', component: ConfirmacionEmailComponent},
-    { path: 'gestion', component: GestionComponent}
+    { path: 'gestion', component: GestionComponent},
+    { path:'micuenta', component: MiCuentaComponent}
+
 
 ];
