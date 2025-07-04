@@ -14,7 +14,17 @@
     </div>
 
     <div *ngIf="successMessage" class="api-success-alert">
-      <span>{{ successMessage }}</span>
+    <!-- Nuevo input para código de verificación -->
+    <form [formGroup]="codigoForm" (ngSubmit)="onCodigoSubmit()" class="codigo-form mt-3">
+      <label for="codigo">Código de verificación</label>
+      <input type="text" id="codigo" formControlName="codigo" maxlength="6" placeholder="Ingrese el código recibido">
+      
+      <button type="submit" [disabled]="codigoForm.invalid || isCheckingCodigo">Verificar Código</button>
+
+      <div *ngIf="codigoError" class="error-message">
+        <span>{{ codigoError }}</span>
+      </div>
+    </form>
     </div>
     <div *ngIf="errorMessage" class="api-error-alert">
       <span>{{ errorMessage }}</span>
