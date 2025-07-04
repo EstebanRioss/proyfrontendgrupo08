@@ -3,7 +3,7 @@ import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angula
 import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../service/auth.service';
-import { GoogleLoginComponent } from '../signin/google-login/google-login.component';
+import { GoogleLoginComponent } from '../signup/google-login/google-login.component';
 
 @Component({
   selector: 'app-login',

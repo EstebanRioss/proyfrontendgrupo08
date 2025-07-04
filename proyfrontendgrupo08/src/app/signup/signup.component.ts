@@ -9,7 +9,7 @@ import { debounceTime, distinctUntilChanged, switchMap, tap } from 'rxjs/operato
 import { UsuarioService } from '../service/usuario.service';
 
 @Component({
-  selector: 'app-signin',
+  selector: 'app-signup',
   standalone: true,
   imports: [
     CommonModule,
@@ -17,10 +17,10 @@ import { UsuarioService } from '../service/usuario.service';
     ReactiveFormsModule,
     GoogleLoginComponent
   ],
-  templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.css', '../login/login.component.css']
+  templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.css', '../login/login.component.css']
 })
-export class SigninComponent implements OnInit {
+export class SignupComponent implements OnInit {
 
   codigoForm!: FormGroup;
   codigoError: string = '';
