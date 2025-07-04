@@ -20,4 +20,12 @@ export class UsuarioService {
       return this._http.get("http://localhost:3000/api/usuarios/" , httpOpttions);
   }
 
+  public confirmarUsuario(token : string | null ): Observable<any>{
+    let httpOpttions = {
+        headers : new HttpHeaders({}),
+        params: new HttpParams()
+      }
+      return this._http.get("http://localhost:3000/api/usuarios/confirmar" + token , httpOpttions);
+  }
+
 }

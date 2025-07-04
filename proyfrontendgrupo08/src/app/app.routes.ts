@@ -6,6 +6,8 @@ import { SignupComponent } from './signup/signup.component';
 import { ConfirmacionEmailComponent } from './page/confirmacion-email/confirmacion-email.component';
 import { GestionComponent } from './gestion/gestion.component';
 import { MiCuentaComponent } from './page/mi-cuenta/mi-cuenta.component';
+import { FormEventoComponent } from './form-evento/form-evento.component';
+import { FormCategoriaComponent } from './form-categoria/form-categoria.component';
 export const routes: Routes = [
     { path: '', redirectTo: 'inicio', pathMatch: 'full' },
     { path: 'inicio', component: PagesComponent},

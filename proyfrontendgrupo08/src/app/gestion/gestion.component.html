@@ -1,5 +1,4 @@
 <div class="admin-panel-container" *ngIf="currentUser">
-  <div *ngIf="currentUser.rol === 'administrador' || currentUser.rol === 'organizador'">
   <app-sidebar (optionSelected)="onOptionSelected($event)"></app-sidebar>
   <main class="container">
     
@@ -22,5 +21,4 @@
       <app-lista-entradas></app-lista-entradas>
     </ng-container>
   </main>
-  </div>
 </div>
