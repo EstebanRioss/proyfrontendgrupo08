@@ -31,8 +31,12 @@ export class ListaCategoriasComponent {
       );
     }
 
+    Crear (){
+      this.router.navigate(['categoria/crear'])
+    }
+
     Modificar(c : CategoriaEvento){
-      this.router.navigate(['evento', c._id])
+      this.router.navigate(['categoria/editar', c._id])
     }
     
     Eliminar(c : CategoriaEvento){

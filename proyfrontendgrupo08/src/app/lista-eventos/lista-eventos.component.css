@@ -19,6 +19,37 @@
   transition: background-color 0.25s ease, transform 0.15s ease, box-shadow 0.2s ease;
 }
 
+.boton-contenedor {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+}
+
+.boton-anadir {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(to right, #2563eb, #4f46e5); /* azul-índigo */
+  color: white;
+  font-weight: 600;
+  padding: 0.6rem 1.5rem;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 16px;
+}
+
+.boton-anadir:hover {
+  background: linear-gradient(to right, #1d4ed8, #4338ca); /* azul más oscuro */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+}
+
+.boton-anadir i {
+  font-size: 18px;
+}
+
 .btn-action:hover {
   background-color: #e2e8f0;
   transform: translateY(-1px);

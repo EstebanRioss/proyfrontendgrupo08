@@ -1,7 +1,14 @@
 <section class="user-table-section">
   <div class="overflow-x-auto bg-white shadow-md rounded-lg p-6">
     <h2 class="text-2xl font-bold text-gray-800 mb-6">Todos los eventos</h2>
-
+    <div class="flex justify-end mb-4">
+      <div class="boton-contenedor">
+        <button class="boton-anadir" (click)="Crear()">
+          <i class="bi bi-plus-circle-fill"></i>
+          Añadir Evento
+        </button>
+      </div>
+    </div>
     <div class="overflow-x-auto">
       <table class="text-sm text-left border-collapse w-full">
         <thead class="bg-gray-100 text-gray-700 uppercase text-xs">
