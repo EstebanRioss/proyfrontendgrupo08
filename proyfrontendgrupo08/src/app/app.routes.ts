@@ -14,7 +14,11 @@ export const routes: Routes = [
     { path: 'signup', component: SignupComponent},
     { path: 'confirmar-email/:token', component: ConfirmacionEmailComponent},
     { path: 'gestion', component: GestionComponent},
-    { path:'micuenta', component: MiCuentaComponent}
+    { path:'micuenta', component: MiCuentaComponent},
+    { path: 'evento/crear', component: FormEventoComponent},
+    { path: 'evento/editar/:id', component: FormEventoComponent},
+    { path: 'categoria/crear', component: FormCategoriaComponent},
+    { path: 'categoria/editar/:id', component: FormCategoriaComponent},
 
 
 ];
