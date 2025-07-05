@@ -81,9 +81,9 @@ export class GeneralComponent {
        }
       );
     }
-  getUsuarios(){
-        this.serviceU.getUsuarios(this.authService.getToken()).subscribe(
-          result => {
+    getUsuarios(){
+        this.serviceU.getUsuarios().subscribe( // <--- ASÍ QUEDA CORREGIDO
+            result => {
             console.log(result);
             let vusuario: Usuario = new Usuario();
             result.forEach((element: any) => {

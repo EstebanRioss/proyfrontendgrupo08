@@ -1,37 +1,74 @@
 <section class="user-table-section">
   <div class="table-container">
-    <h2 class="section-title">Lista de Usuarios</h2>
+    <h2 class="section-title">Gestión de Usuarios</h2>
 
-    <div class="table-wrapper">
-      <table class="users-table">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Nombre</th>
-            <th>Email</th>
-            <th>Teléfono</th>
-            <th>Rol</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let s of Usuarios; let i = index">
-            <td class="index-cell">#{{ i + 1 }}</td>
-            <td>{{ s.nombre }} {{ s.apellido }}</td>
-            <td>{{ s.email }}</td>
-            <td>{{ s.telefono }}</td>
-            <td>{{ s.rol }}</td>
-            <td class="actions-cell">
-              <button class="btn-action" (click)="Modificar(s)">
-                <i class="fas fa-edit"></i> Modificar
-              </button>
-              <button class="btn-action btn-delete" (click)="Eliminar(s)">
-                <i class="fas fa-trash-alt"></i> Eliminar
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    <!-- Estado de Carga -->
+    <div *ngIf="isLoading" class="loading-state">
+      <p>Cargando usuarios...</p>
+    </div>
+
+    <!-- Estado de Error -->
+    <div *ngIf="error && !isLoading" class="error-state">
+      <p>{{ error }}</p>
+      <button (click)="getUsuarios()" class="btn-action btn-edit">Reintentar</button>
+    </div>
+
+    <!-- Contenido Principal -->
+    <div *ngIf="!isLoading && !error">
+      <!-- Mensaje si no hay usuarios -->
+      <div *ngIf="Usuarios.length === 0" class="empty-state">
+        <p>No se encontraron otros usuarios en el sistema.</p>
+      </div>
+
+      <!-- Tabla de Usuarios -->
+      <div *ngIf="Usuarios.length > 0" class="table-wrapper">
+        <table class="users-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Nombre</th>
+              <th>Email</th>
+              <th>Rol</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let s of Usuarios; let i = index" [class.inactive-row]="!s.estado">
+              <td class="index-cell">#{{ i + 1 }}</td>
+              <td>{{ s.nombre }} {{ s.apellido }}</td>
+              <td>{{ s.email }}</td>
+              <td>
+                <span class="role-badge" [ngClass]="s.rol">{{ s.rol }}</span>
+              </td>
+              <td>
+                <span class="status-badge" [class.status-active]="s.estado" [class.status-inactive]="!s.estado">
+                  {{ s.estado ? 'Activo' : 'Inactivo' }}
+                </span>
+              </td>
+              <td class="actions-cell">
+                <!-- REGLA DE PROTECCIÓN: Los botones no se muestran para el admin principal -->
+                <ng-container *ngIf="s.email !== '47082520@gmail.com'">
+                  <button class="btn-action btn-edit" (click)="Modificar(s)" title="Editar usuario">
+                    <i class="fas fa-edit"></i> Modificar
+                  </button>
+                  <button *ngIf="s.estado" class="btn-action btn-delete" (click)="Eliminar(s)" title="Desactivar usuario">
+                    <i class="fas fa-trash-alt"></i> Desactivar
+                  </button>
+                  <button *ngIf="!s.estado" class="btn-action btn-approve" (click)="Modificar(s)" title="Ver y reactivar usuario">
+                    <i class="fas fa-check"></i> Reactivar
+                  </button>
+                </ng-container>
+
+                <!-- Mensaje especial para el admin principal -->
+                <span *ngIf="s.email === '47082520@gmail.com'" class="super-admin-badge">
+                  <i class="fas fa-shield-alt"></i> Principal
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </section>

@@ -1,18 +1,17 @@
 .user-table-section {
-  padding: 20px;
+  padding: 25px;
   background: #1a2a3a;
   border-radius: 16px;
   box-shadow: 0 10px 30px rgba(41, 39, 74, 0.8);
   color: #e0e0ff;
   font-family: 'Roboto', sans-serif;
+  margin: 20px;
 }
 
-/* Contenedor interno para scroll horizontal si hace falta */
 .table-container {
   overflow-x: auto;
 }
 
-/* Título */
 .section-title {
   font-size: 2rem;
   font-weight: 700;
@@ -22,7 +21,6 @@
   user-select: none;
 }
 
-/* Wrapper tabla */
 .table-wrapper {
   overflow-x: auto;
 }
@@ -34,7 +32,6 @@
   color: #e0e0ff;
 }
 
-/* Cabecera */
 .users-table thead tr {
   background-color: #283950;
   text-transform: uppercase;
@@ -52,34 +49,27 @@
   text-align: left;
 }
 
-/* Estilo especial para la columna índice */
 .index-cell {
   font-weight: 700;
   color: #7a5eff;
   user-select: none;
 }
 
-/* Filas cuerpo */
 .users-table tbody tr {
   transition: background-color 0.3s ease;
-  cursor: default;
 }
 
 .users-table tbody tr:hover {
   background-color: #394b6a;
 }
 
-/* Celda de acciones */
 .actions-cell {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  padding-top: 14px;
 }
 
-/* Botones de acción */
 .btn-action {
-  background-color: #7a5eff;
   color: white;
   border: none;
   padding: 8px 14px;
@@ -90,7 +80,7 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
   user-select: none;
 }
 
@@ -98,34 +88,67 @@
   font-size: 1rem;
 }
 
-/* Botón eliminar */
-.btn-delete {
-  background-color: #e06c75;
+.btn-edit { background-color: #007bff; }
+.btn-edit:hover { background-color: #3395ff; }
+
+.btn-delete { background-color: #e06c75; }
+.btn-delete:hover { background-color: #ff858d; }
+
+.btn-approve { background-color: #28a745; }
+.btn-approve:hover { background-color: #34c759; }
+
+.role-badge, .status-badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: capitalize;
+  display: inline-block;
 }
 
-.btn-delete:hover {
-  background-color: #ff858d;
+.role-badge.usuario { background-color: #17a2b8; color: white; }
+.role-badge.organizador { background-color: #ffc107; color: #333; }
+.role-badge.administrador { background-color: #dc3545; color: white; }
+
+.status-badge.status-active { background-color: #28a745; color: white; }
+.status-badge.status-inactive { background-color: #6c757d; color: white; }
+
+.inactive-row {
+  opacity: 0.6;
+  background-color: #2c3a4a;
 }
 
-.btn-action:hover {
-  background-color: #a58eff;
+.inactive-row:hover {
+  opacity: 0.8;
 }
 
-/* Responsive para tabla */
-@media (max-width: 768px) {
-  .section-title {
-    font-size: 1.6rem;
-  }
-  .users-table th,
-  .users-table td {
-    padding: 10px 8px;
-    font-size: 0.8rem;
-  }
-  .actions-cell {
-    gap: 6px;
-  }
-  .btn-action {
-    padding: 6px 10px;
-    font-size: 0.8rem;
-  }
+.super-admin-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  background-color: #4a3e92;
+  color: #c4baff;
+  user-select: none;
+}
+
+.loading-state, .error-state, .empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  border: 2px dashed #3b4a66;
+  border-radius: 12px;
+  margin-top: 20px;
+}
+
+.loading-state p, .error-state p, .empty-state p {
+  font-size: 1.2rem;
+  color: #9ea7be;
+  margin: 0;
+}
+
+.error-state .btn-action {
+  margin-top: 20px;
 }

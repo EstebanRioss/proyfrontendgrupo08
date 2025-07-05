@@ -23,6 +23,10 @@
       <ng-container *ngIf="selectedOption === 'posts'">
         <app-lista-entradas></app-lista-entradas>
       </ng-container>
+      <ng-container *ngIf="selectedOption === 'users' && currentUser.rol === 'administrador'">
+        <app-lista-organizadores></app-lista-organizadores>
+      </ng-container>
+
     </main>
   </div>
 </div>

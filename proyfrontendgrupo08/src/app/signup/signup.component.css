@@ -99,7 +99,7 @@ form {
 }
 
 .form-group input,
-.form-group select {
+.form-group select { /* select is no longer in HTML, but kept for general styling if applicable */
   width: 100%;
   padding: 10px 14px;
   font-size: 1rem;
@@ -137,15 +137,15 @@ form {
 }
 
 .email-verification-message.verifying {
-  color: #f9f3b4;
+  color: #f9f3b4; /* Yellowish for verifying */
 }
 
 .email-verification-message.valid {
-  color: #95ff9c;
+  color: #95ff9c; /* Green for valid */
 }
 
 .email-verification-message.invalid {
-  color: #ff7a7a;
+  color: #ff7a7a; /* Red for invalid */
 }
 
 /* Botón submit */
@@ -166,6 +166,7 @@ form {
 .submit-button:disabled {
   background-color: #4c3e92;
   cursor: not-allowed;
+  opacity: 0.7; /* Make it look disabled */
 }
 
 .submit-button:not(:disabled):hover {
@@ -196,9 +197,16 @@ form {
 }
 
 /* Código form */
+.codigo-form {
+  margin-top: 15px; /* Add some space if it follows a success message */
+}
+
 .codigo-form label {
   font-weight: 600;
   color: #c4baff;
+  display: block; /* Ensure label is on its own line */
+  margin-bottom: 6px;
+  text-align: left; /* Align label to the left */
 }
 
 .codigo-form input {
@@ -212,6 +220,8 @@ form {
   margin-bottom: 12px;
   box-sizing: border-box;
   transition: border-color 0.3s ease;
+  text-align: center; /* Center text in code input */
+  letter-spacing: 2px; /* Add some spacing for readability */
 }
 
 .codigo-form input:focus {
@@ -236,6 +246,7 @@ form {
 .codigo-form button:disabled {
   background-color: #4c3e92;
   cursor: not-allowed;
+  opacity: 0.7;
 }
 
 .codigo-form button:not(:disabled):hover {
