@@ -3,6 +3,7 @@ import { ListaCategoriasComponent } from '../lista-categorias/lista-categorias.c
 import { ListaEntradasComponent } from '../lista-entradas/lista-entradas.component';
 import { ListaEventosComponent } from '../lista-eventos/lista-eventos.component';
 import { ListaUsuariosComponent } from '../lista-usuarios/lista-usuarios.component';
+import { ListaOrganizadoresComponent } from '../lista-organizadores/lista-organizadores.component';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { CommonModule } from '@angular/common';
 import { Usuario } from '../models/usuario';
@@ -13,7 +14,7 @@ import { GeneralComponent } from '../general/general.component';
 
 @Component({
   selector: 'app-gestion',
-  imports: [ListaCategoriasComponent,ListaEntradasComponent,ListaEventosComponent,ListaUsuariosComponent,SidebarComponent,CommonModule,GeneralComponent],
+  imports: [ListaCategoriasComponent,ListaEntradasComponent,ListaEventosComponent,ListaUsuariosComponent,ListaOrganizadoresComponent,SidebarComponent,CommonModule,GeneralComponent],
   templateUrl: './gestion.component.html',
   styleUrl: './gestion.component.css'
 })

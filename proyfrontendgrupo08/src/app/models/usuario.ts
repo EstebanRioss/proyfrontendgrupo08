@@ -8,4 +8,10 @@ export class Usuario {
     telefono?: string;
     contraseña?: string;
     googleId?: string;
+    confirmado?: boolean;
+    estadoAprobacion?: 'pendiente' | 'aprobado' | 'rechazado';
+    nombreEmpresa?: string;
+    cuit?: string;
+    descripcion?: string;
+    tokenConfirmacion?: string | null;
 }

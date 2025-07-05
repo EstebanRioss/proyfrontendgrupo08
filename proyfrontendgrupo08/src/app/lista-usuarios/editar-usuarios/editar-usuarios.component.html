@@ -1,0 +1,70 @@
+<div class="form-wrapper">
+  <div class="form-card">
+    <h2 class="form-title">{{ pageTitle }}</h2>
+
+    <div *ngIf="isLoading" class="loading-state">
+      <p>Cargando datos del usuario...</p>
+    </div>
+
+    <div *ngIf="error" class="api-error-alert">
+      <span>{{ error }}</span>
+    </div>
+
+    <form [formGroup]="usuarioForm" (ngSubmit)="onSubmit()" *ngIf="!isLoading">
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" formControlName="nombre">
+          <div *ngIf="usuarioForm.get('nombre')?.invalid && usuarioForm.get('nombre')?.touched" class="error-message">
+            El nombre es requerido.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="apellido">Apellido</label>
+          <input type="text" id="apellido" formControlName="apellido">
+          <div *ngIf="usuarioForm.get('apellido')?.invalid && usuarioForm.get('apellido')?.touched" class="error-message">
+            El apellido es requerido.
+          </div>
+        </div>
+
+        <div class="form-group full-width">
+          <label for="email">Email (no se puede modificar)</label>
+          <input type="email" id="email" formControlName="email">
+        </div>
+
+        <div class="form-group">
+          <label for="telefono">Teléfono</label>
+          <input type="tel" id="telefono" formControlName="telefono">
+        </div>
+
+        <div class="form-group">
+          <label for="rol">Rol</label>
+          <select id="rol" formControlName="rol">
+            <option value="usuario">Usuario</option>
+            <option value="organizador">Organizador</option>
+            <option value="administrador">Administrador</option>
+          </select>
+        </div>
+
+        <div class="form-group-checkbox full-width">
+          <label for="estado" class="checkbox-container">
+            <input type="checkbox" id="estado" formControlName="estado">
+            <span class="custom-checkbox"></span>
+            <div class="checkbox-text">
+              <span class="checkbox-label">Usuario Activo</span>
+              <small>Desmarca esta casilla para desactivar al usuario (no podrá iniciar sesión).</small>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="btn-action btn-cancel" routerLink="/admin/usuarios">Cancelar</button>
+        <button type="submit" class="btn-action btn-submit" [disabled]="usuarioForm.invalid">
+          <i class="fas fa-save"></i> Guardar Cambios
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

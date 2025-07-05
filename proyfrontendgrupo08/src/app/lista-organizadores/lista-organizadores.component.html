@@ -1,0 +1,102 @@
+<section class="user-table-section">
+  <div class="table-container">
+    <h2 class="section-title">Solicitudes de Organizadores Pendientes</h2>
+
+    <!-- Estado de Carga -->
+    <div *ngIf="isLoading" class="loading-state">
+      <p>Cargando solicitudes...</p>
+    </div>
+
+    <!-- Estado de Error -->
+    <div *ngIf="error && !isLoading" class="error-state">
+      <p>{{ error }}</p>
+      <button (click)="cargarOrganizadoresPendientes()" class="btn-action">Reintentar</button>
+    </div>
+
+    <!-- Contenido Principal -->
+    <div *ngIf="!isLoading && !error">
+      <!-- Mensaje si no hay solicitudes -->
+      <div *ngIf="organizadoresPendientes.length === 0" class="empty-state">
+        <p>¡Buen trabajo! No hay solicitudes pendientes de aprobación.</p>
+      </div>
+
+      <!-- Tabla de Solicitudes -->
+      <div *ngIf="organizadoresPendientes.length > 0" class="table-wrapper">
+        <table class="users-table">
+          <thead>
+            <tr>
+              <th>Nombre del Contacto</th>
+              <th>Empresa</th>
+              <th>Email</th>
+              <th>Fecha de Solicitud</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let org of organizadoresPendientes">
+              <td>{{ org.nombre }} {{ org.apellido }}</td>
+              <td>{{ org.nombreEmpresa }}</td>
+              <td>{{ org.email }}</td>
+              <td>{{ org.confirmado ? 'Correo Verificado' : 'Pendiente Verificación' }}</td>
+              <td class="actions-cell">
+                <button class="btn-action btn-approve" (click)="aprobarOrganizador(org._id)">
+                  <i class="fas fa-check"></i> Aprobar
+                </button>
+                <button class="btn-action btn-details" (click)="verDetalles(org)">
+                  <i class="fas fa-eye"></i> Ver Detalles
+                </button>
+                <button class="btn-action btn-delete" (click)="rechazarOrganizador(org)">
+                  <i class="fas fa-times"></i> Rechazar
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modal para ver Detalles del Organizador -->
+<div *ngIf="organizadorSeleccionado" class="modal-overlay" (click)="cerrarDetalles()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <button class="modal-close-btn" (click)="cerrarDetalles()">&times;</button>
+    <h3 class="modal-title">Detalles de la Solicitud</h3>
+    
+    <div class="detail-grid">
+      <div class="detail-item">
+        <strong>Nombre:</strong>
+        <span>{{ organizadorSeleccionado.nombre }} {{ organizadorSeleccionado.apellido }}</span>
+      </div>
+      <div class="detail-item">
+        <strong>Email:</strong>
+        <span>{{ organizadorSeleccionado.email }}</span>
+      </div>
+       <div class="detail-item">
+        <strong>Teléfono:</strong>
+        <span>{{ organizadorSeleccionado.telefono || 'No proporcionado' }}</span>
+      </div>
+      <div class="detail-item">
+        <strong>Empresa:</strong>
+        <span>{{ organizadorSeleccionado.nombreEmpresa || 'No proporcionado' }}</span>
+      </div>
+      <div class="detail-item">
+        <strong>CUIT/CUIL:</strong>
+        <span>{{ organizadorSeleccionado.cuit || 'No proporcionado' }}</span>
+      </div>
+      <div class="detail-item full-width">
+        <strong>Descripción:</strong>
+        <p>{{ organizadorSeleccionado.descripcion || 'No proporcionada' }}</p>
+      </div>
+    </div>
+
+    <div class="modal-actions">
+       <button class="btn-action btn-approve" (click)="aprobarOrganizador(organizadorSeleccionado._id); cerrarDetalles();">
+          <i class="fas fa-check"></i> Aprobar Solicitud
+        </button>
+        <button class="btn-action btn-delete" (click)="rechazarOrganizador(organizadorSeleccionado); cerrarDetalles();">
+          <i class="fas fa-times"></i> Rechazar Solicitud
+        </button>
+    </div>
+  </div>
+</div>

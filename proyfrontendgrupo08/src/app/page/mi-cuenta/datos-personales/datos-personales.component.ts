@@ -39,10 +39,10 @@ export class DatosPersonalesComponent {
 
     // Formulario para cambiar contraseña
     this.passwordForm = this.fb.group({
-      contrasenaActual: ['', [Validators.required]],
-      nuevaContrasena: ['', [Validators.required, Validators.minLength(8)]],
-      confirmarContrasena: ['', [Validators.required]]
-    }, { validators: passwordMatchValidator }); // Aplicar validador personalizado
+      contrasenaActual: ['', [Validators.required]],
+      nuevaContrasena: ['', [Validators.required, Validators.minLength(6)]], // <- Cambiar el 8 por un 6 acá
+      confirmarContrasena: ['', [Validators.required]]
+}, { validators: passwordMatchValidator });
   }
 
   ngOnInit(): void {
