@@ -23,7 +23,7 @@ export interface EmailVerificationResponse {
   providedIn: 'root'
 })
 export class EmailService {
-  private apiKey = "nAbgvIyEZuhnBCEkgSwkZhPxIY0kvj0H"; // Tu API Key
+  private apiKey = "vEFxtm9LYOfbS3Mamb8SFLOIGtFD6Jjb"; // Tu API Key
   private apiUrl = "https://api.apilayer.com/email_verification/";
 
   constructor(private http: HttpClient) { }
