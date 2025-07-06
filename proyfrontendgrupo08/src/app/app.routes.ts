@@ -12,6 +12,8 @@ import { EventoComponent } from './evento/evento.component';
 import { FormOrganizadorComponent } from './signup/form-organizador/form-organizador.component';
 import { ListaUsuariosComponent } from './lista-usuarios/lista-usuarios.component';
 import { EditarUsuariosComponent } from './lista-usuarios/editar-usuarios/editar-usuarios.component';
+import { CarritoComponent } from './carrito/carrito.component';
+
 export const routes: Routes = [
     { path: '', redirectTo: 'inicio', pathMatch: 'full' },
     { path: 'inicio', component: PagesComponent },
@@ -20,6 +22,7 @@ export const routes: Routes = [
 
     { path: 'login', component: LoginComponent },
     { path: 'signup', component: SignupComponent },
+    { path: 'carrito', component:  CarritoComponent },
     { path: 'confirmar-email/:token', component: ConfirmacionEmailComponent },
 
     { path: 'micuenta', component: MiCuentaComponent },

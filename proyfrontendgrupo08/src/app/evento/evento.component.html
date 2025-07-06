@@ -44,9 +44,35 @@
                 <i class="fas fa-map-marker-alt"></i> En <span class="location">{{ evento.ubicacionNombre }}</span>
               </div>
             </div>
-            <button class="buy-button primary-button">
-              <i class="fas fa-ticket-alt"></i> Comprar
-            </button>
+            <div class="buy-section">
+
+              <label for="tipoEntrada">Selecciona una entrada:</label>
+              <select id="tipoEntrada" [(ngModel)]="entradaSeleccionada">
+                <option [ngValue]="null" disabled selected>-- Elegí un tipo de entrada --</option>
+                <option *ngFor="let entrada of evento.entradas" [ngValue]="entrada">
+                  {{ entrada.tipo }} - ${{ entrada.precio }}
+                </option>
+              </select>
+
+              <label for="cantidadEntrada">Cantidad:</label>
+              <select id="cantidadEntrada" [(ngModel)]="cantidadSeleccionada" [disabled]="!entradaSeleccionada">
+                <option *ngFor="let n of cantidadOpciones" [ngValue]="n">{{ n }}</option>
+              </select>
+              
+              <button class="buy-button primary-button" (click)="comprarEntrada()">
+                <i class="fas fa-ticket-alt"></i> Comprar
+              </button>
+              <button class="buy-button secondary-button"
+                      [disabled]="!entradaSeleccionada || !cantidadSeleccionada"
+                      (click)="agregarAlCarrito()">
+                <i class="fas fa-cart-plus"></i> Agregar al carrito
+              </button>
+
+              <div *ngIf="mensajeError" class="mensaje-error">
+                {{ mensajeError }}
+              </div>
+
+            </div>
           </div>
         </div>
       </div>
@@ -58,8 +84,8 @@
       <h2 class="section-title">Acerca del evento</h2>
       <p><strong>{{ evento.nombre | uppercase }}</strong></p>
       <p>{{ evento.descripcion }}</p>
-      <p><strong>Categoría:</strong> {{ evento.categoriaId }}</p>
-      <p><strong>Organizado por:</strong> {{ evento.organizadorId }}</p>
+      <p><strong>Categoría:</strong> {{ getNombreCategoria(evento) }}</p>
+      <p><strong>Organizado por:</strong> {{ getNombreOrganizador(evento) }}</p>
     </div>
   </section>
 

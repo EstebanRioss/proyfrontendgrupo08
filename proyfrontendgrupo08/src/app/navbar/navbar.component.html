@@ -10,13 +10,18 @@
     <ul class="navbar-menu">
       <li><a [routerLink]="['/inicio']" class="navbar-item">Inicio</a></li>
       <li><a [routerLink]="['/eventos']" class="navbar-item">Eventos</a></li>
-      <li><a href="#contacto" class="navbar-item">Contacto</a></li>
     </ul>
 
     <!-- Acciones a la derecha -->
     <ul class="navbar-menu">
       <li *ngIf="!currentUser">
         <a routerLink="/login" class="navbar-item navbar-button">Iniciar Sesión</a>
+      </li>
+      <li class="navbar-cart" *ngIf="carritoTotal > 0 && currentUser">
+        <a [routerLink]="['/carrito']" class="navbar-item">
+          <i class="fas fa-shopping-cart"></i>
+          <span class="cart-badge">{{ carritoTotal }}</span>
+        </a>
       </li>
 
       <li *ngIf="currentUser" class="user-profile-menu">

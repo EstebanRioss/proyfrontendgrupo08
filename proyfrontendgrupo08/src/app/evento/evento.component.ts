@@ -1,15 +1,21 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route } from '@angular/router';
 import { Evento } from '../models/evento';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer } from '@angular/platform-browser';
 import { SafeResourceUrl } from '@angular/platform-browser';
 import { EventosService } from '../service/eventos.service';
 import { UsuarioService } from '../service/usuario.service';
+import { Router } from '@angular/router';
+import { Entrada } from '../models/entrada';
+import { AuthService } from '../service/auth.service';
+import { FormsModule } from '@angular/forms';
+import { MpService } from '../service/mp.service';
+import { CarritoService } from '../service/carrito.service';
 
 @Component({
   selector: 'app-evento',
-  imports: [CommonModule],
+  imports: [CommonModule,FormsModule],
   templateUrl: './evento.component.html',
   styleUrl: './evento.component.css'
 })
@@ -21,9 +27,74 @@ export class EventoComponent {
   mapaUrl: SafeResourceUrl | null = null;
   categoria: string = "";
   organizador: string = "";
+  entradaSeleccionada: Entrada | null = null;
+  cantidadSeleccionada: number = 1;
+  currentUser: any = null;
+  cantidadOpciones: number[] = Array.from({ length: 10 }, (_, i) => i + 1);
+  cantidadesSeleccionadas: number[] = [];
+  mensajeError: string = '';
 
-  constructor(private activatedRoute : ActivatedRoute,private serviceE : EventosService,private sanitizer: DomSanitizer){
+
+  constructor(private carritoService : CarritoService,private mpService : MpService,private activatedRoute : ActivatedRoute,private serviceE : EventosService,private sanitizer: DomSanitizer,private router : Router, private authService : AuthService){
+    this.currentUser = this.authService.currentUserValue;
     this.cargarEvento();
+    this.cantidadesSeleccionadas = this.evento?.entradas?.map(() => 0) || [];
+  }
+
+  comprarEntrada(): void {
+
+    this.mensajeError = '';
+
+    if (!this.currentUser) {
+      this.router.navigate(['/login']);
+      return;
+    }
+
+    if (!this.entradaSeleccionada) {
+      this.mensajeError = 'Seleccioná un tipo de entrada.';
+      return;
+    }
+
+    if (!this.cantidadSeleccionada || this.cantidadSeleccionada < 1) {
+      this.mensajeError = 'Seleccioná una cantidad válida.';
+      return;
+    }
+
+    this.mpService.comprarEntradas(
+      this.evento._id!,
+      this.currentUser._id,
+      this.entradaSeleccionada.tipo!,
+      this.cantidadSeleccionada,
+      this.entradaSeleccionada.precio!,
+      this.evento.nombre!,
+      this.evento.descripcion!,
+      this.evento.imagenUrl!
+    ).subscribe({
+      next: (resp) => {
+        window.location.href = resp.initPoint; // redirige al link de pago MercadoPago
+      },
+      error: () => {
+        this.mensajeError = 'Error al iniciar la compra. Intenta más tarde.';
+      }
+    });
+
+  }
+
+  agregarAlCarrito() {
+    this.mensajeError = '';
+
+    if (!this.entradaSeleccionada || !this.cantidadSeleccionada) {
+      this.mensajeError = 'Seleccioná tipo y cantidad.';
+      return;
+    }
+
+    this.carritoService.agregarAlCarrito({
+      tipoEntrada: this.entradaSeleccionada!.tipo!,
+      precio: this.entradaSeleccionada!.precio!,
+      cantidad: this.cantidadSeleccionada,
+      eventoId: this.evento._id!,
+      nombreEvento: this.evento.nombre!
+    });
   }
 
   cargarEvento(): void {
@@ -48,6 +119,16 @@ export class EventoComponent {
         }
       });
     });
+  }
+
+  getNombreOrganizador(evento: Evento): string {
+    if (typeof evento.organizadorId === 'string') return evento.organizadorId;
+    return evento.organizadorId?.nombre || 'Sin nombre';
+  }
+
+  getNombreCategoria(evento: Evento): string {
+    if (typeof evento.categoriaId === 'string') return evento.categoriaId;
+    return evento.categoriaId?.nombre || 'Sin categoría';
   }
 
   iniciarCountdown(): void {

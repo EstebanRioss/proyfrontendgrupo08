@@ -1,0 +1,201 @@
+/* Container general */
+:host{
+  height: 100vh;
+  width: 100vw;
+  background-image: url(https://www.alquitel.com/wp-content/uploads/2017/12/noch.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center; /* horizontal center */
+  align-items: center;     /* vertical center */
+  padding: 20px;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+.carrito-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 30px 25px;
+  background: linear-gradient(145deg, #223355, #334466);
+  border-radius: 16px;
+  box-shadow:
+    0 10px 30px rgba(41, 39, 74, 0.9),
+    inset 0 0 20px rgba(90, 0, 255, 0.25);
+  color: #e0e0ff;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Título */
+.carrito-container h2 {
+  font-size: 2.8em;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #a580ff;
+  text-shadow: 0 0 10px #7a5effaa;
+  user-select: none;
+}
+
+/* Tabla carrito */
+.carrito-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 25px;
+  box-shadow:
+    0 0 15px rgba(90, 0, 255, 0.25);
+  border-radius: 12px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #2c3e50, #223355);
+}
+
+/* Encabezados */
+.carrito-table thead tr {
+  background: #5a00ff;
+  color: #e0e0ff;
+  user-select: none;
+}
+
+.carrito-table thead th {
+  padding: 14px 20px;
+  font-weight: 600;
+  font-size: 1.1em;
+  text-align: left;
+  border-right: 1px solid rgba(165, 128, 255, 0.3);
+}
+
+.carrito-table thead th:last-child {
+  border-right: none;
+}
+
+/* Filas */
+.carrito-table tbody tr {
+  border-bottom: 1px solid rgba(165, 128, 255, 0.1);
+  transition: background-color 0.3s ease;
+  cursor: default;
+}
+
+.carrito-table tbody tr:hover {
+  background-color: rgba(90, 0, 255, 0.15);
+}
+
+/* Celdas */
+.carrito-table tbody td {
+  padding: 14px 20px;
+  font-size: 1em;
+  color: #c9baff;
+  vertical-align: middle;
+  border-right: 1px solid rgba(165, 128, 255, 0.1);
+}
+
+.carrito-table tbody td:last-child {
+  border-right: none;
+}
+
+/* Botón eliminar */
+.btn-eliminar {
+  background: linear-gradient(135deg, #a00, #f55);
+  border: none;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 0 8px #f55;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-eliminar:hover {
+  background: linear-gradient(135deg, #ff2222, #ff6666);
+  box-shadow: 0 0 15px #ff5555;
+}
+
+/* Contenedor total */
+.total-container {
+  text-align: right;
+  font-size: 1.5em;
+  font-weight: 700;
+  color: #d0b3ff;
+  margin-bottom: 30px;
+  text-shadow: 0 0 8px #7a5effcc;
+  user-select: none;
+}
+
+/* Botón pagar */
+.btn-comprar {
+  display: block;
+  width: 100%;
+  padding: 14px 0;
+  background: linear-gradient(135deg, #5a00ff, #a580ff);
+  color: white;
+  font-weight: 700;
+  font-size: 1.2em;
+  border-radius: 14px;
+  border: none;
+  box-shadow: 0 6px 15px rgba(121, 88, 255, 0.75);
+  cursor: pointer;
+  transition: background 0.35s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  user-select: none;
+}
+
+.btn-comprar:hover {
+  background: linear-gradient(135deg, #7f4bff, #c9aaff);
+  transform: scale(1.05);
+  box-shadow: 0 9px 25px rgba(165, 128, 255, 0.9);
+}
+
+/* Mensaje carrito vacío */
+.empty-message {
+  max-width: 400px;
+  margin: 80px auto;
+  padding: 30px 25px;
+  text-align: center;
+  background: linear-gradient(135deg, #334466, #223355);
+  border-radius: 14px;
+  box-shadow:
+    0 10px 30px rgba(41, 39, 74, 0.7),
+    inset 0 0 15px rgba(90, 0, 255, 0.2);
+  color: #ccc;
+  font-size: 1.3em;
+  user-select: none;
+}
+
+.empty-message p {
+  margin-bottom: 20px;
+  font-weight: 600;
+  color: #a5a5d0;
+}
+
+.btn-volver {
+  display: inline-block;
+  padding: 10px 18px;
+  background: linear-gradient(135deg, #5a00ff, #a580ff);
+  color: white;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1em;
+  text-decoration: none;
+  box-shadow: 0 6px 15px rgba(121, 88, 255, 0.75);
+  transition: background 0.35s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  user-select: none;
+}
+
+.btn-volver:hover {
+  background: linear-gradient(135deg, #7f4bff, #c9aaff);
+  transform: scale(1.05);
+  box-shadow: 0 9px 25px rgba(165, 128, 255, 0.9);
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .carrito-container {
+    padding: 25px 20px;
+  }
+  .carrito-table thead th,
+  .carrito-table tbody td {
+    padding: 10px 12px;
+    font-size: 0.9em;
+  }
+  .btn-comprar {
+    font-size: 1em;
+  }
+}

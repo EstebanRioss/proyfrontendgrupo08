@@ -75,7 +75,7 @@ export class EditarUsuariosComponent implements OnInit {
       this.usuarioService.updateUsuario(this.userId, formData).subscribe({
         next: () => {
           alert('Usuario actualizado con éxito.');
-          this.router.navigate(['/admin/usuarios']);
+          this.router.navigate(['/gestion']);
         },
         error: (err) => {
           console.error('Error al actualizar:', err);

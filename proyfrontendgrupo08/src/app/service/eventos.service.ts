@@ -69,4 +69,26 @@ export class EventosService {
       return this._http.put("http://localhost:3000/api/eventos/" + id,evento,httpOpttions);
   }
 
+  public deleteEvento(id: string, token: string): Observable<any> {
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${token ? token : ''}`,
+        'Content-Type': 'application/json',
+      }),
+      params: new HttpParams()
+    };
+    // Usamos PATCH para desactivar (puede ser DELETE si querés)
+    return this._http.patch("http://localhost:3000/api/eventos/" + id +"/desactivar", httpOptions);
+  }
+
+  public activarEvento(id: string, token: string): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      }),
+    };
+    return this._http.patch("http://localhost:3000/api/eventos/" + id +"/activar", httpOptions);
+  }
+
 }
