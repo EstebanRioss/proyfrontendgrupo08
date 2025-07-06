@@ -18,7 +18,7 @@
                     <p class="show-date">{{ show.fecha | date: 'dd MMMM yyyy' }}</p>
                     <div class="card-actions">
                         <a (click)="detalles(show)" class="info-link">Más Info</a>
-                        <a href="#" class="buy-button blue-button">Comprar</a>
+                        <a (click)="detalles(show)" class="buy-button blue-button">Comprar</a>
                     </div>
                     </div>
                 </div>

@@ -57,6 +57,16 @@ export class ListaEventosComponent  implements OnInit, OnDestroy{
       });
     }
 
+    getNombreOrganizador(evento: Evento): string {
+      if (typeof evento.organizadorId === 'string') return evento.organizadorId;
+      return evento.organizadorId?.nombre || 'Sin nombre';
+    }
+
+    getNombreCategoria(evento: Evento): string {
+      if (typeof evento.categoriaId === 'string') return evento.categoriaId;
+      return evento.categoriaId?.nombre || 'Sin categoría';
+    }
+
     Crear(){
       this.router.navigate(['evento/nuevo'])
     }
@@ -65,8 +75,33 @@ export class ListaEventosComponent  implements OnInit, OnDestroy{
       this.router.navigate(['evento/editar', evento._id])
     }
     
-    Eliminar(evento : Evento){
-      this.router.navigate(['evento', evento._id])
+    Eliminar(evento: Evento) {
+      const action = evento.estado ? 'desactivar' : 'activar';
+      const confirmMsg = evento.estado
+        ? `¿Querés desactivar el evento "${evento.nombre}"?`
+        : `¿Querés activar el evento "${evento.nombre}"?`;
+
+      if (!confirm(confirmMsg)) return;
+
+      const token = this.authService.getToken();
+
+      if (evento.estado) {
+        this.service.deleteEvento(evento._id!, token!).subscribe({
+          next: (res) => {
+            alert(res.msg);
+            this.getEvento();
+          },
+          error: (err) => alert('Error: ' + (err.error.msg || err.message)),
+        });
+      } else {
+        this.service.activarEvento(evento._id!, token!).subscribe({
+          next: (res) => {
+            alert(res.msg);
+            this.getEvento();
+          },
+          error: (err) => alert('Error: ' + (err.error.msg || err.message)),
+        });
+      }
     }
 
 }

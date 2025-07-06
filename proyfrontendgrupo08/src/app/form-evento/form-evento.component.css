@@ -1,3 +1,9 @@
+:host{
+  background-image: url(https://www.alquitel.com/wp-content/uploads/2017/12/noch.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
 .formulario-evento {
   background: linear-gradient(180deg, #3b4a69, #2a3751);
   max-width: 500px;

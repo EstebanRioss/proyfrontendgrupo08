@@ -7,7 +7,7 @@ export class Entrada {
       precio?: number;
       tipo?: string;
       Qr?: string;
-      estado?: boolean;
+      estado?: string;
       usuarioId?: string | Usuario;
       eventoId?: string | Evento;
 }

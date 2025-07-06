@@ -209,6 +209,21 @@ body {
   color: #ecf0f1;
 }
 
+.navbar-cart {
+  position: relative;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background-color: red;
+  color: white;
+  font-size: 12px;
+  border-radius: 50%;
+  padding: 2px 6px;
+}
+
 /* ANIMACIONES ADICIONALES */
 @keyframes fadeIn {
   from {

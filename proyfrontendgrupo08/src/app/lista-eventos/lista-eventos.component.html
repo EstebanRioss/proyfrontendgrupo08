@@ -1,49 +1,87 @@
 <section class="user-table-section">
   <div class="table-container">
-    <h2 class="section-title">Todos los eventos</h2>
+    <h2 class="section-title">Gestión de Eventos</h2>
+
+    <!-- Botón Añadir Evento -->
     <div class="actions-container">
       <button class="btn-add" (click)="Crear()">
         <i class="bi bi-plus-circle-fill"></i>
         Añadir Evento
       </button>
     </div>
-    <div class="table-wrapper">
+
+    <div *ngIf="Eventos && Eventos.length > 0; else noEventos" class="table-wrapper">
       <table class="events-table">
         <thead>
           <tr>
+            <th>#</th>
             <th>Nombre</th>
             <th>Fecha</th>
-            <th>Logo del evento</th>
-            <th>Cantidad de personas</th>
+            <th>Logo</th>
+            <th>Entradas</th>
             <th>Ubicación</th>
+            <th>Estado</th>
             <th>Organizador</th>
-            <th>Categoría</th>
             <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let evento of Eventos">
+          <tr *ngFor="let evento of Eventos; let i = index" [class.inactive-row]="!evento.estado">
+            <td class="index-cell">#{{ i + 1 }}</td>
             <td>{{ evento.nombre }}</td>
-            <td>{{ evento.fecha | date: 'dd MMMM yyyy' }}</td>
+            <td>{{ evento.fecha | date: 'dd MMM yyyy, HH:mm' }}</td>
             <td>
               <img [src]="evento.imagenUrl || 'https://via.placeholder.com/100x60/000000/ffffff?text=Evento'"
                    [alt]="evento.nombre" class="event-logo" />
             </td>
-            <td>{{ evento.capacidadTotal }}</td>
+            <td>
+              <div class="entradas-grid">
+                <span *ngFor="let entrada of evento.entradas" class="entrada-badge">
+                  {{ entrada.tipo }} (${{ entrada.precio }}) – {{ entrada.cantidad }}
+                </span>
+              </div>
+              <div class="capacidad-info">
+                Total: {{ evento.capacidadTotal }}
+              </div>
+            </td>
             <td>{{ evento.ubicacionNombre }}</td>
-            <td>{{ evento.organizadorId }}</td>
-            <td>{{ evento.categoriaId }}</td>
+            <td>
+              <span class="status-badge"
+                    [class.status-active]="evento.estado"
+                    [class.status-inactive]="!evento.estado">
+                {{ evento.estado ? 'Activo' : 'Inactivo' }}
+              </span>
+            </td>
+            <td>{{ getNombreOrganizador(evento) }}</td>
             <td class="actions-cell">
               <button class="btn-action" (click)="Modificar(evento)">
                 <i class="fas fa-edit"></i> Modificar
               </button>
-              <button class="btn-action btn-delete" (click)="Eliminar(evento)">
-                <i class="fas fa-trash-alt"></i> Eliminar
+
+              <button 
+                *ngIf="evento.estado" 
+                class="btn-action btn-delete" 
+                (click)="Eliminar(evento)">
+                <i class="fas fa-trash-alt"></i> Desactivar
+              </button>
+
+              <button 
+                *ngIf="!evento.estado" 
+                class="btn-action btn-approve" 
+                (click)="Eliminar(evento)">
+                <i class="fas fa-check"></i> Activar
               </button>
             </td>
           </tr>
         </tbody>
       </table>
     </div>
+
+    <!-- Estado vacío -->
+    <ng-template #noEventos>
+      <div class="empty-state">
+        <p>No hay eventos registrados actualmente.</p>
+      </div>
+    </ng-template>
   </div>
 </section>

@@ -163,4 +163,7 @@ export class AuthService {
         })
         );
     }
+    getId(): string | null {
+        return this.currentUserValue?._id || null;
+    }
 }

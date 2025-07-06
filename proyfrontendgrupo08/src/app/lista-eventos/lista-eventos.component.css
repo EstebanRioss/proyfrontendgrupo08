@@ -143,6 +143,78 @@
 .btn-action:hover {
   background-color: #a58eff;
 }
+.status-badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.8rem;
+  display: inline-block;
+  text-transform: capitalize;
+}
+
+.status-badge.status-active {
+  background-color: #28a745;
+  color: white;
+}
+
+.status-badge.status-inactive {
+  background-color: #6c757d;
+  color: white;
+}
+
+.inactive-row {
+  opacity: 0.6;
+  background-color: #2c3a4a;
+}
+
+.inactive-row:hover {
+  opacity: 0.8;
+}
+
+.index-cell {
+  font-weight: 700;
+  color: #7a5eff;
+  user-select: none;
+}
+
+.entradas-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.entrada-badge {
+  background-color: #283950;
+  color: #e0e0ff;
+  padding: 4px 10px;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  display: inline-block;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.capacidad-info {
+  margin-top: 6px;
+  font-size: 0.85rem;
+  color: #9ea7be;
+  font-weight: 600;
+}
+
+/* Estado vacío */
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  border: 2px dashed #3b4a66;
+  border-radius: 12px;
+  margin-top: 20px;
+}
+
+.empty-state p {
+  font-size: 1.2rem;
+  color: #9ea7be;
+  margin: 0;
+}
 
 /* Responsive para tabla */
 @media (max-width: 768px) {

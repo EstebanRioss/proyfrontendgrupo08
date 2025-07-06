@@ -1,1 +1,80 @@
-<p>mis-entradas works!</p>
+<div class="mis-entradas-container">
+  <h1 class="main-title">Mis Entradas</h1>
+
+  <!-- Estado de Carga -->
+  <div *ngIf="isLoading" class="loading-spinner">
+    <i class="fas fa-spinner fa-spin"></i>
+    <p>Cargando tus entradas...</p>
+  </div>
+
+  <!-- Estado de Error -->
+  <div *ngIf="errorMsg" class="error-message">
+    <i class="fas fa-exclamation-triangle"></i>
+    <p>{{ errorMsg }}</p>
+  </div>
+
+  <!-- Contenido Principal -->
+  <div *ngIf="!isLoading && !errorMsg">
+
+    <!-- Entradas Pendientes de Pago -->
+    <section *ngIf="entradasAgrupadas.pendientes.length > 0" class="entradas-section">
+      <h2 class="section-title">Pendientes de Pago</h2>
+      <div class="entradas-grid">
+        <div *ngFor="let entrada of entradasAgrupadas.pendientes" class="entrada-card">
+          <div class="card-header">
+            <h3>{{ getEventoNombre(entrada) }}</h3>
+            <span class="status-badge status-pendiente">{{ entrada.estado }}</span>
+          </div>
+          <div class="card-body">
+            <p><i class="fas fa-calendar-alt"></i> {{ getEventoFecha(entrada) }}</p>
+            <p><i class="fas fa-map-marker-alt"></i> {{ getEventoUbicacion(entrada) }}</p>
+          </div>
+          <div class="card-footer">
+            <a class="pagar-button">Completar Pago</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Próximos Eventos -->
+    <section *ngIf="entradasAgrupadas.proximos.length > 0" class="entradas-section">
+      <h2 class="section-title">Mis Próximos Eventos</h2>
+      <div class="entradas-grid">
+        <div *ngFor="let entrada of entradasAgrupadas.proximos" class="entrada-card">
+          <div class="card-header">
+            <h3>{{ getEventoNombre(entrada) }}</h3>
+            <span class="status-badge status-confirmada">{{ entrada.estado }}</span>
+          </div>
+          <div class="card-body">
+            <p><i class="fas fa-calendar-alt"></i> {{ getEventoFecha(entrada) }}</p>
+            <p><i class="fas fa-qrcode"></i> Código QR: {{ entrada.Qr }}</p>
+          </div>
+          <div class="card-footer">
+            <a *ngIf="getEventoLink(entrada)" [routerLink]="getEventoLink(entrada)" class="ver-evento-button">Ver Evento</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Historial de Eventos Pasados -->
+    <section *ngIf="entradasAgrupadas.pasados.length > 0" class="entradas-section">
+      <h2 class="section-title">Historial de Eventos</h2>
+      <div *ngFor="let entrada of entradasAgrupadas.pasados" class="entrada-card entrada-pasada">
+        <div class="card-header">
+          <h3>{{ getEventoNombre(entrada) }}</h3>
+          <span class="status-badge status-pasada">{{ entrada.estado }}</span>
+        </div>
+        <div class="card-body">
+          <p><i class="fas fa-calendar-alt"></i> {{ getEventoFecha(entrada) }}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mensaje si no hay entradas -->
+    <div *ngIf="!entradasAgrupadas.pendientes.length && !entradasAgrupadas.proximos.length && !entradasAgrupadas.pasados.length" class="no-entradas">
+      <i class="fas fa-ticket-alt"></i>
+      <p>Aún no has comprado ninguna entrada.</p>
+      <a routerLink="/eventos" class="primary-button">Explorar eventos</a>
+    </div>
+  </div>
+</div>

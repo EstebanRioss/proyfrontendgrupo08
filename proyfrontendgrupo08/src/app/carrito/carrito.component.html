@@ -1,0 +1,41 @@
+<div class="carrito-container" *ngIf="carrito.length > 0 else emptyCart">
+  <h2>Tu carrito</h2>
+
+  <table class="carrito-table">
+    <thead>
+      <tr>
+        <th>Evento</th>
+        <th>Tipo Entrada</th>
+        <th>Precio Unitario</th>
+        <th>Cantidad</th>
+        <th>Subtotal</th>
+        <th>Acción</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of carrito; let i = index">
+        <td>{{ item.nombreEvento }}</td>
+        <td>{{ item.tipoEntrada }}</td>
+        <td>${{ item.precio.toFixed(2) }}</td>
+        <td>{{ item.cantidad }}</td>
+        <td>${{ (item.precio * item.cantidad).toFixed(2) }}</td>
+        <td>
+          <button class="btn-eliminar" (click)="eliminarItem(i)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="total-container">
+    <strong>Total: ${{ total.toFixed(2) }}</strong>
+  </div>
+
+  <button class="btn-comprar" (click)="pagarCarrito()">Pagar todo</button>
+</div>
+
+<ng-template #emptyCart>
+  <div class="empty-message">
+    <p>Tu carrito está vacío.</p>
+    <a [routerLink]="['/eventos']" class="btn-volver">Ver eventos</a>
+  </div>
+</ng-template>

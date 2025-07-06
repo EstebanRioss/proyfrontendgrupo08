@@ -37,6 +37,24 @@
   </div>
 
   <div class="form-group">
+    <label>Tipos de Entradas</label>
+    <div *ngFor="let entrada of evento.entradas; let i = index" class="entrada-item">
+      <input type="text" [(ngModel)]="entrada.tipo" name="tipo{{i}}" placeholder="Tipo (Ej: VIP)" required />
+      <input type="number" [(ngModel)]="entrada.precio" name="precio{{i}}" placeholder="Precio" required />
+      <input type="number" [(ngModel)]="entrada.cantidad" name="cantidad{{i}}" placeholder="Cantidad" required />
+      <button type="button" (click)="eliminarEntrada(i)">Eliminar</button>
+      <br>
+    </div>
+    <button type="button" (click)="agregarEntrada()">+ Agregar tipo de entrada</button>
+  </div>
+
+  <br>
+  
+  <div class="error" *ngIf="!capacidadValida && evento.entradas.length > 0">
+    ⚠️ La suma de las cantidades de entradas ({{ sumaEntradas }}) debe ser igual a la capacidad total ({{ evento.capacidadTotal }})
+  </div>
+
+  <div class="form-group">
     <label>Imagen *</label>
     <input type="file" (change)="onFileSelected($event)" accept="image/*" />
     <img *ngIf="evento.imagenUrl" [src]="evento.imagenUrl" alt="Vista previa" style="max-width: 200px; margin-top: 10px;">
@@ -49,7 +67,7 @@
     </select>
   </div>
 
-  <button type="submit">
+  <button type="submit" [disabled]="!capacidadValida"> 
     {{ id ? 'Actualizar Evento' : 'Guardar Evento' }}
   </button>
 </form>

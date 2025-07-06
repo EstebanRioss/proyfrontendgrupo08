@@ -14,5 +14,9 @@ export class Evento {
   estado?: boolean;
   categoriaId?: string | CategoriaEvento;
   organizadorId?: string | Usuario;
-  
+  entradas: {
+    tipo: string;
+    precio: number;
+    cantidad: number;
+  }[] = [];
 }

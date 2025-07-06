@@ -18,6 +18,8 @@ export class FormEventoComponent implements OnInit {
   evento: Evento = {} as Evento;
   categorias: any[] = [];
   id : string = "";
+  sumaEntradas: number = 0;
+  capacidadValida: boolean = true;
 
   constructor(private serviceE : EventosService, private serviceC : CategoriaService , private router : Router,private activatedRoute : ActivatedRoute,private auth : AuthService){
 
@@ -30,6 +32,21 @@ export class FormEventoComponent implements OnInit {
     if (this.id) {
       this.cargarEvento(this.id);
     }
+  }
+
+  agregarEntrada(): void {
+    this.evento.entradas.push({ tipo: '', precio: 0, cantidad: 0 });
+    this.recalcularSuma();
+  }
+
+  eliminarEntrada(index: number): void {
+    this.evento.entradas.splice(index, 1);
+    this.recalcularSuma();
+  }
+
+  recalcularSuma(): void {
+    this.sumaEntradas = this.evento.entradas.reduce((acc, e) => acc + Number(e.cantidad || 0), 0);
+    this.capacidadValida = this.sumaEntradas === Number(this.evento.capacidadTotal || 0);
   }
 
   onFileSelected(event: any): void {
@@ -51,6 +68,8 @@ export class FormEventoComponent implements OnInit {
     this.serviceE.getEvento(id).subscribe({
       next: (evento) => {
         this.evento = evento;
+        if (!this.evento.entradas) this.evento.entradas = [];
+        this.recalcularSuma();
       },
       error: (err) => {
         console.error('Error cargando evento:', err);
@@ -73,7 +92,13 @@ export class FormEventoComponent implements OnInit {
     const token = this.auth.getToken();
     this.evento.estado = true;
 
-     if (this.id) {
+    this.recalcularSuma();
+    if (!this.capacidadValida) {
+      alert('⚠️ La capacidad total no coincide con la suma de las entradas.');
+      return;
+    }
+
+    if (this.id) {
       // Modo edición
       this.serviceE.updateEvento(this.id, this.evento, token!).subscribe({
         next: () => {

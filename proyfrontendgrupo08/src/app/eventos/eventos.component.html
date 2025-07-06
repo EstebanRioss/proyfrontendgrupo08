@@ -5,7 +5,7 @@
       <h1>eventos</h1>
     </div>
   </section>
-
+  
   <section class="upcoming-shows-section dark-bg">
     <div class="container">
       <div class="upcoming-shows-header">
@@ -36,7 +36,7 @@
             <p class="show-date">{{ evento.fecha | date: 'dd MMMM yyyy' }}</p>
             <div class="card-actions">
               <a (click)="detalles(evento)" class="info-link">Más Info</a>
-              <a href="#" class="buy-button dark-blue-button">Comprar</a>
+              <a (click)="detalles(evento)" class="buy-button dark-blue-button">Comprar</a>
             </div>
           </div>
         </div>
