@@ -11,7 +11,7 @@ interface PreferenceResponse {
   providedIn: 'root'
 })
 export class MpService {
-  private baseUrl = 'http://localhost:3000/api/mp';
+  private baseUrl = 'https://pases-service.onrender.com/api/mp';
 
   constructor(private http: HttpClient) {}
 

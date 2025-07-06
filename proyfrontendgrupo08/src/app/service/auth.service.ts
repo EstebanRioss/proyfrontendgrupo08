@@ -22,7 +22,7 @@ export interface ConfirmationResponse {
     providedIn: 'root'
 })
 export class AuthService {
-    private apiUrl = 'http://localhost:3000/api/usuarios';
+    private apiUrl = 'https://pases-service.onrender.com/api/usuarios';
     private currentUserSubject: BehaviorSubject<Usuario | null>;
     public currentUser: Observable<Usuario | null>;
 

@@ -7,42 +7,56 @@ import { Observable } from 'rxjs';
 })
 export class CategoriaService {
 
-  constructor(private  _http : HttpClient) { }
-    public getCategorias():Observable<any>{
-      let httpOpttions = {
-        headers : new HttpHeaders({}),
-        params: new HttpParams()
-      }
-      return this._http.get("http://localhost:3000/api/categoria", httpOpttions);
-    }
+  private baseUrl = 'https://pases-service.onrender.com/api/categoria';
 
-    public getCategoria(id : string):Observable<any>{
-      let httpOpttions = {
-        headers : new HttpHeaders({}),
-        params: new HttpParams()
-      }
-      return this._http.get("http://localhost:3000/api/categoria" + id, httpOpttions);
-    }
+  constructor(private _http: HttpClient) { }
 
-    public createCategoria(categoria : any, token : string):Observable<any>{
-      let httpOpttions = {
-        headers : new HttpHeaders({
-          'Authorization': `Bearer ${token ? token : ''}`,
-          'Content-Type': 'application/json',
-        }),
-        params: new HttpParams()
-      }
-      return this._http.post("http://localhost:3000/api/categoria/",categoria,httpOpttions);
-    }
+  public getCategorias(): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({}),
+      params: new HttpParams()
+    };
+    return this._http.get(this.baseUrl, httpOptions);
+  }
 
-    public updateCategoria(id :string , categoria : any, token : string):Observable<any>{
-      let httpOpttions = {
-        headers : new HttpHeaders({
-          'Authorization': `Bearer ${token ? token : ''}`,
-          'Content-Type': 'application/json',
-        }),
-        params: new HttpParams()
-      }
-      return this._http.put("http://localhost:3000/api/categoria/"+ id,categoria,httpOpttions);
-    }
+  public getCategoria(id: string): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({}),
+      params: new HttpParams()
+    };
+    return this._http.get(`${this.baseUrl}/${id}`, httpOptions); // corregido
+  }
+
+  public createCategoria(categoria: any, token: string): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${token || ''}`,
+        'Content-Type': 'application/json',
+      }),
+      params: new HttpParams()
+    };
+    return this._http.post(this.baseUrl, categoria, httpOptions);
+  }
+
+  public updateCategoria(id: string, categoria: any, token: string): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${token || ''}`,
+        'Content-Type': 'application/json',
+      }),
+      params: new HttpParams()
+    };
+    return this._http.put(`${this.baseUrl}/${id}`, categoria, httpOptions);
+  }
+
+  public deleteCategoria(id: string, token: string): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${token || ''}`,
+        'Content-Type': 'application/json',
+      }),
+      params: new HttpParams()
+    };
+    return this._http.delete(`${this.baseUrl}/${id}`, httpOptions);
+  }
 }

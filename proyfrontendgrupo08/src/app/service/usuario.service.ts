@@ -8,7 +8,7 @@ import { Usuario } from '../models/usuario';
   providedIn: 'root'
 })
 export class UsuarioService {
-  private apiUrl = 'http://localhost:3000/api/usuarios';
+  private apiUrl = 'https://pases-service.onrender.com/api/usuarios';
 
   constructor(private _http: HttpClient, private authService: AuthService) { }
 

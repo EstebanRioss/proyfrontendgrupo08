@@ -9,7 +9,7 @@ import { Entrada } from '../models/entrada';
 })
 export class EntradaService {
 
-  private baseUrl = 'http://localhost:3000/api/entradas';
+  private baseUrl = 'https://pases-service.onrender.com/api/entradas';
 
   constructor(private _http: HttpClient) { }
 
