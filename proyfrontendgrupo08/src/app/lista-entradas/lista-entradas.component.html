@@ -1,26 +1,41 @@
 <section class="user-table-section">
   <div class="table-container">
-    <h2 class="section-title">Todas las Entradas</h2>
+    <h2 class="section-title">Gestión de Entradas</h2>
 
-    <div class="table-wrapper">
-      <table class="tickets-table">
+    <!-- Tabla -->
+    <div *ngIf="Entradas && Entradas.length > 0; else noEntradas" class="table-wrapper">
+      <table class="events-table">
         <thead>
           <tr>
+            <th>#</th>
             <th>Nombre</th>
-            <th>Evento ID</th>
+            <th>Evento</th>
             <th>Precio</th>
             <th>Acciones</th>
           </tr>
         </thead>
+
         <tbody>
-          <tr *ngFor="let e of Entradas">
+          <tr *ngFor="let e of Entradas; let i = index"
+              [class.inactive-row]="e.estado !== 'vendida'">
+            <td class="index-cell">#{{ i + 1 }}</td>
             <td class="font-medium">{{ e.nombre }}</td>
-            <td>{{ e.eventoId }}</td>
+
             <td>${{ e.precio }}</td>
+
+            <td>
+              <span class="status-badge"
+                    [class.status-active]="e.estado === 'vendida'"
+                    [class.status-inactive]="e.estado !== 'vendida'">
+                {{ e.estado }}
+              </span>
+            </td>
+
             <td class="actions-cell">
               <button class="btn-action" (click)="Modificar(e)">
                 <i class="fas fa-edit"></i> Modificar
               </button>
+
               <button class="btn-action btn-delete" (click)="Eliminar(e)">
                 <i class="fas fa-trash-alt"></i> Eliminar
               </button>
@@ -29,5 +44,12 @@
         </tbody>
       </table>
     </div>
+
+    <!-- Estado vacío -->
+    <ng-template #noEntradas>
+      <div class="empty-state">
+        <p>No hay entradas registradas actualmente.</p>
+      </div>
+    </ng-template>
   </div>
 </section>
