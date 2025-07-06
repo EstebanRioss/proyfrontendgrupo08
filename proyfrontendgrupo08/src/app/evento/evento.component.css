@@ -427,7 +427,373 @@
 }
 
 @media (max-width: 900px) {
+  .hero-grid {
+    flex-direction: column;
+  }
+
+  .hero-left,
+  .hero-right {
+    min-width: 100%;
+  }
+
+  .buy-section {
+    padding: 20px;
+  }
+
+  .event-title {
+    font-size: 2rem;
+  }
+
   .forms-grid {
     flex-direction: column;
+  }
+
+  .profile-card {
+    padding: 30px;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+  }
+
+  .form-box {
+    flex: 1 1 100%;
+  }
+
+  .entradas-info {
+    margin-top: 30px;
+    padding: 20px 25px;
+  }
+
+  .entrada-list li {
+    font-size: 0.95rem;
+  }
+
+  .entradas-grid {
+    justify-content: center;
+  }
+
+  .entrada-card {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .event-details-page {
+    padding: 15px;
+  }
+
+  .event-header {
+    margin-bottom: 25px;
+  }
+
+  .event-title {
+    font-size: 1.8rem;
+  }
+
+  .event-meta {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .event-meta .badge {
+    font-size: 0.85rem;
+    padding: 5px 10px;
+  }
+
+  .hero-grid {
+    gap: 30px;
+  }
+
+  .event-poster img {
+    border-radius: 14px;
+  }
+
+  .countdown {
+    font-size: 1rem;
+    gap: 8px;
+  }
+
+  .countdown i {
+    font-size: 1.2rem;
+  }
+
+  .buy-section {
+    padding: 20px;
+    border-radius: 14px;
+    gap: 15px;
+  }
+
+  .price-info {
+    font-size: 1.1rem;
+    padding-bottom: 8px;
+  }
+
+  .date {
+    font-size: 1.2rem;
+    gap: 10px;
+  }
+
+  .date .day {
+    font-size: 2.2rem;
+  }
+
+  .time-location {
+    font-size: 0.95rem;
+    gap: 10px;
+  }
+
+  .time-location i {
+    font-size: 1.2rem;
+  }
+
+  .buy-button {
+    padding: 12px 20px;
+    font-size: 1.05rem;
+    border-radius: 12px;
+    gap: 10px;
+  }
+
+  .buy-button i {
+    font-size: 1.2rem;
+  }
+
+  .event-info,
+  .how-to-arrive {
+    margin-top: 30px;
+    padding: 20px 25px;
+    border-radius: 14px;
+  }
+
+  .event-info p {
+    font-size: 0.95rem;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+
+  .map-placeholder iframe {
+    height: 300px;
+    border-radius: 10px;
+  }
+
+  .profile-wrapper {
+    padding: 30px 20px;
+  }
+
+  .profile-card {
+    padding: 30px 25px;
+    border-radius: 14px;
+  }
+
+  .section-title {
+    font-size: 1.7rem;
+    margin-bottom: 20px;
+  }
+
+  .forms-grid {
+    gap: 30px;
+  }
+
+  .entrada-list li {
+    padding: 10px 14px;
+    font-size: 0.9rem;
+    border-radius: 10px;
+  }
+
+  .entrada-card {
+    padding: 18px;
+    border-radius: 10px;
+  }
+
+  .entrada-header {
+    font-size: 1.1rem;
+    gap: 8px;
+  }
+
+  .entrada-header i {
+    font-size: 1.2rem;
+  }
+
+  .entrada-body p {
+    font-size: 0.9rem;
+  }
+
+  .buy-section label {
+    font-size: 1rem;
+  }
+
+  .buy-section select {
+    padding: 10px 12px;
+    font-size: 0.95rem;
+    border-radius: 10px;
+  }
+
+  .mensaje-error {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .event-details-page {
+    padding: 10px;
+  }
+
+  .event-header {
+    margin-bottom: 20px;
+  }
+
+  .event-title {
+    font-size: 1.6rem;
+  }
+
+  .event-meta {
+    gap: 8px;
+  }
+
+  .event-meta .badge {
+    font-size: 0.8rem;
+    padding: 4px 8px;
+  }
+
+  .hero-grid {
+    gap: 25px;
+  }
+
+  .event-poster img {
+    border-radius: 12px;
+  }
+
+  .countdown {
+    font-size: 0.9rem;
+    gap: 6px;
+  }
+
+  .countdown i {
+    font-size: 1.1rem;
+  }
+
+  .buy-section {
+    padding: 15px;
+    border-radius: 12px;
+    gap: 12px;
+  }
+
+  .price-info {
+    font-size: 1rem;
+    padding-bottom: 6px;
+  }
+
+  .date {
+    flex-direction: column;
+    gap: 8px;
+    font-size: 1.1rem;
+  }
+
+  .date .day {
+    font-size: 2rem;
+  }
+
+  .time-location {
+    font-size: 0.9rem;
+    gap: 8px;
+  }
+
+  .time-location i {
+    font-size: 1.1rem;
+  }
+
+  .buy-button {
+    padding: 10px 18px;
+    font-size: 1rem;
+    border-radius: 10px;
+    gap: 8px;
+  }
+
+  .buy-button i {
+    font-size: 1.1rem;
+  }
+
+  .event-info,
+  .how-to-arrive {
+    margin-top: 25px;
+    padding: 18px 20px;
+    border-radius: 12px;
+  }
+
+  .event-info p {
+    font-size: 0.9rem;
+  }
+
+  .section-title {
+    font-size: 1.6rem;
+    margin-bottom: 18px;
+  }
+
+  .map-placeholder iframe {
+    height: 250px;
+    border-radius: 8px;
+  }
+
+  .profile-wrapper {
+    padding: 20px 15px;
+  }
+
+  .profile-card {
+    padding: 20px;
+    border-radius: 12px;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+
+  .forms-grid {
+    gap: 20px;
+  }
+
+  .entrada-list li {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+    border-radius: 8px;
+  }
+
+  .entrada-card {
+    padding: 15px;
+    border-radius: 8px;
+  }
+
+  .entrada-header {
+    font-size: 1rem;
+    gap: 6px;
+  }
+
+  .entrada-header i {
+    font-size: 1.1rem;
+  }
+
+  .entrada-body p {
+    font-size: 0.85rem;
+  }
+
+  .buy-section label {
+    font-size: 0.95rem;
+  }
+
+  .buy-section select {
+    padding: 8px 10px;
+    font-size: 0.9rem;
+    border-radius: 8px;
+  }
+
+  .mensaje-error {
+    padding: 7px 10px;
+    font-size: 0.85rem;
   }
 }

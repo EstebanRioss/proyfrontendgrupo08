@@ -180,27 +180,142 @@
 
 /* Responsive */
 @media (max-width: 768px) {
+  .user-table-section {
+    padding: 15px;
+    border-radius: 12px;
+  }
+
   .section-title {
     font-size: 1.6rem;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .actions-container {
+    justify-content: center;
+    margin-bottom: 15px;
   }
 
   .btn-add {
-    font-size: 0.9rem;
-    padding: 8px 12px;
+    font-size: 0.95rem;
+    padding: 9px 15px;
+  }
+
+  .btn-add i {
+    font-size: 1.1rem;
+  }
+
+  .table-container {
+    overflow-x: auto;
+  }
+
+  .events-table {
+    font-size: 0.85rem;
+    min-width: 550px;
+  }
+
+  .events-table thead tr {
+    font-size: 0.75rem;
   }
 
   .events-table th,
   .events-table td {
-    padding: 10px 8px;
+    padding: 10px 12px;
+  }
+
+  .actions-cell {
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 10px;
+    align-items: flex-start;
+  }
+
+  .btn-action {
+    width: 100%;
+    padding: 8px 10px;
+    font-size: 0.85rem;
+    justify-content: center;
+  }
+
+  .btn-action i {
+    font-size: 0.95rem;
+  }
+
+  .status-badge {
+    padding: 3px 8px;
+    font-size: 0.75rem;
+  }
+
+  .index-cell {
+    font-size: 0.9rem;
+  }
+
+  .empty-state {
+    padding: 30px 15px;
+    margin-top: 15px;
+  }
+
+  .empty-state p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .user-table-section {
+    padding: 10px;
+  }
+
+  .section-title {
+    font-size: 1.4rem;
+    margin-bottom: 18px;
+  }
+
+  .btn-add {
+    font-size: 0.9rem;
+    padding: 7px 12px;
+  }
+
+  .btn-add i {
+    font-size: 1rem;
+  }
+
+  .events-table {
     font-size: 0.8rem;
+    min-width: 450px;
+  }
+
+  .events-table thead tr {
+    font-size: 0.7rem;
+  }
+
+  .events-table th,
+  .events-table td {
+    padding: 8px 10px;
   }
 
   .actions-cell {
     gap: 6px;
+    padding-top: 8px;
   }
 
   .btn-action {
-    padding: 6px 10px;
+    padding: 6px 8px;
     font-size: 0.8rem;
+  }
+
+  .btn-action i {
+    font-size: 0.9rem;
+  }
+
+  .status-badge {
+    font-size: 0.7rem;
+  }
+
+  .empty-state {
+    padding: 25px 10px;
+  }
+
+  .empty-state p {
+    font-size: 0.9rem;
   }
 }

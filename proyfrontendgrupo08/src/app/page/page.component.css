@@ -140,7 +140,7 @@ a:hover {
     background-image: url(https://www.alquitel.com/wp-content/uploads/2017/12/noch.jpg);
     background-size: cover;
     background-position: center;
-    height: 550px;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -502,29 +502,65 @@ a:hover {
 }
 
 @media (max-width: 480px) {
-    .hero-banner {
-        height: 360px;
-    }
+    .container {
+    padding: 0 12px;
+  }
 
-    .hero-content {
-        font-size: 2.1em !important;
-        padding: 0 10px;
-    }
+  .section-title {
+    font-size: 1.8em;
+    margin-bottom: 30px;
+  }
 
-    .blue-button, .dark-blue-button, .light-button {
-        padding: 10px 20px;
-        font-size: 0.9em;
-    }
+  .card-content {
+    padding: 18px 20px;
+  }
 
-    .info-block h2 {
-        font-size: 1.8em;
-    }
+  .show-card h3 {
+    font-size: 1.4em;
+  }
 
-    .info-block p {
-        font-size: 1em;
-    }
+  .show-card .show-date {
+    font-size: 0.95em;
+  }
 
-    .info-icon {
-        font-size: 5.5em;
-    }
+  .info-button {
+    width: 100%;
+    font-size: 0.95em;
+    padding: 10px;
+  }
+
+  .info-block {
+    padding: 25px 20px;
+  }
+
+  .info-text h2 {
+    font-size: 1.6em;
+  }
+
+  .info-text p {
+    font-size: 0.95em;
+  }
+
+  .card-actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .info-icon {
+    font-size: 4.5em;
+  }
+
+  .shows-grid {
+    gap: 20px;
+  }
+
+  .blue-button,
+  .dark-blue-button,
+  .light-button {
+    width: 100%;
+    text-align: center;
+    padding: 12px;
+    font-size: 1em;
+  }
 }

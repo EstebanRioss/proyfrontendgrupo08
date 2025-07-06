@@ -155,3 +155,123 @@
   transform: none;
   box-shadow: 0 8px 25px rgba(26, 42, 58, 0.7);
 }
+@media (max-width: 768px) {
+  .mis-entradas-container {
+    margin: 20px auto; /* Reducir el margen en móviles */
+    padding: 15px; /* Reducir el padding */
+  }
+
+  .main-title {
+    font-size: 2.2rem; /* Reducir el tamaño de la fuente */
+    margin-bottom: 30px;
+  }
+
+  .loading-spinner, .error-message, .no-entradas {
+    padding: 30px 15px; /* Ajustar el padding */
+  }
+
+  .loading-spinner i, .error-message i, .no-entradas i {
+    font-size: 2.5rem; /* Reducir el tamaño del icono */
+  }
+
+  .loading-spinner p, .error-message p, .no-entradas p {
+    font-size: 1rem; /* Reducir el tamaño de la fuente */
+  }
+
+  .section-title {
+    font-size: 1.7rem; /* Reducir el tamaño de la fuente */
+    margin-bottom: 20px;
+  }
+
+  .entradas-grid {
+    /* En pantallas pequeñas, las tarjetas ocupan todo el ancho disponible */
+    grid-template-columns: 1fr;
+    gap: 20px; /* Reducir el espacio entre tarjetas */
+  }
+
+  .entrada-card {
+    /* Eliminar la sombra en hover para evitar problemas de layout en móvil */
+    box-shadow: 0 6px 15px rgba(26, 42, 58, 0.6);
+    transform: none; /* Eliminar la transformación en hover para móvil */
+  }
+
+  .entrada-card:hover {
+    transform: none;
+    box-shadow: 0 6px 15px rgba(26, 42, 58, 0.6);
+  }
+
+  .card-header {
+    flex-direction: column; /* Apilar el título y el badge de estado */
+    align-items: flex-start; /* Alinear elementos al inicio */
+    padding: 15px;
+  }
+
+  .card-header h3 {
+    font-size: 1.2rem; /* Reducir el tamaño de la fuente del título de la tarjeta */
+    margin-bottom: 10px; /* Espacio entre el título y el badge */
+  }
+
+  .status-badge {
+    align-self: flex-end; /* Alinear el badge a la derecha */
+  }
+
+  .card-body {
+    padding: 15px;
+  }
+
+  .card-body p {
+    font-size: 0.95rem; /* Reducir el tamaño de la fuente del texto del cuerpo */
+    flex-direction: column; /* Apilar icono y texto en el cuerpo de la tarjeta */
+    align-items: flex-start; /* Alinear al inicio */
+    gap: 5px; /* Reducir el espacio entre icono y texto */
+  }
+
+  .card-body i {
+    font-size: 1.1rem; /* Reducir el tamaño del icono */
+    width: auto; /* Ajustar el ancho del icono */
+  }
+
+  .card-footer {
+    padding: 10px 15px;
+    /* Los botones ya están apilados con flex-direction: column; */
+  }
+
+  .pagar-button, .ver-evento-button, .primary-button {
+    width: 100%; /* Hacer que los botones ocupen todo el ancho */
+    margin-top: 10px; /* Espacio entre botones apilados */
+    padding: 12px 15px; /* Ajustar el padding */
+    font-size: 1rem; /* Ajustar el tamaño de la fuente */
+  }
+
+  .primary-button {
+    margin-top: 15px; /* Ajustar el margen superior para el botón principal */
+  }
+}
+
+@media (max-width: 480px) {
+  .main-title {
+    font-size: 1.8rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .card-header h3 {
+    font-size: 1.1rem;
+  }
+
+  .status-badge {
+    font-size: 0.75rem;
+    padding: 4px 10px;
+  }
+
+  .card-body p {
+    font-size: 0.9rem;
+  }
+
+  .pagar-button, .ver-evento-button, .primary-button {
+    padding: 10px 12px;
+    font-size: 0.9rem;
+  }
+}

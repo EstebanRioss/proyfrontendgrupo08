@@ -74,7 +74,6 @@
   color: #c4baff;
 }
 
-/* Botón activo simulado con clase (si la agregás desde Angular) */
 .aside-btn.active {
   background-color: #7a5effaa;
   color: #fff;
@@ -89,17 +88,60 @@
 /* Responsive */
 @media (max-width: 768px) {
   .aside-cuenta {
-    width: 100%;
+    width: 100%; 
+    max-width: none; 
     padding: 20px 15px;
-    border-radius: 0;
+    border-radius: 0; 
+    flex-direction: row; 
+    justify-content: space-around; 
+    align-items: center; 
+    box-shadow: none; 
+    gap: 10px; 
   }
 
   .aside-title {
-    font-size: 1.5em;
-    padding-bottom: 10px;
+    display: none; 
+  }
+
+  .aside-menu {
+    flex-direction: row; 
+    width: 100%; 
+    justify-content: space-around; 
+    gap: 5px;
   }
 
   .aside-btn {
+    font-size: 0.9em; 
+    padding: 8px 10px;
+    flex-direction: column;
+    gap: 5px; 
+    text-align: center;
+  }
+
+  .aside-btn i {
+    font-size: 1.1em; 
+    margin-bottom: 2px; 
+  }
+  .aside-btn:hover,
+  .aside-btn:focus {
+    transform: none; 
+    box-shadow: none; 
+  }
+
+  .aside-btn.active {
+    transform: none; 
+    box-shadow: none;
+    background-color: #7a5eff;
+  }
+}
+
+@media (max-width: 480px) {
+  .aside-btn {
+    font-size: 0.8em; 
+    padding: 7px 8px;
+  }
+
+  .aside-btn i {
     font-size: 1em;
   }
 }

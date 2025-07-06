@@ -22,35 +22,36 @@ export class PagesComponent{
     this.getEventosProximos();
   }
 
-  getEventosNuevos() {
-  this.serviceE.getNuevosEventos().subscribe(
-    result => {
-      console.log(result);
-      let vevento: Evento = new Evento();
-      result.forEach((element: any) => {
+getEventosNuevos() {
+  this.serviceE.getNuevosEventos().subscribe(result => {
+    console.log(result);
+    let vevento: Evento = new Evento();
+    result
+      .filter((element: any) => element.estado === true) // solo activos
+      .forEach((element: any) => {
         Object.assign(vevento, element);
         this.EventosNuevos.push(vevento);
         vevento = new Evento();
       });
-    }
-  );
+  });
+}
+
+getEventosProximos() {
+  this.serviceE.getProximosEventos().subscribe(result => {
+    console.log(result);
+    let vevento: Evento = new Evento();
+    result
+      .filter((element: any) => element.estado === true) // solo activos
+      .forEach((element: any) => {
+        Object.assign(vevento, element);
+        this.EventosProximos.push(vevento);
+        vevento = new Evento();
+      });
+  });
 }
 
 detalles(evento : Evento){
       this.router.navigate(['evento/ver', evento._id])
     }
 
-getEventosProximos() {
-  this.serviceE.getProximosEventos().subscribe(
-    result => {
-      console.log(result);
-      let vevento: Evento = new Evento();
-      result.forEach((element: any) => {
-        Object.assign(vevento, element);
-        this.EventosProximos.push(vevento);
-        vevento = new Evento();
-      });
-    }
-  );
-}
 }

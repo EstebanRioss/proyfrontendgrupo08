@@ -152,3 +152,134 @@
 .error-state .btn-action {
   margin-top: 20px;
 }
+
+@media (max-width: 768px) {
+  .user-table-section {
+    padding: 15px;
+    margin: 15px;
+    border-radius: 12px;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .table-container {
+    overflow-x: auto; /* Ensures horizontal scrolling for the table */
+  }
+
+  .users-table {
+    font-size: 0.85rem;
+    /* Consider min-width if columns become too squished, e.g., min-width: 600px; */
+  }
+
+  .users-table th,
+  .users-table td {
+    padding: 10px 12px;
+  }
+
+  .users-table thead tr {
+    font-size: 0.75rem;
+  }
+
+  .actions-cell {
+    flex-direction: column; /* Stack buttons vertically */
+    gap: 8px; /* Adjust gap for stacked buttons */
+    align-items: flex-start; /* Align buttons to the start */
+  }
+
+  .btn-action {
+    width: 100%; /* Make buttons take full width when stacked */
+    padding: 8px 10px;
+    font-size: 0.85rem;
+    justify-content: center; /* Center text and icon in buttons */
+  }
+
+  .btn-action i {
+    font-size: 0.9rem;
+  }
+
+  .role-badge,
+  .status-badge {
+    padding: 3px 8px;
+    font-size: 0.75rem;
+  }
+
+  .super-admin-badge {
+    padding: 5px 10px;
+    font-size: 0.8rem;
+  }
+
+  .loading-state,
+  .error-state,
+  .empty-state {
+    padding: 30px 15px;
+  }
+
+  .loading-state p,
+  .error-state p,
+  .empty-state p {
+    font-size: 1rem;
+  }
+
+  .error-state .btn-action {
+    margin-top: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .user-table-section {
+    padding: 10px;
+    margin: 10px;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+    margin-bottom: 18px;
+  }
+
+  .users-table {
+    font-size: 0.8rem;
+  }
+
+  .users-table th,
+  .users-table td {
+    padding: 8px 10px;
+  }
+
+  .users-table thead tr {
+    font-size: 0.7rem;
+  }
+
+  .btn-action {
+    font-size: 0.8rem;
+    padding: 7px 8px;
+  }
+
+  .btn-action i {
+    font-size: 0.85rem;
+  }
+
+  .role-badge,
+  .status-badge {
+    font-size: 0.7rem;
+  }
+
+  .super-admin-badge {
+    font-size: 0.75rem;
+  }
+
+  .loading-state,
+  .error-state,
+  .empty-state {
+    padding: 25px 10px;
+  }
+
+  .loading-state p,
+  .error-state p,
+  .empty-state p {
+    font-size: 0.9rem;
+  }
+}

@@ -276,77 +276,266 @@ body {
 }
 
 /* Responsividad */
+/* Responsiveness */
 @media (max-width: 992px) {
-    .footer-container {
-        justify-content: center;
-        gap: 30px;
-    }
+  .footer-container {
+    justify-content: center;
+    gap: 30px;
+  }
 
-    .footer-item {
-        flex: 0 0 45%;
-        margin-bottom: 30px;
-    }
+  .footer-item {
+    flex: 0 0 45%;
+    margin-bottom: 30px;
+  }
 
-    .footer-bottom .footer-container {
-        flex-direction: column;
-        text-align: center;
-    }
+  .footer-bottom .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
 
-    .footer-brand,
-    .footer-links,
-    .footer-my-account,
-    .footer-qr {
-        margin: 0 0 25px 0;
-    }
+  .footer-brand,
+  .footer-links,
+  .footer-my-account,
+  .footer-qr {
+    margin: 0 0 25px 0;
+  }
 
-    .footer-links ul,
-    .footer-my-account ul {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
+  .footer-links ul,
+  .footer-my-account ul {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 
-    .footer-links li,
-    .footer-my-account li {
-        margin: 0 12px 10px 12px;
-    }
+  .footer-links li,
+  .footer-my-account li {
+    margin: 0 12px 10px 12px;
+  }
 
-    .footer-qr {
-        margin-left: 0;
-    }
+  .footer-qr {
+    margin-left: 0;
+  }
 
-    .qr-label {
-        transform: translate(-50%, 0);
-        left: 50%;
-        top: auto;
-        bottom: -28px;
-        padding-left: 0;
-        rotate: 0deg;
-    }
+  .qr-label {
+    transform: translate(-50%, 0);
+    left: 50%;
+    top: auto;
+    bottom: -28px;
+    padding-left: 0;
+    rotate: 0deg;
+  }
 }
 
+@media (max-width: 768px) {
+  .footer-top {
+    padding: 40px 0;
+  }
+
+  .footer-container {
+    padding: 0 20px;
+    gap: 25px;
+  }
+
+  .footer-item {
+    min-width: 250px;
+    margin-bottom: 25px;
+  }
+
+  .footer-item .icon-wrapper {
+    width: 55px;
+    height: 55px;
+    margin-right: 15px;
+  }
+
+  .footer-item .icon-wrapper i {
+    font-size: 24px;
+  }
+
+  .footer-item h3 {
+    font-size: 1.6em;
+  }
+
+  .footer-item .subtitle {
+    font-size: 1.1em;
+  }
+
+  .footer-item .description {
+    font-size: 0.95em;
+  }
+
+  .social-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2em;
+  }
+
+  .contact-email {
+    font-size: 1.1em;
+  }
+
+  .footer-bottom {
+    padding: 30px 0;
+  }
+
+  .paseshow-logo {
+    height: 40px;
+    margin-right: 10px;
+  }
+
+  .copyright {
+    font-size: 0.9em;
+  }
+
+  .footer-links ul,
+  .footer-my-account ul {
+    gap: 10px;
+  }
+
+  .footer-links a,
+  .footer-my-account a {
+    font-size: 0.95em;
+  }
+
+  .qr-code {
+    width: 80px;
+    height: 80px;
+    padding: 7px;
+  }
+}
+
+
 @media (max-width: 600px) {
-    .footer-item {
-        flex: 0 0 90%;
-    }
+  .footer-item {
+    flex: 0 0 90%;
+    /* Take almost full width */
+  }
 
-    .footer-top {
-        padding: 35px 0;
-    }
+  .footer-top {
+    padding: 35px 0;
+  }
 
-    .footer-item h3 {
-        font-size: 1.4em;
-    }
+  .footer-item h3 {
+    font-size: 1.4em;
+  }
 
-    .footer-item .subtitle {
-        font-size: 1.1em;
-    }
+  .footer-item .subtitle {
+    font-size: 1.1em;
+  }
 
-    .footer-item .icon-wrapper {
-        width: 50px;
-        height: 50px;
-    }
+  .footer-item .icon-wrapper {
+    width: 50px;
+    height: 50px;
+  }
 
-    .footer-item .icon-wrapper i {
-        font-size: 22px;
-    }
+  .footer-item .icon-wrapper i {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-top {
+    padding: 30px 0;
+  }
+
+  .footer-container {
+    padding: 0 15px;
+    gap: 20px;
+  }
+
+  .footer-item {
+    min-width: unset;
+    margin-bottom: 20px;
+    padding: 0 10px;
+  }
+
+  .footer-item .icon-wrapper {
+    width: 48px;
+    height: 48px;
+    margin-right: 12px;
+  }
+
+  .footer-item .icon-wrapper i {
+    font-size: 20px;
+  }
+
+  .footer-item h3 {
+    font-size: 1.3em;
+  }
+
+  .footer-item .subtitle {
+    font-size: 1em;
+  }
+
+  .footer-item .description {
+    font-size: 0.9em;
+  }
+
+  .social-icon {
+    width: 38px;
+    height: 38px;
+    font-size: 1.1em;
+  }
+
+  .contact-email {
+    font-size: 1em;
+  }
+
+  .footer-bottom {
+    padding: 25px 0;
+  }
+
+  .footer-brand {
+    flex-direction: column;
+    margin-bottom: 15px;
+  }
+
+  .paseshow-logo {
+    height: 35px;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .copyright {
+    font-size: 0.85em;
+  }
+
+  .footer-links ul,
+  .footer-my-account ul {
+    gap: 8px;
+  }
+
+  .footer-links a,
+  .footer-my-account a {
+    font-size: 0.9em;
+  }
+
+  .qr-code {
+    width: 70px;
+    height: 70px;
+    padding: 6px;
+  }
+}
+
+@media (max-width: 380px) {
+  .footer-item h3 {
+    font-size: 1.2em;
+  }
+
+  .footer-item .subtitle {
+    font-size: 0.95em;
+  }
+
+  .footer-item .icon-wrapper {
+    width: 45px;
+    height: 45px;
+  }
+
+  .footer-item .icon-wrapper i {
+    font-size: 18px;
+  }
+
+  .social-icon {
+    width: 35px;
+    height: 35px;
+    font-size: 1em;
+  }
 }

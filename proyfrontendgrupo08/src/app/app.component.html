@@ -1,6 +1,6 @@
 
 <app-navbar></app-navbar>
 
-<router-outlet class="dark-page"></router-outlet>
+<router-outlet [ngClass]="{ 'dark-page': aplicarPadding }"></router-outlet>
 
 <app-footer></app-footer>

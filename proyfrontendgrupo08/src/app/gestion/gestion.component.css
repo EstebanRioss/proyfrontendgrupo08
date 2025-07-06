@@ -75,13 +75,50 @@ main.container::-webkit-scrollbar-thumb:hover {
 
 /* Responsive: en pantallas pequeñas se apila verticalmente */
 @media (max-width: 900px) {
-  :host {
+  .layout {
     flex-direction: column;
     padding: 15px;
+    gap: 20px;
   }
 
   main.container {
-    max-height: none;
-    padding: 20px;
+    max-height: calc(100vh - 30px); /* Adjust max-height for sidebar taking vertical space */
+    padding: 25px 30px;
+    height: auto; /* Allow height to adjust based on content */
+  }
+
+  main.container h1 {
+    font-size: 2rem;
+    margin-bottom: 25px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .layout {
+    padding: 10px;
+    gap: 15px;
+  }
+
+  main.container {
+    padding: 20px 20px;
+    max-height: calc(100vh - 20px); /* Further adjust max-height for very small screens */
+    border-radius: 12px;
+  }
+
+  main.container h1 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 400px) {
+  main.container {
+    padding: 15px 15px;
+  }
+
+  main.container h1 {
+    font-size: 1.6rem;
+    margin-bottom: 15px;
   }
 }

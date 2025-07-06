@@ -218,25 +218,173 @@
 
 /* Responsive para tabla */
 @media (max-width: 768px) {
+  .user-table-section {
+    padding: 15px;
+    border-radius: 12px;
+  }
+
   .section-title {
     font-size: 1.6rem;
+    margin-bottom: 20px;
+    text-align: center;
   }
+
+  .actions-container {
+    justify-content: center; /* Center the add button on smaller screens */
+    margin-bottom: 15px;
+  }
+
+  .btn-add {
+    font-size: 0.95rem;
+    padding: 9px 15px;
+  }
+
+  .btn-add i {
+    font-size: 1.1rem;
+  }
+
+  .table-container {
+    overflow-x: auto;
+  }
+
+  .events-table {
+    font-size: 0.85rem;
+    min-width: 600px; /* Ensure table content doesn't get too squished */
+  }
+
+  .events-table thead tr {
+    font-size: 0.75rem;
+  }
+
+  .events-table th,
+  .events-table td {
+    padding: 10px 12px;
+  }
+
+  .event-logo {
+    width: 70px;
+    height: auto;
+  }
+
+  .actions-cell {
+    flex-direction: column; /* Stack action buttons vertically */
+    gap: 8px;
+    padding-top: 10px;
+    align-items: flex-start; /* Align stacked buttons to the left */
+  }
+
+  .btn-action {
+    width: 100%; /* Make action buttons take full width when stacked */
+    padding: 8px 10px;
+    font-size: 0.85rem;
+    justify-content: center; /* Center content in action buttons */
+  }
+
+  .btn-action i {
+    font-size: 0.95rem;
+  }
+
+  .status-badge {
+    padding: 3px 8px;
+    font-size: 0.75rem;
+  }
+
+  .index-cell {
+    font-size: 0.9rem;
+  }
+
+  .entradas-grid {
+    gap: 4px;
+  }
+
+  .entrada-badge {
+    padding: 3px 8px;
+    font-size: 0.75rem;
+  }
+
+  .capacidad-info {
+    margin-top: 4px;
+    font-size: 0.8rem;
+  }
+
+  .empty-state {
+    padding: 30px 15px;
+    margin-top: 15px;
+  }
+
+  .empty-state p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .user-table-section {
+    padding: 10px;
+  }
+
+  .section-title {
+    font-size: 1.4rem;
+    margin-bottom: 18px;
+  }
+
   .btn-add {
     font-size: 0.9rem;
-    padding: 8px 12px;
+    padding: 7px 12px;
   }
-  .events-table th, .events-table td {
-    padding: 10px 8px;
+
+  .btn-add i {
+    font-size: 1rem;
+  }
+
+  .events-table {
     font-size: 0.8rem;
+    min-width: 500px; /* Slightly reduce min-width for very small screens if needed */
   }
+
+  .events-table thead tr {
+    font-size: 0.7rem;
+  }
+
+  .events-table th,
+  .events-table td {
+    padding: 8px 10px;
+  }
+
   .event-logo {
-    width: 80px;
+    width: 60px;
   }
+
   .actions-cell {
     gap: 6px;
+    padding-top: 8px;
   }
+
   .btn-action {
-    padding: 6px 10px;
+    padding: 6px 8px;
     font-size: 0.8rem;
+  }
+
+  .btn-action i {
+    font-size: 0.9rem;
+  }
+
+  .status-badge {
+    font-size: 0.7rem;
+  }
+
+  .entrada-badge {
+    font-size: 0.7rem;
+  }
+
+  .capacidad-info {
+    font-size: 0.75rem;
+  }
+
+  .empty-state {
+    padding: 25px 10px;
+  }
+
+  .empty-state p {
+    font-size: 0.9rem;
   }
 }

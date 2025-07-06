@@ -1,34 +1,43 @@
-/* Asegura que la app ocupe toda la altura de la pantalla */
 :host {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background-color: #1a2238; /* fondo oscuro por defecto */
+  font-family: 'Roboto', sans-serif;
+  color: #e0e0ff;
 }
 
-/* Navbar siempre arriba */
+/* Navbar fijo arriba */
 app-navbar {
+  position: sticky;
+  top: 0;
   flex-shrink: 0;
-  z-index: 10;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
 
-/* Contenido del router en el medio y se expande */
+/* Contenido del router centrado y expandible */
 router-outlet {
   flex-grow: 1;
   display: block;
-  padding: 1rem;
+
   box-sizing: border-box;
   z-index: 1;
 }
 
-/* Footer fijo al final */
+/* Footer al final de la página */
 app-footer {
   flex-shrink: 0;
   z-index: 10;
+  background-color: #11172b;
+  padding: 1rem;
+  text-align: center;
 }
 
+/* Estilo para páginas oscuras */
 .dark-page {
+  padding-top: 80px;
   background-color: #1a2238;
-  padding-top: 60px; /* por si tenés navbar fijo */
   color: #e0e0ff;
   font-family: 'Roboto', sans-serif;
 }

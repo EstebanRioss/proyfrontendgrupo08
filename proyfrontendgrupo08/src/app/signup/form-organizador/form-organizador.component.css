@@ -268,3 +268,153 @@ form {
   color: #c4baff;
   text-decoration: underline;
 }
+
+@media (max-width: 768px) {
+  .login-page-wrapper {
+    padding: 30px 15px;
+  }
+
+  .login-card {
+    padding: 25px 20px;
+    box-shadow: 0 8px 20px rgba(41, 39, 74, 0.8);
+  }
+
+  .login-header h1 {
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+  }
+
+  .login-header p {
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+  }
+
+  .divider {
+    margin: 20px 0;
+  }
+
+  .form-section .section-title {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  .form-group label {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 10px 12px;
+    font-size: 0.95rem;
+  }
+
+  .error-message {
+    font-size: 0.85rem;
+    margin-top: 4px;
+  }
+
+  .email-verification-message {
+    font-size: 0.85rem;
+    margin-top: 6px;
+    padding: 5px 8px;
+  }
+
+  .submit-button {
+    padding: 12px 0;
+    font-size: 1rem;
+    margin-top: 8px;
+  }
+
+  .api-success-alert,
+  .api-error-alert {
+    padding: 10px 12px;
+    margin-bottom: 15px;
+  }
+
+  .api-success-alert p {
+    font-size: 0.85rem;
+    margin-top: 6px;
+  }
+
+  .codigo-form {
+    margin-top: 12px;
+  }
+
+  .codigo-form label {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+  }
+
+  .codigo-form input {
+    padding: 10px 12px;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    letter-spacing: 3px;
+  }
+
+  .codigo-form button {
+    padding: 10px 0;
+    font-size: 0.95rem;
+  }
+
+  .register-link-container {
+    margin-top: 20px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-page-wrapper {
+    padding: 20px 10px;
+  }
+
+  .login-card {
+    padding: 20px 15px;
+  }
+
+  .login-header h1 {
+    font-size: 1.6rem;
+  }
+
+  .login-header p {
+    font-size: 0.8rem;
+  }
+
+  .form-section .section-title {
+    font-size: 1rem;
+  }
+
+  .form-group label {
+    font-size: 0.85rem;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 8px 10px;
+    font-size: 0.9rem;
+  }
+
+  .submit-button {
+    padding: 10px 0;
+    font-size: 0.95rem;
+  }
+
+  .codigo-form input {
+    padding: 8px 10px;
+    font-size: 0.9rem;
+  }
+
+  .codigo-form button {
+    padding: 9px 0;
+    font-size: 0.9rem;
+  }
+
+  .register-link-container {
+    font-size: 0.85rem;
+  }
+}

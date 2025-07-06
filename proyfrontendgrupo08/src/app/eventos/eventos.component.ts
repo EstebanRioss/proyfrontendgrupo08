@@ -29,30 +29,31 @@ export class EventosComponent {
     }
   
     getCategorias() {
-    this.serviceC.getCategorias().subscribe(
-      result => {
+      this.serviceC.getCategorias().subscribe(result => {
         console.log(result);
         let vcate: CategoriaEvento = new CategoriaEvento();
-        result.forEach((element: any) => {
-          Object.assign(vcate, element);
-          this.Categorias.push(vcate);
-          vcate = new CategoriaEvento();
-        });
-       }
-      );
+        result
+          .filter((element: any) => element.estado === true) // solo los activos
+          .forEach((element: any) => {
+            Object.assign(vcate, element);
+            this.Categorias.push(vcate);
+            vcate = new CategoriaEvento();
+          });
+      });
     }
-    getEvento(){
-    this.serviceE.getEventos().subscribe(
-      result => {
+
+    getEvento() {
+      this.serviceE.getEventos().subscribe(result => {
         console.log(result);
         let vevento: Evento = new Evento();
-        result.forEach((element: any) => {
-          Object.assign(vevento, element);
-          this.Eventos.push(vevento);
-          vevento = new Evento();
-        });
-       }
-      );
+        result
+          .filter((element: any) => element.estado === true) // solo los activos
+          .forEach((element: any) => {
+            Object.assign(vevento, element);
+            this.Eventos.push(vevento);
+            vevento = new Evento();
+          });
+      });
     }
 
     detalles(evento : Evento){

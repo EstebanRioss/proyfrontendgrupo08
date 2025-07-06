@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -18,6 +18,29 @@ export class NavbarComponent implements OnInit, OnDestroy {
   currentUser: Usuario | null = null;
   private userSubscription!: Subscription;
   carritoTotal: number = 0;
+  menuAbierto: boolean = false;
+  dropdownAbierto: boolean = false;
+  navbarScrolled = false;
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    this.navbarScrolled = window.scrollY > 20;
+  }
+
+  toggleMenu(): void {
+    this.menuAbierto = !this.menuAbierto;
+    if (!this.menuAbierto) {
+      this.dropdownAbierto = false;
+    }
+  }
+  toggleDropdown(): void {
+    this.dropdownAbierto = !this.dropdownAbierto;
+  }
+  
+  cerrarMenu(): void {
+    this.menuAbierto = false;
+    this.dropdownAbierto = false;
+  } 
 
   constructor(
     private carritoService : CarritoService,
@@ -26,6 +49,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    this.onWindowScroll();
     this.carritoService.getCarritoObservable().subscribe(carrito => {
       this.carritoTotal = carrito.reduce((total, item) => total + item.cantidad, 0);
     });

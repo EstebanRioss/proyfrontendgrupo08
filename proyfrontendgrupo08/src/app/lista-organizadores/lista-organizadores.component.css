@@ -192,3 +192,192 @@
   gap: 15px;
   margin-top: 20px;
 }
+@media (max-width: 768px) {
+  .user-table-section {
+    padding: 15px;
+    margin: 15px;
+    border-radius: 12px;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .table-container {
+    overflow-x: auto;
+  }
+
+  .users-table {
+    font-size: 0.85rem;
+    min-width: 600px; /* Ensures table is still readable and scrolls */
+  }
+
+  .users-table thead tr {
+    font-size: 0.75rem;
+  }
+
+  .users-table th,
+  .users-table td {
+    padding: 10px 12px;
+  }
+
+  .actions-cell {
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .btn-action {
+    width: 100%;
+    padding: 8px 10px;
+    font-size: 0.85rem;
+    justify-content: center;
+  }
+
+  .btn-action i {
+    font-size: 0.9rem;
+  }
+
+  .loading-state,
+  .error-state,
+  .empty-state {
+    padding: 30px 15px;
+  }
+
+  .loading-state p,
+  .error-state p,
+  .empty-state p {
+    font-size: 1rem;
+  }
+
+  .error-state button {
+    margin-top: 15px;
+  }
+
+  .modal-content {
+    padding: 25px;
+    border-radius: 12px;
+    width: 95%; /* Make modal slightly wider on smaller screens */
+  }
+
+  .modal-close-btn {
+    top: 5px;
+    right: 10px;
+    font-size: 1.8rem;
+  }
+
+  .modal-title {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+  }
+
+  .detail-grid {
+    grid-template-columns: 1fr; /* Stack detail items vertically */
+    gap: 15px;
+    margin-bottom: 25px;
+  }
+
+  .detail-item strong {
+    font-size: 0.85rem;
+    margin-bottom: 3px;
+  }
+
+  .detail-item span {
+    font-size: 0.95rem;
+  }
+
+  .detail-item p {
+    padding: 8px;
+    font-size: 0.95rem;
+  }
+
+  .detail-item.full-width {
+    grid-column: auto;
+  }
+
+  .modal-actions {
+    flex-direction: column; /* Stack modal action buttons */
+    gap: 10px;
+    margin-top: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .user-table-section {
+    padding: 10px;
+    margin: 10px;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+    margin-bottom: 18px;
+  }
+
+  .users-table {
+    font-size: 0.8rem;
+    min-width: 500px; /* Adjust min-width further for very small screens */
+  }
+
+  .users-table thead tr {
+    font-size: 0.7rem;
+  }
+
+  .users-table th,
+  .users-table td {
+    padding: 8px 10px;
+  }
+
+  .btn-action {
+    font-size: 0.8rem;
+    padding: 7px 8px;
+  }
+
+  .btn-action i {
+    font-size: 0.85rem;
+  }
+
+  .loading-state,
+  .error-state,
+  .empty-state {
+    padding: 25px 10px;
+  }
+
+  .loading-state p,
+  .error-state p,
+  .empty-state p {
+    font-size: 0.9rem;
+  }
+
+  .modal-content {
+    padding: 20px;
+  }
+
+  .modal-title {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+  }
+
+  .detail-grid {
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .detail-item strong {
+    font-size: 0.8rem;
+  }
+
+  .detail-item span {
+    font-size: 0.9rem;
+  }
+
+  .detail-item p {
+    padding: 7px;
+    font-size: 0.9rem;
+  }
+
+  .modal-actions {
+    gap: 8px;
+  }
+}

@@ -3,6 +3,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+
 }
 
 .formulario-categoria {
@@ -90,4 +91,86 @@
   background-color: #4c3e92;
   cursor: not-allowed;
   box-shadow: none;
+}
+@media (max-width: 768px) {
+  .formulario-categoria {
+    margin: 30px auto;
+    padding: 25px 20px;
+    border-radius: 14px;
+    box-shadow: 0 10px 25px rgba(41, 39, 74, 0.8);
+  }
+
+  .formulario-categoria h2 {
+    font-size: 1.7rem;
+    margin-bottom: 20px;
+  }
+
+  .formulario-categoria .form-group {
+    margin-bottom: 16px;
+  }
+
+  .formulario-categoria label {
+    font-size: 0.95rem;
+    margin-bottom: 5px;
+  }
+
+  .formulario-categoria input[type="text"],
+  .formulario-categoria textarea {
+    padding: 9px 12px;
+    font-size: 0.95rem;
+    border-radius: 9px;
+    min-height: 60px; /* Adjust min-height for textarea */
+  }
+
+  .formulario-categoria textarea {
+    min-height: 90px; /* Adjust min-height for textarea */
+  }
+
+  .formulario-categoria button {
+    padding: 12px 0;
+    font-size: 1.05rem;
+    border-radius: 10px;
+    margin-top: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .formulario-categoria {
+    margin: 20px auto;
+    padding: 20px 15px;
+    border-radius: 12px;
+  }
+
+  .formulario-categoria h2 {
+    font-size: 1.5rem;
+    margin-bottom: 18px;
+  }
+
+  .formulario-categoria .form-group {
+    margin-bottom: 14px;
+  }
+
+  .formulario-categoria label {
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+  }
+
+  .formulario-categoria input[type="text"],
+  .formulario-categoria textarea {
+    padding: 8px 10px;
+    font-size: 0.9rem;
+    border-radius: 8px;
+    min-height: 50px; /* Adjust min-height for textarea */
+  }
+
+  .formulario-categoria textarea {
+    min-height: 80px; /* Adjust min-height for textarea */
+  }
+
+  .formulario-categoria button {
+    padding: 10px 0;
+    font-size: 1rem;
+    border-radius: 9px;
+    margin-top: 12px;
+  }
 }

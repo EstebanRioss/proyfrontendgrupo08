@@ -142,18 +142,81 @@
   text-transform: capitalize;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
-  .forms-grid {
-    grid-template-columns: 1fr;
+  .profile-card {
+    padding: 25px 20px; /* Ajustar padding para pantallas más pequeñas */
+    gap: 20px; /* Reducir el espacio entre secciones */
   }
 
-  .profile-card {
-    padding: 20px;
+  .section-title {
+    font-size: 1.8em; /* Reducir el tamaño del título principal */
+    margin-bottom: 8px;
+  }
+
+  .forms-grid {
+    grid-template-columns: 1fr; /* Una columna para las cajas de formulario */
+    gap: 20px; /* Reducir el espacio entre las cajas */
   }
 
   .form-box {
-    padding: 20px 15px;
+    padding: 20px 18px; /* Ajustar padding de las cajas de formulario */
+    gap: 15px; /* Reducir el espacio entre elementos dentro de la caja */
+  }
+
+  .form-box h3 {
+    font-size: 1.2em; /* Reducir el tamaño del título de la caja */
+    margin-bottom: 8px;
+  }
+
+  .form-group label {
+    font-size: 0.9em; /* Ajustar tamaño de la etiqueta */
+    margin-bottom: 4px;
+  }
+
+  .form-group input {
+    padding: 10px 12px; /* Ajustar padding del input */
+    font-size: 0.9em; /* Ajustar tamaño de la fuente del input */
+  }
+
+  .btn {
+    padding: 10px 15px; /* Ajustar padding de los botones */
+    font-size: 0.95em; /* Ajustar tamaño de la fuente del botón */
+    flex-direction: column; /* Apilar texto e icono si es necesario (si hay icono) */
+    gap: 5px; /* Espacio entre el icono y el texto apilados */
+  }
+
+  .spinner {
+    width: 16px; /* Ajustar tamaño del spinner */
+    height: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-card {
+    padding: 20px 15px; /* Más ajustes de padding para móviles muy pequeños */
+    gap: 15px;
+  }
+
+  .section-title {
+    font-size: 1.6em; /* Más reducción para títulos */
+  }
+
+  .form-box {
+    padding: 18px 15px;
+  }
+
+  .form-box h3 {
+    font-size: 1.1em;
+  }
+
+  .form-group input {
+    padding: 8px 10px;
+    font-size: 0.85em;
+  }
+
+  .btn {
+    padding: 9px 12px;
+    font-size: 0.9em;
   }
 }
 

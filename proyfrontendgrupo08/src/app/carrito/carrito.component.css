@@ -187,15 +187,176 @@
 
 /* Responsividad */
 @media (max-width: 768px) {
-  .carrito-container {
-    padding: 25px 20px;
+  :host {
+    padding: 15px;
   }
+
+  .carrito-container {
+    margin: 30px auto;
+    padding: 25px 20px;
+    border-radius: 14px;
+    box-shadow:
+      0 8px 25px rgba(41, 39, 74, 0.8),
+      inset 0 0 15px rgba(90, 0, 255, 0.2);
+  }
+
+  .carrito-container h2 {
+    font-size: 2.2em;
+    margin-bottom: 20px;
+  }
+
+  .carrito-table {
+    margin-bottom: 20px;
+    border-radius: 10px;
+  }
+
   .carrito-table thead th,
   .carrito-table tbody td {
-    padding: 10px 12px;
+    padding: 10px 15px;
     font-size: 0.9em;
   }
+
+  .btn-eliminar {
+    padding: 5px 10px;
+    border-radius: 7px;
+    font-size: 0.9em;
+  }
+
+  .total-container {
+    font-size: 1.3em;
+    margin-bottom: 25px;
+  }
+
   .btn-comprar {
+    padding: 12px 0;
+    font-size: 1.05em;
+    border-radius: 12px;
+  }
+
+  .empty-message {
+    margin: 60px auto;
+    padding: 25px 20px;
+    border-radius: 12px;
+    font-size: 1.1em;
+  }
+
+  .empty-message p {
+    margin-bottom: 15px;
+  }
+
+  .btn-volver {
+    padding: 9px 16px;
+    border-radius: 10px;
+    font-size: 0.95em;
+  }
+}
+
+@media (max-width: 600px) {
+  .carrito-container h2 {
+    font-size: 1.8em;
+  }
+}
+
+
+@media (max-width: 480px) {
+  :host {
+    padding: 10px;
+  }
+
+  .carrito-container {
+    margin: 20px auto;
+    padding: 20px 15px;
+    border-radius: 12px;
+    box-shadow:
+      0 6px 20px rgba(41, 39, 74, 0.7),
+      inset 0 0 10px rgba(90, 0, 255, 0.15);
+  }
+
+  .carrito-container h2 {
+    font-size: 1.8em;
+    margin-bottom: 18px;
+  }
+
+  .carrito-table {
+    margin-bottom: 18px;
+    border-radius: 8px;
+  }
+
+  .carrito-table thead th,
+  .carrito-table tbody td {
+    padding: 8px 10px;
+    font-size: 0.8em;
+  }
+
+  .carrito-table thead th:nth-child(2),
+  .carrito-table tbody td:nth-child(2) {
+    /* Hide 'Cantidad' column */
+    display: none;
+  }
+
+  .btn-eliminar {
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 0.8em;
+  }
+
+  .total-container {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+  }
+
+  .btn-comprar {
+    padding: 10px 0;
+    font-size: 0.95em;
+    border-radius: 10px;
+  }
+
+  .empty-message {
+    margin: 40px auto;
+    padding: 20px 15px;
+    border-radius: 10px;
     font-size: 1em;
+  }
+
+  .empty-message p {
+    margin-bottom: 12px;
+  }
+
+  .btn-volver {
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 380px) {
+  .carrito-container h2 {
+    font-size: 1.6em;
+  }
+
+  .carrito-table thead th,
+  .carrito-table tbody td {
+    padding: 7px 8px;
+    font-size: 0.75em;
+  }
+
+  .btn-eliminar {
+    font-size: 0.75em;
+  }
+
+  .total-container {
+    font-size: 1em;
+  }
+
+  .btn-comprar {
+    font-size: 0.9em;
+  }
+
+  .empty-message {
+    font-size: 0.9em;
+  }
+
+  .btn-volver {
+    font-size: 0.85em;
   }
 }

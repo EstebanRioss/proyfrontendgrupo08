@@ -127,23 +127,112 @@
 }
 
 @media (max-width: 768px) {
+  .user-table-section {
+    padding: 15px;
+    border-radius: 12px;
+  }
+
   .section-title {
     font-size: 1.6rem;
+    margin-bottom: 20px;
+    text-align: center;
   }
+
+  .actions-container {
+    justify-content: center;
+    margin-bottom: 15px;
+  }
+
   .btn-add {
-    font-size: 0.9rem;
-    padding: 8px 12px;
+    font-size: 0.95rem;
+    padding: 9px 15px;
   }
+
+  .btn-add i {
+    font-size: 1.1rem;
+  }
+
+  .table-container {
+    overflow-x: auto;
+  }
+
+  .categories-table {
+    font-size: 0.85rem;
+    min-width: 450px; /* Ensure table content remains readable */
+  }
+
+  .categories-table thead tr {
+    font-size: 0.75rem;
+  }
+
   .categories-table th,
   .categories-table td {
-    padding: 10px 8px;
-    font-size: 0.8rem;
+    padding: 10px 12px;
   }
+
+  .actions-cell {
+    flex-direction: column; /* Stack action buttons vertically */
+    gap: 8px;
+    padding-top: 10px;
+    align-items: flex-start; /* Align stacked buttons to the left */
+  }
+
+  .btn-action {
+    width: 100%; /* Make action buttons take full width when stacked */
+    padding: 8px 10px;
+    font-size: 0.85rem;
+    justify-content: center; /* Center content in action buttons */
+  }
+
+  .btn-action i {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .user-table-section {
+    padding: 10px;
+  }
+
+  .section-title {
+    font-size: 1.4rem;
+    margin-bottom: 18px;
+  }
+
+  .btn-add {
+    font-size: 0.9rem;
+    padding: 7px 12px;
+  }
+
+  .btn-add i {
+    font-size: 1rem;
+  }
+
+  .categories-table {
+    font-size: 0.8rem;
+    min-width: 380px; /* Further reduce min-width for very small screens if necessary */
+  }
+
+  .categories-table thead tr {
+    font-size: 0.7rem;
+  }
+
+  .categories-table th,
+  .categories-table td {
+    padding: 8px 10px;
+  }
+
   .actions-cell {
     gap: 6px;
+    padding-top: 8px;
   }
+
   .btn-action {
-    padding: 6px 10px;
+    padding: 6px 8px;
     font-size: 0.8rem;
+  }
+
+  .btn-action i {
+    font-size: 0.9rem;
   }
 }

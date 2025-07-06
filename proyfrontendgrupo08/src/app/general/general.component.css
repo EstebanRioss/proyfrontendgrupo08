@@ -71,14 +71,63 @@
 }
 
 /* Responsive para móvil */
+@media (max-width: 768px) {
+  .summary-section {
+    padding: 15px;
+    border-radius: 12px;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .summary-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+  }
+
+  .summary-card {
+    padding: 18px;
+    font-size: 1.2rem;
+  }
+
+  .summary-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+  }
+
+  .summary-card p {
+    font-size: 2.2rem;
+  }
+}
+
 @media (max-width: 480px) {
+  .summary-section {
+    padding: 10px;
+  }
+
   .section-title {
     font-size: 1.6rem;
+    margin-bottom: 18px;
   }
+
+  .summary-grid {
+    grid-template-columns: 1fr; /* Stack cards vertically on very small screens */
+    gap: 10px;
+  }
+
   .summary-card {
     font-size: 1.1rem;
     padding: 16px;
   }
+
+  .summary-card h3 {
+    font-size: 1rem;
+    margin-bottom: 6px;
+  }
+
   .summary-card p {
     font-size: 1.8rem;
   }
