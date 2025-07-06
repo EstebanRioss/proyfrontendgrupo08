@@ -39,9 +39,9 @@
   <div class="form-group">
     <label>Tipos de Entradas</label>
     <div *ngFor="let entrada of evento.entradas; let i = index" class="entrada-item">
-      <input type="text" [(ngModel)]="entrada.tipo" name="tipo{{i}}" placeholder="Tipo (Ej: VIP)" required />
-      <input type="number" [(ngModel)]="entrada.precio" name="precio{{i}}" placeholder="Precio" required />
-      <input type="number" [(ngModel)]="entrada.cantidad" name="cantidad{{i}}" placeholder="Cantidad" required />
+      <input type="text" [(ngModel)]="entrada.tipo" name="tipo{{i}}" placeholder="Tipo (Ej: VIP)" required (blur)="checkAutoAgregar(i)" />
+      <input type="number" [(ngModel)]="entrada.precio" name="precio{{i}}" placeholder="Precio" required (blur)="checkAutoAgregar(i)" />
+      <input type="number" [(ngModel)]="entrada.cantidad" name="cantidad{{i}}" placeholder="Cantidad" required (blur)="checkAutoAgregar(i)" />
       <button type="button" (click)="eliminarEntrada(i)">Eliminar</button>
       <br>
     </div>

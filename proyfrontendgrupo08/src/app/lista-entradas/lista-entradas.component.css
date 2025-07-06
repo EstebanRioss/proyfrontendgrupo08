@@ -20,18 +20,48 @@
   user-select: none;
 }
 
+.actions-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.btn-add {
+  background-color: #7a5eff;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.3s ease;
+  user-select: none;
+}
+
+.btn-add i {
+  font-size: 1.2rem;
+}
+
+.btn-add:hover {
+  background-color: #a58eff;
+}
+
 .table-wrapper {
   overflow-x: auto;
 }
 
-.tickets-table {
+.events-table {
   width: 100%;
   border-collapse: collapse;
   font-size: 0.9rem;
   color: #e0e0ff;
 }
 
-.tickets-table thead tr {
+.events-table thead tr {
   background-color: #283950;
   text-transform: uppercase;
   font-weight: 700;
@@ -40,8 +70,8 @@
   user-select: none;
 }
 
-.tickets-table th,
-.tickets-table td {
+.events-table th,
+.events-table td {
   padding: 12px 16px;
   border-bottom: 1px solid #3b4a66;
   vertical-align: middle;
@@ -52,17 +82,15 @@
   font-weight: 600;
 }
 
-/* Filas cuerpo */
-.tickets-table tbody tr {
+.events-table tbody tr {
   transition: background-color 0.3s ease;
   cursor: default;
 }
 
-.tickets-table tbody tr:hover {
+.events-table tbody tr:hover {
   background-color: #394b6a;
 }
 
-/* Celda acciones */
 .actions-cell {
   display: flex;
   flex-wrap: wrap;
@@ -70,7 +98,6 @@
   padding-top: 14px;
 }
 
-/* Botones acción */
 .btn-action {
   background-color: #7a5eff;
   color: white;
@@ -91,7 +118,6 @@
   font-size: 1rem;
 }
 
-/* Botón eliminar */
 .btn-delete {
   background-color: #e06c75;
 }
@@ -104,19 +130,75 @@
   background-color: #a58eff;
 }
 
+.status-badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.8rem;
+  display: inline-block;
+  text-transform: capitalize;
+}
+
+.status-badge.status-active {
+  background-color: #28a745;
+  color: white;
+}
+
+.status-badge.status-inactive {
+  background-color: #6c757d;
+  color: white;
+}
+
+.inactive-row {
+  opacity: 0.6;
+  background-color: #2c3a4a;
+}
+
+.inactive-row:hover {
+  opacity: 0.8;
+}
+
+.index-cell {
+  font-weight: 700;
+  color: #7a5eff;
+  user-select: none;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  border: 2px dashed #3b4a66;
+  border-radius: 12px;
+  margin-top: 20px;
+}
+
+.empty-state p {
+  font-size: 1.2rem;
+  color: #9ea7be;
+  margin: 0;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .section-title {
     font-size: 1.6rem;
   }
-  .tickets-table th,
-  .tickets-table td {
+
+  .btn-add {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+  }
+
+  .events-table th,
+  .events-table td {
     padding: 10px 8px;
     font-size: 0.8rem;
   }
+
   .actions-cell {
     gap: 6px;
   }
+
   .btn-action {
     padding: 6px 10px;
     font-size: 0.8rem;

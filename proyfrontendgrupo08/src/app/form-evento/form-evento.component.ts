@@ -27,6 +27,7 @@ export class FormEventoComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.activatedRoute.snapshot.paramMap.get('id') || '';
+    this.evento.entradas = [];
     this.cargarCategorias();
 
     if (this.id) {
@@ -35,6 +36,7 @@ export class FormEventoComponent implements OnInit {
   }
 
   agregarEntrada(): void {
+    if (!this.evento.entradas) this.evento.entradas = [];
     this.evento.entradas.push({ tipo: '', precio: 0, cantidad: 0 });
     this.recalcularSuma();
   }
@@ -47,6 +49,18 @@ export class FormEventoComponent implements OnInit {
   recalcularSuma(): void {
     this.sumaEntradas = this.evento.entradas.reduce((acc, e) => acc + Number(e.cantidad || 0), 0);
     this.capacidadValida = this.sumaEntradas === Number(this.evento.capacidadTotal || 0);
+  }
+
+  checkAutoAgregar(index: number) {
+    const entrada = this.evento.entradas[index];
+    const esUltima = index === this.evento.entradas.length - 1;
+    
+    const completa = entrada.tipo && entrada.precio && entrada.cantidad;
+    
+    if (esUltima && completa) {
+      // Solo si es la última y está completa, se agrega una nueva vacía
+      this.agregarEntrada();
+    }
   }
 
   onFileSelected(event: any): void {

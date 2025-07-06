@@ -109,3 +109,54 @@
   cursor: not-allowed;
   box-shadow: none;
 }
+
+.formulario-evento .entrada-item {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 25px;
+  padding: 16px;
+  background: #2a314a;
+  border: 1px solid #585e8c;
+  border-radius: 12px;
+}
+
+/* Botón Eliminar de cada entrada */
+.formulario-evento .entrada-item button {
+  align-self: flex-end;
+  width: auto;
+  padding: 10px 16px;
+  background-color: #e06464;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.formulario-evento .entrada-item button:hover {
+  background-color: #c55050;
+  box-shadow: 0 0 10px rgba(255, 100, 100, 0.3);
+}
+
+/* Botón de agregar entrada */
+.formulario-evento .form-group > button[type="button"] {
+  width: fit-content;
+  padding: 10px 20px;
+  background-color: #5e87f0;
+  border: none;
+  border-radius: 12px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.formulario-evento .form-group > button[type="button"]:hover {
+  background-color: #456fd1;
+  box-shadow: 0 0 12px #5e87f0aa;
+}

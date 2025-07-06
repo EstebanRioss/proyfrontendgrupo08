@@ -19,61 +19,63 @@ interface EntradasAgrupadas {
 })
 export class MisEntradasComponent implements OnInit{
   entradasAgrupadas: EntradasAgrupadas = { pendientes: [], proximos: [], pasados: [] };
-  isLoading = true;
-  errorMsg: string | null = null;
+isLoading = true;
+errorMsg: string | null = null;
 
-  constructor(
-    private authService: AuthService,
-    private entradaService: EntradaService
-  ) { }
+constructor(
+  private authService: AuthService,
+  private entradaService: EntradaService
+) { }
 
-  ngOnInit(): void {
-    this.cargarEntradas();
+ngOnInit(): void {
+  this.cargarEntradas();
+}
+
+cargarEntradas(): void {
+  const token = this.authService.getToken();
+
+  if (!token) {
+    this.errorMsg = 'No se pudo identificar al usuario. Por favor, inicie sesión de nuevo.';
+    this.isLoading = false;
+    return;
   }
 
-   cargarEntradas(): void {
-    const usuarioId = this.authService.getId();
-
-    if (!usuarioId) {
-      this.errorMsg = 'No se pudo identificar al usuario. Por favor, inicie sesión de nuevo.';
+  this.entradaService.getMisEntradas().subscribe({
+    next: (entradas) => {
+      this.agruparEntradas(entradas);
       this.isLoading = false;
-      return;
+    },
+    error: (err) => {
+      this.errorMsg = err.message || 'No se pudieron cargar tus entradas.';
+      this.isLoading = false;
     }
+  });
+}
 
-    this.entradaService.getEntradasPorUsuario(usuarioId).subscribe({
-      next: (entradas) => {
-        this.agruparEntradas(entradas);
-        this.isLoading = false;
-      },
-      error: (err) => {
-        this.errorMsg = err.message || 'No se pudieron cargar tus entradas.';
-        this.isLoading = false;
+private agruparEntradas(entradas: Entrada[]): void {
+  const ahora = new Date();
+  const grupos: EntradasAgrupadas = { pendientes: [], proximos: [], pasados: [] };
+
+  for (const entrada of entradas) {
+    if (entrada.estado === 'pendiente') {
+      grupos.pendientes.push(entrada);
+    } else {
+      const eventoFecha = (typeof entrada.eventoId === 'object' && entrada.eventoId?.fecha) 
+                            ? new Date(entrada.eventoId.fecha) 
+                            : null;
+
+      if (eventoFecha && eventoFecha > ahora) {
+        grupos.proximos.push(entrada);
+      } else {
+        grupos.pasados.push(entrada);
       }
-    });
     }
-    private agruparEntradas(entradas: Entrada[]): void {
-      const ahora = new Date();
-      const grupos: EntradasAgrupadas = { pendientes: [], proximos: [], pasados: [] };
+  }
 
-      for (const entrada of entradas) {
-        if (entrada.estado === 'pendiente') {
-          grupos.pendientes.push(entrada);
-        } else {
-          // Aseguramos que eventoId y su fecha existan y sean del tipo correcto
-          const eventoFecha = (typeof entrada.eventoId === 'object' && entrada.eventoId?.fecha) 
-                                ? new Date(entrada.eventoId.fecha) 
-                                : null;
+  this.entradasAgrupadas = grupos;
+}
 
-          if (eventoFecha && eventoFecha > ahora) {
-            grupos.proximos.push(entrada);
-          } else {
-            grupos.pasados.push(entrada);
-          }
-        }
-      }
-      this.entradasAgrupadas = grupos;
-    }
-    getEventoNombre(entrada: any): string {
+getEventoNombre(entrada: any): string {
   const evento = entrada.eventoId;
   return typeof evento === 'object' && evento?.nombre ? evento.nombre : 'Evento no disponible';
 }
