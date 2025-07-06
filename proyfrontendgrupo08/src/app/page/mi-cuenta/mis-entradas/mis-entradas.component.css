@@ -155,6 +155,24 @@
   transform: none;
   box-shadow: 0 8px 25px rgba(26, 42, 58, 0.7);
 }
+.qr-container {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.qr-image {
+  max-width: 150px;
+  height: auto;
+  border: 1px solid #ccc;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.qr-label {
+  font-size: 0.85rem;
+  color: #555;
+  margin-top: 5px;
+}
 @media (max-width: 768px) {
   .mis-entradas-container {
     margin: 20px auto; /* Reducir el margen en móviles */

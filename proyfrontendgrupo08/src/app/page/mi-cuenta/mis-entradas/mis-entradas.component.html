@@ -47,7 +47,11 @@
           </div>
           <div class="card-body">
             <p><i class="fas fa-calendar-alt"></i> {{ getEventoFecha(entrada) }}</p>
-            <p><i class="fas fa-qrcode"></i> Código QR: {{ entrada.Qr }}</p>
+            <!-- Imagen QR -->
+            <div class="qr-container" *ngIf="entrada.qr">
+              <img [src]="entrada.qr" alt="Código QR de la entrada" class="qr-image" />
+              <p class="qr-label">Código QR</p>
+            </div>
           </div>
           <div class="card-footer">
             <a *ngIf="getEventoLink(entrada)" [routerLink]="getEventoLink(entrada)" class="ver-evento-button">Ver Evento</a>
