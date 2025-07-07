@@ -104,9 +104,11 @@ body {
     display: flex;
     justify-content: center;
     gap: 15px;
+    text-decoration: none;
 }
 
 .social-icon {
+    text-decoration: none;
     width: 45px;
     height: 45px;
     background: linear-gradient(135deg, #7053ff, #9b7aff);

@@ -7,7 +7,7 @@
     </div>
 
     <!-- Menú de navegación -->
-    <ul class="navbar-menu" [ngClass]="{ 'show': menuAbierto }">
+    <ul class="navbar-menu" [ngClass]="{ 'show': menuAbierto, 'show-scrolled': navbarScrolled }">
       <li><a [routerLink]="['/inicio']" class="navbar-item" (click)="cerrarMenu()">Inicio</a></li>
       <li><a [routerLink]="['/eventos']" class="navbar-item" (click)="cerrarMenu()">Eventos</a></li>
 
@@ -26,10 +26,10 @@
         <span class="navbar-item user-greeting">
           Hola, {{ currentUser.nombre }}
         </span>
-        <div class="dropdown-menu" [class.show]="dropdownAbierto">
-          <a [routerLink]="['/micuenta']" class="dropdown-item" (click)="cerrarMenu()">Mi Cuenta</a>
-          <a *ngIf="currentUser.rol === 'administrador' || currentUser.rol === 'organizador'" [routerLink]="['/gestion']" class="dropdown-item" (click)="cerrarMenu()">Gestión</a>
-          <a (click)="logout(); cerrarMenu()" class="dropdown-item logout-button">Cerrar Sesión</a>
+        <div class="dropdown-menu" [ngClass]="{ 'dropdown-menu-scrolled': navbarScrolled}">
+          <a [routerLink]="['/micuenta']" class="dropdown-item" (click)="cerrarMenu()" [ngClass]="{ 'dropdown-item-scrolled': navbarScrolled}">Mi Cuenta</a>
+          <a *ngIf="currentUser.rol === 'administrador' || currentUser.rol === 'organizador'" [ngClass]="{ 'dropdown-item-scrolled': navbarScrolled}" [routerLink]="['/gestion']" class="dropdown-item" (click)="cerrarMenu()">Gestión</a>
+          <a (click)="logout(); cerrarMenu()" class="dropdown-item logout-button" [ngClass]="{ 'dropdown-item-scrolled': navbarScrolled}">Cerrar Sesión</a>
         </div>
       </li>
     </ul>
