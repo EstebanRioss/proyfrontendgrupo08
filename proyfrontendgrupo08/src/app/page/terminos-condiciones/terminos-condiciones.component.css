@@ -1,0 +1,532 @@
+/* Importar fuente Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+/* Estilos generales del CSS base */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    margin-top: 0;
+    line-height: 1.3;
+    letter-spacing: 0.03em;
+    color: #f0f0f5;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #c8a2ff;
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Títulos de sección (no directamente usados en este HTML pero mantenidos para consistencia) */
+.section-title {
+    font-size: 2.8em;
+    font-weight: 800;
+    margin-bottom: 50px;
+    text-align: center;
+    color: #e9e9ff;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-shadow: 0 3px 10px rgba(138, 43, 226, 0.7);
+    animation: glowText 3s ease-in-out infinite alternate;
+}
+
+@keyframes glowText {
+    from {
+        text-shadow:
+            0 0 5px #c8a2ff,
+            0 0 10px #bb88ff,
+            0 0 15px #a273ff,
+            0 0 20px #8e44ad;
+    }
+    to {
+        text-shadow:
+            0 0 10px #d4baff,
+            0 0 20px #c39eff,
+            0 0 30px #b079ff,
+            0 0 40px #9b4dff;
+    }
+}
+
+/* Fondo oscuro general */
+.dark-bg {
+    background-color: #121a2a;
+    padding: 70px 0;
+}
+
+/* Texto blanco */
+.white-text {
+    color: #fff;
+}
+
+/* Botones con sombra y efecto pulido */
+.blue-button,
+.dark-blue-button {
+    background: linear-gradient(135deg, #ae9ece 0%, #7a52b0 100%);
+    color: #fff;
+    padding: 12px 28px;
+    border-radius: 30px;
+    font-weight: 600;
+    border: none;
+    box-shadow: 0 6px 15px rgba(174, 158, 206, 0.6);
+    transition: all 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+    display: inline-block;
+    user-select: none;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.blue-button:hover,
+.dark-blue-button:hover {
+    background: linear-gradient(135deg, #8b6dbb 0%, #563d8c 100%);
+    box-shadow: 0 10px 30px rgba(140, 95, 190, 0.8);
+    transform: translateY(-5px) scale(1.05);
+}
+
+.blue-button:active,
+.dark-blue-button:active {
+    transform: translateY(-2px) scale(1);
+    box-shadow: 0 6px 20px rgba(110, 70, 170, 0.6);
+}
+
+/* Botón light con borde animado */
+.light-button {
+    background-color: transparent;
+    color: #d1c4ff;
+    padding: 12px 28px;
+    border-radius: 30px;
+    font-weight: 600;
+    border: 2px solid #d1c4ff;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    box-shadow: 0 0 15px rgba(209, 196, 255, 0.4);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.light-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, #b899ff, transparent);
+    transition: all 0.5s ease;
+    pointer-events: none;
+}
+
+.light-button:hover {
+    background-color: #b899ff;
+    color: #1a2a3a;
+    box-shadow: 0 0 30px #b899ff;
+}
+
+.light-button:hover::before {
+    left: 100%;
+}
+
+.hero-banner {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  filter: brightness(0.4) contrast(0.9) saturate(0.8);
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(138, 43, 226, 0.7), rgba(42, 7, 71, 0.8));
+  mix-blend-mode: multiply;
+  z-index: 1;
+}
+
+.hero-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(138, 43, 226, 0.7), rgba(42, 7, 71, 0.8));
+    z-index: 1;
+    mix-blend-mode: multiply;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    color: #f0e6ff;
+    font-size: 3.5em;
+    font-weight: 900;
+    text-align: center;
+    text-shadow:
+      0 0 10px #c8a2ff,
+      0 0 20px #a279ff,
+      0 0 30px #6a3ab2;
+    line-height: 1.1;
+    animation: heroTextFadeIn 1.8s ease forwards;
+}
+
+@keyframes heroTextFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.highlight-text {
+    color: #d1b2ff;
+    font-style: normal;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-shadow:
+      0 0 6px #ffccff,
+      0 0 12px #c080ff;
+    animation: pulseGlow 2.5s infinite alternate;
+}
+
+@keyframes pulseGlow {
+    0% {
+        text-shadow:
+          0 0 6px #ffccff,
+          0 0 14px #c080ff,
+          0 0 20px #bb88ff;
+    }
+    100% {
+        text-shadow:
+          0 0 12px #f0b3ff,
+          0 0 22px #d89cff,
+          0 0 28px #a374ff;
+    }
+}
+
+/* --- SECCIÓN TÉRMINOS Y CONDICIONES --- */
+.terms-section {
+    padding: 80px 0;
+}
+
+.terms-container {
+    max-width: 800px; /* Ancho más contenido para contenido de texto largo */
+    margin: 0 auto;
+    background-color: #292f4e; /* Fondo oscuro similar a show-card */
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(106, 58, 178, 0.4);
+    padding: 40px;
+}
+
+.terms-intro,
+.terms-footer {
+    color: #e0d0ff;
+    font-size: 1.1em;
+    line-height: 1.7;
+    margin-bottom: 30px;
+    text-align: justify; /* Justifica el texto para una apariencia formal */
+    opacity: 0.9;
+}
+
+.terms-footer {
+    margin-bottom: 0; /* Elimina margen inferior del último elemento */
+    margin-top: 30px;
+    font-weight: 500;
+}
+
+.terms-content {
+    margin-bottom: 30px;
+}
+
+.term-section {
+    margin-bottom: 25px; /* Espacio entre cada sección de términos */
+}
+
+.term-section:last-child {
+    margin-bottom: 0;
+}
+
+.term-section h3 {
+    font-size: 1.6em;
+    font-weight: 700;
+    color: #d1b2ff; /* Color vibrante para los títulos de sección */
+    margin-bottom: 12px;
+    letter-spacing: 0.03em;
+}
+
+.term-section p {
+    font-size: 1.05em;
+    color: #b0a3d9;
+    line-height: 1.7;
+    text-align: justify; /* Justifica el texto del contenido */
+}
+
+
+/* --- SECCIÓN CONTACTO (EXISTENTE) --- */
+.contact-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #292f4e, #1a2a3a);
+}
+
+.contact-info {
+    text-align: center;
+    color: #f0e6ff;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.contact-info h2 {
+    font-size: 2.5em;
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-shadow: 1px 1px 6px rgba(155, 77, 255, 0.7);
+}
+
+.contact-info p {
+    font-size: 1.2em;
+    opacity: 0.9;
+    margin-bottom: 40px;
+}
+
+.contact-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.contact-button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.05em;
+}
+
+/* Base styles for body/html to ensure dark background */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #121a2a; /* Color de fondo general para toda la página */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* Media Queries: responsividad mejorada */
+@media (max-width: 992px) {
+    .section-title {
+        font-size: 2.4em;
+        margin-bottom: 40px;
+    }
+
+    .hero-content {
+        font-size: 2.8em;
+    }
+
+    .hero-content h2 {
+        font-size: 1.3em;
+    }
+
+    .hero-content p {
+        font-size: 0.5em;
+    }
+
+    .terms-container {
+        padding: 30px;
+        margin: 0 20px; /* Añade margen lateral en tabletas */
+    }
+
+    .terms-intro,
+    .terms-footer {
+        font-size: 1em;
+    }
+
+    .term-section h3 {
+        font-size: 1.4em;
+    }
+
+    .term-section p {
+        font-size: 0.95em;
+    }
+
+    .contact-info h2 {
+        font-size: 2em;
+    }
+
+    .contact-info p {
+        font-size: 1.1em;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-banner {
+        height: 50vh;
+        padding: 50px 0;
+    }
+
+    .hero-content {
+        font-size: 2.2em !important;
+        padding: 0 15px;
+    }
+
+    .hero-content h2 {
+        font-size: 1.1em;
+    }
+
+    .hero-content p {
+        font-size: 0.45em;
+    }
+
+    .terms-section,
+    .contact-section {
+        padding: 50px 0;
+    }
+
+    .terms-container {
+        padding: 25px;
+        margin: 0 15px;
+    }
+
+    .terms-intro,
+    .terms-footer {
+        font-size: 0.95em;
+        margin-bottom: 20px;
+    }
+    
+    .terms-footer {
+        margin-top: 20px;
+    }
+
+    .term-section {
+        margin-bottom: 20px;
+    }
+
+    .term-section h3 {
+        font-size: 1.2em;
+        margin-bottom: 8px;
+    }
+
+    .term-section p {
+        font-size: 0.9em;
+    }
+
+    .contact-info h2 {
+        font-size: 1.8em;
+    }
+
+    .contact-info p {
+        font-size: 1em;
+    }
+
+    .contact-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .contact-button {
+        width: 100%;
+        max-width: 280px;
+        margin: 0 auto;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 12px;
+    }
+
+    .section-title {
+        font-size: 1.8em;
+        margin-bottom: 30px;
+    }
+
+    .hero-banner {
+        height: 40vh;
+        padding: 40px 0;
+    }
+
+    .hero-content {
+        font-size: 1.8em !important;
+    }
+
+    .hero-content h2 {
+        font-size: 1em;
+    }
+
+    .hero-content p {
+        font-size: 0.4em;
+    }
+
+    .terms-container {
+        padding: 20px;
+        margin: 0 10px;
+    }
+
+    .terms-intro,
+    .terms-footer {
+        font-size: 0.85em;
+        margin-bottom: 15px;
+    }
+
+    .terms-footer {
+        margin-top: 15px;
+    }
+
+    .term-section {
+        margin-bottom: 15px;
+    }
+
+    .term-section h3 {
+        font-size: 1.1em;
+        margin-bottom: 6px;
+    }
+
+    .term-section p {
+        font-size: 0.85em;
+    }
+
+    .contact-info h2 {
+        font-size: 1.5em;
+    }
+
+    .contact-info p {
+        font-size: 0.95em;
+    }
+
+    .blue-button,
+    .dark-blue-button,
+    .light-button {
+        width: 100%;
+        text-align: center;
+        padding: 12px;
+        font-size: 1em;
+    }
+}

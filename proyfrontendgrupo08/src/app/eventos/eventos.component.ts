@@ -26,6 +26,7 @@ export class EventosComponent {
       this.Eventos = new Array<Evento>();
       this.getCategorias();
       this.getEvento();
+      window.scrollTo(0, 0);
     }
   
     getCategorias() {

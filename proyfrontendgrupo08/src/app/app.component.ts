@@ -16,6 +16,6 @@ export class AppComponent {
 
   get aplicarPadding(): boolean {
     const ruta = this.router.url;
-    return !['/', '/inicio', '/eventos'].includes(ruta); // rutas que NO llevan padding
+    return !['/', '/inicio', '/eventos','/preguntas-frecuentes','/terminos-condiciones','/medios-pago'].includes(ruta); // rutas que NO llevan padding
   }
 }
