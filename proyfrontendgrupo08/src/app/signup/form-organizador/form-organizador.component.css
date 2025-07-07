@@ -1,28 +1,42 @@
 .login-page-wrapper {
+  position: relative;
   min-height: 100vh;
-  width: 100%;
-  background-image: url(https://www.alquitel.com/wp-content/uploads/2017/12/noch.jpg);
   display: flex;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
   justify-content: center;
   align-items: center;
-  padding: 40px 20px;
-  box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
-  color: #e0e0ff;
+  padding: 20px;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+  background: #000; /* fallback */
 }
 
+/* Video de fondo */
+.background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: 0;
+  filter: brightness(0.5) saturate(0.7);
+  pointer-events: none; /* para que no interfiera con clicks */
+}
+
+/* Tarjeta de login por encima */
 .login-card {
-  background: linear-gradient(180deg, #3b4a69, #2a3751);
-  border-radius: 16px;
-  box-shadow: 0 12px 30px rgba(41, 39, 74, 0.9);
-  max-width: 600px;
+  position: relative;
+  z-index: 1;
+  background: rgba(31, 31, 56, 0.85); /* fondo semitransparente para legibilidad */
+  padding: 40px 35px;
+  border-radius: 15px;
+  box-shadow: 0 8px 30px rgba(106, 58, 178, 0.5);
   width: 100%;
-  padding: 30px 35px;
-  box-sizing: border-box;
-  text-align: center;
+  max-width: 420px;
+  color: #f0e6ff;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
 }
 
 /* Header */

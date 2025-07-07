@@ -15,6 +15,7 @@ import { EventosService } from '../service/eventos.service';
 export class PagesComponent{
   EventosNuevos : Array<Evento>;
   EventosProximos : Array<Evento>;
+  
   constructor(private serviceE  : EventosService,private router : Router){
     this.EventosNuevos = new  Array<Evento>();
     this.EventosProximos = new Array<Evento>();
