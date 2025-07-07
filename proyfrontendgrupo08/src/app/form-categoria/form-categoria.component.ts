@@ -20,6 +20,7 @@ export class FormCategoriaComponent {
   }
 
   ngOnInit(): void {
+    window.scrollTo(0, 0);
     this.id = this.activatedRoute.snapshot.paramMap.get('id') || '';
 
     if (this.id) {

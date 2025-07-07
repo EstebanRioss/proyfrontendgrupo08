@@ -1,0 +1,98 @@
+<main>
+  <section class="hero-banner">
+            <video
+                class="hero-video"
+                autoplay
+                muted
+                loop
+                preload="auto"
+                playsinline
+                src="assets/video/fondo.webm"
+            ></video>
+
+            <div class="hero-overlay"></div>
+
+            <div class="hero-content">
+              <h2>Medios de <span class="highlight-text">Pago</span></h2>
+              <p>Múltiples opciones para que pagues como prefieras</p>
+            </div>
+  </section>
+
+  <section class="payment-methods-section dark-bg">
+    <div class="container">
+      <div class="methods-grid">
+        <div *ngFor="let categoria of metodosPago" class="method-category">
+          <div class="category-header" [style.background-color]="categoria.color">
+            <i [class]="categoria.icono"></i>
+            <h3>{{ categoria.categoria }}</h3>
+          </div>
+          <div class="methods-list">
+            <div *ngFor="let metodo of categoria.metodos" class="method-item">
+              <h4>{{ metodo.nombre }}</h4>
+              <p>{{ metodo.descripcion }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="benefits-section dark-bg">
+    <div class="container">
+      <h2 class="section-title white-text">Beneficios de Nuestros Pagos</h2>
+      <div class="benefits-grid">
+        <div *ngFor="let beneficio of beneficios" class="benefit-card">
+          <div class="benefit-icon">
+            <i [class]="beneficio.icono"></i>
+          </div>
+          <div class="benefit-content">
+            <h3>{{ beneficio.titulo }}</h3>
+            <p>{{ beneficio.descripcion }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="security-section dark-bg">
+    <div class="container">
+      <div class="security-info">
+        <h2>Tu Seguridad es Nuestra Prioridad</h2>
+        <p>Todas las transacciones están protegidas con la más alta tecnología de seguridad. Utilizamos encriptación SSL de 256 bits para proteger tu información personal y financiera.</p>
+        <div class="security-badges">
+          <div class="security-badge">
+            <i class="fas fa-lock"></i>
+            <span>SSL Seguro</span>
+          </div>
+          <div class="security-badge">
+            <i class="fas fa-shield-alt"></i>
+            <span>Protección de Datos</span>
+          </div>
+          <div class="security-badge">
+            <i class="fas fa-user-shield"></i>
+            <span>Privacidad Garantizada</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-section dark-bg">
+    <div class="container">
+      <div class="contact-info">
+        <h2>¿Tienes dudas sobre los pagos?</h2>
+        <p>Nuestro equipo de soporte está aquí para ayudarte</p>
+        <div class="contact-buttons">
+          <a href="mailto:soporte@paseshow.com.ar" class="contact-button blue-button">
+            <i class="far fa-envelope"></i>
+            Contactar Soporte
+          </a>
+          <button [routerLink]="['/preguntas-frecuentes']" class="contact-button light-button">
+            <i class="fas fa-question-circle"></i>
+            Ver FAQ
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main> 

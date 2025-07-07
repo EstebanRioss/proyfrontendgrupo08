@@ -22,6 +22,7 @@ export class CarritoComponent implements OnInit {
     private authservice : AuthService
   ){}
   ngOnInit(): void {
+    window.scrollTo(0, 0);
     this.carritoService.getCarritoObservable().subscribe(items => {
       this.carrito = items;
       this.calcularTotal();

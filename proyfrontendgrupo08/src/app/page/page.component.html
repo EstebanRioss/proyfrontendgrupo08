@@ -67,8 +67,8 @@
                 <div class="info-block blue-bg">
                     <div class="info-text">
                         <h2>Formas de pago</h2>
-                        <p>Pagá con tarjeta, transferencia o en cuotas sin interés.</p>
-                        <a class="info-button light-button">Ver opciones</a>
+                        <p>Pagá con tarjeta o en cuotas sin interés.</p>
+                        <a class="info-button light-button" [routerLink]="['/medios-pago']">Ver opciones</a>
                     </div>
                     <div class="info-icon">
                         <i class="fas fa-credit-card"></i>
@@ -79,7 +79,7 @@
                     <div class="info-text">
                         <h2>Entradas Digitales</h2>
                         <p>Accedé al show con tu ticket desde el celular</p>
-                        <a class="info-button light-button">Ver entrada</a>
+                        <button (click)="miCuenta()" class="info-button light-button">Ver entrada</button>
                     </div>
                     <div class="info-icon">
                         <i class="fas fa-ticket-alt"></i>

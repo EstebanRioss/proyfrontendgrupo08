@@ -26,6 +26,7 @@ export class FormEventoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    window.scrollTo(0, 0);
     this.id = this.activatedRoute.snapshot.paramMap.get('id') || '';
     this.evento.entradas = [];
     this.cargarCategorias();

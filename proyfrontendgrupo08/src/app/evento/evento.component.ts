@@ -46,6 +46,7 @@ export class EventoComponent {
     this.currentUser = this.authService.currentUserValue;
     this.cargarEvento();
     this.cantidadesSeleccionadas = this.evento?.entradas?.map(() => 0) || [];
+    window.scrollTo(0, 0);
   }
 
   comprarEntrada(): void {
