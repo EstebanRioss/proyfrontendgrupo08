@@ -1,0 +1,57 @@
+<main>
+  <section class="hero-banner">
+            <video
+                class="hero-video"
+                autoplay
+                muted
+                loop
+                preload="auto"
+                playsinline
+                src="assets/video/fondo.webm"
+            ></video>
+
+            <div class="hero-overlay"></div>
+
+            <div class="hero-content">
+              <h2>Preguntas <span class="highlight-text">Frecuentes</span></h2>
+              <p>Encontrá respuestas a las dudas más comunes</p>
+            </div>
+  </section>
+
+  <section class="faq-section dark-bg">
+    <div class="container">
+      <div class="faq-container">
+        <div *ngFor="let item of preguntas; let i = index" class="faq-item">
+          <div class="faq-question" (click)="togglePregunta(i)">
+            <h3>{{ item.pregunta }}</h3>
+            <span class="faq-icon" [class.open]="preguntaAbierta === i">
+              <i class="fas fa-chevron-down"></i>
+            </span>
+          </div>
+          <div class="faq-answer" [class.open]="preguntaAbierta === i">
+            <p>{{ item.respuesta }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-section dark-bg">
+    <div class="container">
+      <div class="contact-info">
+        <h2>¿No encontraste tu respuesta?</h2>
+        <p>Nuestro equipo está aquí para ayudarte</p>
+        <div class="contact-buttons">
+          <a href="mailto:info@paseshow.com.ar" class="contact-button blue-button">
+            <i class="far fa-envelope"></i>
+            Enviar Email
+          </a>
+          <a href="#" class="contact-button light-button">
+            <i class="fas fa-phone"></i>
+            Llamar
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

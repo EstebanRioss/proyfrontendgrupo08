@@ -13,12 +13,18 @@ import { FormOrganizadorComponent } from './signup/form-organizador/form-organiz
 import { ListaUsuariosComponent } from './lista-usuarios/lista-usuarios.component';
 import { EditarUsuariosComponent } from './lista-usuarios/editar-usuarios/editar-usuarios.component';
 import { CarritoComponent } from './carrito/carrito.component';
+import { PreguntasFrecuentesComponent } from './page/preguntas-frecuentes/preguntas-frecuentes.component';
+import { TerminosCondicionesComponent } from './page/terminos-condiciones/terminos-condiciones.component';
+import { MediosPagoComponent } from './page/medios-pago/medios-pago.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'inicio', pathMatch: 'full' },
     { path: 'inicio', component: PagesComponent },
     { path: 'eventos', component: EventosComponent },
-    { path: 'evento/ver/:id', component: EventoComponent },        // antes: evento/:id
+    { path: 'evento/ver/:id', component: EventoComponent },
+    { path: 'preguntas-frecuentes', component: PreguntasFrecuentesComponent},
+    { path: 'terminos-condiciones', component: TerminosCondicionesComponent},
+    { path: 'medios-pago', component: MediosPagoComponent},        // antes: evento/:id
 
     { path: 'login', component: LoginComponent },
     { path: 'signup', component: SignupComponent },

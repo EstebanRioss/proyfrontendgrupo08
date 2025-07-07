@@ -1,4 +1,3 @@
-/* Fuentes y reset básico */
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Poppins', sans-serif;
     margin-top: 0;
@@ -579,4 +578,4 @@ a:hover {
     padding: 12px;
     font-size: 1em;
   }
-}
+}/* Fuentes y reset básico */
