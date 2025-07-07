@@ -1,0 +1,27 @@
+<form class="formulario-categoria" (submit)="guardarCategoria()">
+  <h2>{{ id ? 'Editar Categoría' : 'Crear Categoría' }}</h2>
+
+  <div class="form-group">
+    <label for="nombre">Nombre *</label>
+    <input
+      type="text"
+      id="nombre"
+      name="nombre"
+      [(ngModel)]="categoria.nombre"
+      required
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="descripcion">Descripción</label>
+    <textarea
+      id="descripcion"
+      name="descripcion"
+      [(ngModel)]="categoria.descripcion"
+    ></textarea>
+  </div>
+
+  <button type="submit">
+    {{ id ? 'Actualizar Categoría' : 'Guardar Categoría' }}
+  </button>
+</form>

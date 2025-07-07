@@ -1,0 +1,55 @@
+<form class="formulario-evento" (submit)="guardarEvento()">
+  <h2>{{ id ? 'Editar Evento' : 'Crear Evento' }}</h2>
+
+  <div class="form-group">
+    <label>Nombre *</label>
+    <input type="text" [(ngModel)]="evento.nombre" name="nombre" required />
+  </div>
+
+  <div class="form-group">
+    <label>Descripción</label>
+    <textarea [(ngModel)]="evento.descripcion" name="descripcion"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label>Fecha *</label>
+    <input type="datetime-local" [(ngModel)]="evento.fecha" name="fecha" required />
+  </div>
+
+  <div class="form-group">
+    <label>Ubicación</label>
+    <input type="text" [(ngModel)]="evento.ubicacionNombre" name="ubicacionNombre" />
+  </div>
+
+  <div class="form-group">
+    <label>Latitud</label>
+    <input type="text" [(ngModel)]="evento.latitud" name="latitud" />
+  </div>
+
+  <div class="form-group">
+    <label>Longitud</label>
+    <input type="text" [(ngModel)]="evento.longitud" name="longitud" />
+  </div>
+
+  <div class="form-group">
+    <label>Capacidad Total *</label>
+    <input type="number" [(ngModel)]="evento.capacidadTotal" name="capacidadTotal" required />
+  </div>
+
+  <div class="form-group">
+    <label>Imagen *</label>
+    <input type="file" (change)="onFileSelected($event)" accept="image/*" />
+    <img *ngIf="evento.imagenUrl" [src]="evento.imagenUrl" alt="Vista previa" style="max-width: 200px; margin-top: 10px;">
+  </div>
+
+  <div class="form-group">
+    <label>Categoría *</label>
+    <select [(ngModel)]="evento.categoriaId" name="categoriaId" required>
+      <option *ngFor="let c of categorias" [value]="c._id">{{ c.nombre }}</option>
+    </select>
+  </div>
+
+  <button type="submit">
+    {{ id ? 'Actualizar Evento' : 'Guardar Evento' }}
+  </button>
+</form>
