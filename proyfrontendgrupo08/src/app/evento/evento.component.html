@@ -33,6 +33,11 @@
               <span class="price-label">Capacidad Total</span>
               <span class="price">{{ evento.capacidadTotal }} personas</span>
             </div>
+
+            <div class="price-info">
+              <span class="price-label">Entradas Disponibles</span>
+              <span class="price">{{ entradasDisponibles }}</span>
+            </div>
             <div class="date-location">
               <div class="date">
                 <span class="day">{{ evento.fecha | date:'dd' }}</span>
@@ -84,8 +89,12 @@
       <h2 class="section-title">Acerca del evento</h2>
       <p><strong>{{ evento.nombre | uppercase }}</strong></p>
       <p>{{ evento.descripcion }}</p>
-      <p><strong>Categoría:</strong> {{ getNombreCategoria(evento) }}</p>
-      <p><strong>Organizado por:</strong> {{ getNombreOrganizador(evento) }}</p>
+      <p>
+        <strong>Categoría:</strong> {{  getNombreCategoria(evento) }}
+      </p>
+      <p>
+        <strong>Organizado por:</strong> {{ getNombreOrganizador(evento) }}
+      </p>
     </div>
   </section>
 

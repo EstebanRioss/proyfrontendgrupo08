@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, Input } from '@angular/core';
 import { EventosService } from '../service/eventos.service';
 import { EntradaService } from '../service/entrada.service';
 import { UsuarioService } from '../service/usuario.service';
@@ -7,7 +7,17 @@ import { Evento } from '../models/evento';
 import { Usuario } from '../models/usuario';
 import { AuthService } from '../service/auth.service';
 import { CommonModule } from '@angular/common';
-import { Subscription } from 'rxjs';
+import { forkJoin, Subscription } from 'rxjs';
+import { Chart } from 'chart.js';
+import {
+  BarController,
+  BarElement,
+  CategoryScale,
+  LinearScale,
+  Tooltip,
+  Legend
+} from 'chart.js';
+Chart.register(BarController, BarElement, CategoryScale, LinearScale, Legend, Tooltip);
 
 @Component({
   selector: 'app-general',
@@ -15,7 +25,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './general.component.html',
   styleUrl: './general.component.css'
 })
-export class GeneralComponent {
+export class GeneralComponent{
   Entradas : Array<Entrada>;
   Eventos : Array<Evento>;
   Usuarios : Array<Usuario>;
@@ -35,14 +45,72 @@ export class GeneralComponent {
     this.Eventos = new Array<Evento>();
     this.Usuarios = new Array<Usuario>();
     this.eventoOrganizador = new Array<Evento>();
-    this.getEntradas();
-    this.getEvento();
-    this.getUsuarios();
+    this.crearOActualizarGrafico();
+  }
+  crearOActualizarGrafico(){
+    this.calcularResumen();
+    const ctx = document.getElementById('resumenChart') as HTMLCanvasElement;
+    if (!ctx) return;
+
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Usuarios', 'Eventos', 'Entradas', 'Ganancias'],
+        datasets: [{
+          label: 'Resumen',
+          data: [
+            this.totalUsuarios,
+            this.totalEventos,
+            this.totalEntradas,
+            this.totalGanancias
+          ],
+          backgroundColor: [
+            '#4e73df',
+            '#1cc88a',
+            '#36b9cc',
+            '#f6c23e'
+          ],
+          borderColor: [
+            '#2e59d9',
+            '#17a673',
+            '#2c9faf',
+            '#dda20a'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        },
+        plugins: {
+          legend: {
+            display: false
+          }
+        }
+      }
+    });
   }
 
   ngOnInit(): void {
     this.userSubscription = this.authService.currentUser.subscribe(user => {
-      this.currentUser = user;
+    this.currentUser = user;
+
+    forkJoin({
+        entradas: this.serviceEn.getEntradas(),
+        eventos: this.serviceE.getEventos(),
+        usuarios: this.serviceU.getUsuarios()
+      }).subscribe(({ entradas, eventos, usuarios }) => {
+        this.Entradas = entradas.map((e: any) => Object.assign(new Entrada(), e));
+        this.Eventos = eventos.map((e: any) => Object.assign(new Evento(), e));
+        this.Usuarios = usuarios.map((u: any) => Object.assign(new Usuario(), u));
+
+        this.calcularResumen();
+        this.crearOActualizarGrafico();
+      });
     });
   }
 
@@ -52,49 +120,6 @@ export class GeneralComponent {
     }
   }
 
-  getEntradas(){
-        this.serviceEn.getEntradas().subscribe(
-          result => {
-            console.log(result);
-            let ve: Entrada = new Entrada();
-            result.forEach((element: any) => {
-              Object.assign(ve, element);
-              this.Entradas.push(ve);
-              ve = new Entrada();
-
-            });
-            this.calcularResumen();
-           }
-          );
-  }
-  getEvento(){
-    this.serviceE.getEventos().subscribe(
-      result => {
-        console.log(result);
-        let vevento: Evento = new Evento();
-        result.forEach((element: any) => {
-          Object.assign(vevento, element);
-          this.Eventos.push(vevento);
-          vevento = new Evento();
-        });
-        this.calcularResumen();
-       }
-      );
-    }
-    getUsuarios(){
-        this.serviceU.getUsuarios().subscribe( // <--- ASÍ QUEDA CORREGIDO
-            result => {
-            console.log(result);
-            let vusuario: Usuario = new Usuario();
-            result.forEach((element: any) => {
-              Object.assign(vusuario, element);
-              this.Usuarios.push(vusuario);
-              vusuario = new Usuario();
-            });
-            this.calcularResumen();
-           }
-          );
-    }
     calcularResumen() {
       if(this.currentUser?.rol == "organizador"){
         let idOrganizador: string | undefined = this.currentUser?._id;

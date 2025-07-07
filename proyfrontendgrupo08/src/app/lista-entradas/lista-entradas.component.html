@@ -9,8 +9,9 @@
           <tr>
             <th>#</th>
             <th>Nombre</th>
-            <th>Evento</th>
             <th>Precio</th>
+            <th>Estado</th>
+            <th>Evento</th>
             <th>Acciones</th>
           </tr>
         </thead>
@@ -31,11 +32,9 @@
               </span>
             </td>
 
-            <td class="actions-cell">
-              <button class="btn-action" (click)="Modificar(e)">
-                <i class="fas fa-edit"></i> Modificar
-              </button>
+            <td>${{ e.eventoId }}</td>
 
+            <td class="actions-cell">
               <button class="btn-action btn-delete" (click)="Eliminar(e)">
                 <i class="fas fa-trash-alt"></i> Eliminar
               </button>

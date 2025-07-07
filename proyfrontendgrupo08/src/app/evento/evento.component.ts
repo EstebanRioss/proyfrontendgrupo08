@@ -12,6 +12,9 @@ import { AuthService } from '../service/auth.service';
 import { FormsModule } from '@angular/forms';
 import { MpService } from '../service/mp.service';
 import { CarritoService } from '../service/carrito.service';
+import { Usuario } from '../models/usuario';
+import { CategoriaEvento } from '../models/categoria-evento';
+import { CategoriaService } from '../service/categoria.service';
 
 @Component({
   selector: 'app-evento',
@@ -33,9 +36,13 @@ export class EventoComponent {
   cantidadOpciones: number[] = Array.from({ length: 10 }, (_, i) => i + 1);
   cantidadesSeleccionadas: number[] = [];
   mensajeError: string = '';
+  entradasVendidas = 0;
+  entradasDisponibles = 0;
+  categoriaNombre: string = 'Sin categoria';
+  organizadorNombre: string = 'Sin nombre';
 
 
-  constructor(private carritoService : CarritoService,private mpService : MpService,private activatedRoute : ActivatedRoute,private serviceE : EventosService,private sanitizer: DomSanitizer,private router : Router, private authService : AuthService){
+  constructor(private serviceU :UsuarioService,private serviceC : CategoriaService,private carritoService : CarritoService,private mpService : MpService,private activatedRoute : ActivatedRoute,private serviceE : EventosService,private sanitizer: DomSanitizer,private router : Router, private authService : AuthService){
     this.currentUser = this.authService.currentUserValue;
     this.cargarEvento();
     this.cantidadesSeleccionadas = this.evento?.entradas?.map(() => 0) || [];
@@ -113,6 +120,8 @@ export class EventoComponent {
             const url = `https://maps.google.com/maps?q=${this.evento.latitud},${this.evento.longitud}&z=15&output=embed`;
             this.mapaUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
           }
+          this.entradasVendidas = this.evento.entradas?.length || 0;
+          this.entradasDisponibles = this.evento.capacidadTotal! - this.entradasVendidas;
           this.iniciarCountdown();
         } else {
           console.error('Evento no encontrado.');
@@ -120,16 +129,15 @@ export class EventoComponent {
       });
     });
   }
-
   getNombreOrganizador(evento: Evento): string {
-    if (typeof evento.organizadorId === 'string') return evento.organizadorId;
-    return evento.organizadorId?.nombre || 'Sin nombre';
-  }
+      if (typeof evento.organizadorId === 'string') return evento.organizadorId;
+      return evento.organizadorId?.nombre || 'Sin nombre';
+    }
 
-  getNombreCategoria(evento: Evento): string {
-    if (typeof evento.categoriaId === 'string') return evento.categoriaId;
-    return evento.categoriaId?.nombre || 'Sin categoría';
-  }
+    getNombreCategoria(evento: Evento): string {
+      if (typeof evento.categoriaId === 'string') return evento.categoriaId;
+      return evento.categoriaId?.nombre || 'Sin categoría';
+    }
 
   iniciarCountdown(): void {
     if (!this.evento || !this.evento.fecha) return;
