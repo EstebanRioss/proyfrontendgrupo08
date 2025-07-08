@@ -67,4 +67,11 @@ export class CarritoService {
     this.carrito$.next([]);
     localStorage.removeItem('carrito');
   }
+  eliminarItemPorIndice(index: number) {
+  if (index >= 0 && index < this.carrito.length) {
+    this.carrito.splice(index, 1);
+    this.carrito$.next([...this.carrito]);
+    this.guardarCarritoLocalStorage();
+  }
+}
 }

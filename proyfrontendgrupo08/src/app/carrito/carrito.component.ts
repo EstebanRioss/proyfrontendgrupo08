@@ -34,14 +34,7 @@ export class CarritoComponent implements OnInit {
   }
 
   eliminarItem(index: number) {
-    this.carrito.splice(index, 1);
-    this.carritoService.limpiarCarrito();
-    this.carritoService.getCarritoObservable().subscribe(items => {
-      // Actualizamos el carrito en el servicio después de eliminar
-      for (const item of this.carrito) {
-        this.carritoService.agregarAlCarrito(item);
-      }
-    });
+    this.carritoService.eliminarItemPorIndice(index);
     this.calcularTotal();
   }
   pagarCarrito() {
