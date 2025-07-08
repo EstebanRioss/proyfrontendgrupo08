@@ -70,6 +70,7 @@ export class CarritoComponent implements OnInit {
     ).subscribe({
       next: resp => {
         window.location.href = resp.initPoint;
+        this.carritoService.limpiarCarrito();
       },
       error: () => {
         alert('Error al iniciar la compra.');
