@@ -1,30 +1,31 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { provideRouter, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+
+import { registerLocaleData } from '@angular/common';
+import localeEs from '@angular/common/locales/es';
+
+registerLocaleData(localeEs, 'es-ES'); // <- FUERA del NgModule
 
 import { AppComponent } from './app.component';
 import { PagesComponent } from './page/page.component';
-import { routes } from './app.routes';
 
 @NgModule({
+  declarations: [AppComponent, PagesComponent],
   imports: [
-    HttpClientModule,
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(
-      [
-        { path: 'inicio', component: PagesComponent },
-        { path: '', redirectTo: 'inicio', pathMatch: 'full' }
-      ],
-      {
-        scrollPositionRestoration: 'enabled',
-        anchorScrolling: 'enabled'
-      }
-    )
+    HttpClientModule,
+    RouterModule.forRoot([
+      { path: 'inicio', component: PagesComponent },
+      { path: '', redirectTo: 'inicio', pathMatch: 'full' }
+    ])
   ],
-  providers: [],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'es-ES' }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -40,9 +40,9 @@
             </div>
             <div class="date-location">
               <div class="date">
-                <span class="day">{{ evento.fecha | date:'dd' }}</span>
-                <span class="month">{{ evento.fecha | date:'MMMM' }}</span>
-                <span class="weekday">{{ evento.fecha | date:'EEEE' }}</span>
+                <span class="day">{{ evento.dia }}</span>
+                <span class="month">{{ evento.mes }}</span>
+                <span class="weekday">{{ evento.diaSemana }}</span>
               </div>
               <div class="time-location">
                 <i class="far fa-calendar-alt"></i> A las <span class="time">{{ evento.fecha | date:'HH:mm' }}</span> |

@@ -10,10 +10,14 @@ export class Evento {
   latitud?: string;
   longitud?: string;
   capacidadTotal?: number;
+  stock?: number;
   imagenUrl?: string;
   estado?: boolean;
   categoriaId?: string | CategoriaEvento;
   organizadorId?: string | Usuario;
+  dia?: string;
+  mes?: string;
+  diaSemana?: string;
   entradas: {
     tipo: string;
     precio: number;

@@ -36,10 +36,10 @@ export class EventoComponent {
   cantidadOpciones: number[] = Array.from({ length: 10 }, (_, i) => i + 1);
   cantidadesSeleccionadas: number[] = [];
   mensajeError: string = '';
-  entradasVendidas = 0;
   entradasDisponibles = 0;
   categoriaNombre: string = 'Sin categoria';
   organizadorNombre: string = 'Sin nombre';
+  today: any;
 
 
   constructor(private serviceU :UsuarioService,private serviceC : CategoriaService,private carritoService : CarritoService,private mpService : MpService,private activatedRoute : ActivatedRoute,private serviceE : EventosService,private sanitizer: DomSanitizer,private router : Router, private authService : AuthService){
@@ -105,15 +105,48 @@ export class EventoComponent {
     });
   }
 
+  traducirFecha(fecha: Date): string {
+    const dias = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+    const meses = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio',
+                  'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+
+    const diaSemana = dias[fecha.getDay()];
+    const diaMes = fecha.getDate();
+    const mes = meses[fecha.getMonth()];
+    const anio = fecha.getFullYear();
+
+    return `${diaSemana}, ${diaMes} de ${mes} de ${anio}`;
+  }
+
+  getDia(fecha: Date): string {
+    return fecha.getDate().toString().padStart(2, '0');
+  }
+
+  getMes(fecha: Date): string {
+    const meses = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio',
+                  'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+    return meses[fecha.getMonth()];
+  }
+
+  getDiaSemana(fecha: Date): string {
+    const dias = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+    return dias[fecha.getDay()];
+  }
+
   cargarEvento(): void {
     this.activatedRoute.params.subscribe(params => {
       this.id = params['id'];
       this.serviceE.getEvento(this.id).subscribe(result => {
         if (result) {
+          const fechaDate = new Date(result.fecha);
           // Asignar correctamente los datos
           this.evento = {
             ...result,
-            fecha: new Date(result.fecha) // Convertir fecha correctamente
+            fecha: fechaDate, // se mantiene como Date para pipes
+            fechaFormateada: this.traducirFecha(fechaDate),
+            dia: this.getDia(fechaDate),
+            mes: this.getMes(fechaDate),
+            diaSemana: this.getDiaSemana(fechaDate) // Convertir fecha correctamente
           };
 
           // Solo si hay lat/lng se genera la URL segura
@@ -121,8 +154,7 @@ export class EventoComponent {
             const url = `https://maps.google.com/maps?q=${this.evento.latitud},${this.evento.longitud}&z=15&output=embed`;
             this.mapaUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
           }
-          this.entradasVendidas = this.evento.entradas?.length || 0;
-          this.entradasDisponibles = this.evento.capacidadTotal! - this.entradasVendidas;
+          this.entradasDisponibles = this.evento.stock!;
           this.iniciarCountdown();
         } else {
           console.error('Evento no encontrado.');
