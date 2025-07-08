@@ -3,7 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../service/auth.service';
 import { EntradaService } from '../../../service/entrada.service';
 import { Entrada } from '../../../models/entrada';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { Evento } from '../../../models/evento';
 
 interface EntradasAgrupadas {
   pendientes: Entrada[];
@@ -22,7 +23,7 @@ export class MisEntradasComponent implements OnInit{
 isLoading = true;
 errorMsg: string | null = null;
 
-constructor(
+constructor(private router : Router,
   private authService: AuthService,
   private entradaService: EntradaService
 ) { }
@@ -95,10 +96,14 @@ getEventoUbicacion(entrada: any): string {
   return typeof evento === 'object' && evento?.ubicacionNombre ? evento.ubicacionNombre : 'Ubicación no disponible';
 }
 
+detalles(evento : Evento){
+      this.router.navigate(['evento/ver', evento._id])
+}
+
 getEventoLink(entrada: any): any[] | null {
   const evento = entrada.eventoId;
   if (typeof evento === 'object' && evento?._id) {
-    return ['/evento', evento._id];
+    return ['/evento/ver', evento._id];
   }
   return null;
 }
