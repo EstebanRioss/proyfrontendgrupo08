@@ -1,13 +1,13 @@
 <nav class="navbar" [ngClass]="{ 'navbar-scrolled': navbarScrolled }">
   <div class="navbar-container">
 
-    <!-- Logo como botón en móvil -->
-    <div class="navbar-logo-container" (click)="toggleMenu()">
+    <!-- Logo -->
+    <div class="navbar-logo-container" routerLink="/inicio">
       <img src="assets/img/logo.png" alt="Entradix Logo" class="navbar-logo">
     </div>
 
     <!-- Menú de navegación -->
-    <ul class="navbar-menu" [ngClass]="{ 'show': menuAbierto, 'show-scrolled': navbarScrolled }">
+    <ul class="navbar-menu" [ngClass]="{ 'show': menuAbierto }">
       <li><a [routerLink]="['/inicio']" class="navbar-item" (click)="cerrarMenu()">Inicio</a></li>
       <li><a [routerLink]="['/eventos']" class="navbar-item" (click)="cerrarMenu()">Eventos</a></li>
 
@@ -24,15 +24,28 @@
 
       <li *ngIf="currentUser" class="user-profile-menu" (click)="toggleDropdown()">
         <span class="navbar-item user-greeting">
-          Hola, {{ currentUser.nombre }}
+          <i class="fas fa-user-circle"></i> {{ currentUser.nombre }}
         </span>
-        <div class="dropdown-menu" [ngClass]="{ 'dropdown-menu-scrolled': navbarScrolled}">
-          <a [routerLink]="['/micuenta']" class="dropdown-item" (click)="cerrarMenu()" [ngClass]="{ 'dropdown-item-scrolled': navbarScrolled}">Mi Cuenta</a>
-          <a *ngIf="currentUser.rol === 'administrador' || currentUser.rol === 'organizador'" [ngClass]="{ 'dropdown-item-scrolled': navbarScrolled}" [routerLink]="['/gestion']" class="dropdown-item" (click)="cerrarMenu()">Gestión</a>
-          <a (click)="logout(); cerrarMenu()" class="dropdown-item logout-button" [ngClass]="{ 'dropdown-item-scrolled': navbarScrolled}">Cerrar Sesión</a>
+        <div class="dropdown-menu" [ngClass]="{ 'dropdown-menu-scrolled': navbarScrolled }">
+          <a [routerLink]="['/micuenta']" class="dropdown-item" (click)="cerrarMenu()" [ngClass]="{ 'dropdown-item-scrolled': navbarScrolled }">
+            <i class="fas fa-user" style="margin-right:8px; opacity:0.7"></i>Mi Cuenta
+          </a>
+          <a *ngIf="currentUser.rol === 'administrador' || currentUser.rol === 'organizador'" [ngClass]="{ 'dropdown-item-scrolled': navbarScrolled }" [routerLink]="['/gestion']" class="dropdown-item" (click)="cerrarMenu()">
+            <i class="fas fa-cog" style="margin-right:8px; opacity:0.7"></i>Gestión
+          </a>
+          <a (click)="logout(); cerrarMenu()" class="dropdown-item logout-button" [ngClass]="{ 'dropdown-item-scrolled': navbarScrolled }">
+            <i class="fas fa-sign-out-alt" style="margin-right:8px; opacity:0.7"></i>Cerrar Sesión
+          </a>
         </div>
       </li>
     </ul>
+
+    <!-- Hamburger para móvil -->
+    <div class="hamburger" (click)="toggleMenu()" [attr.aria-expanded]="menuAbierto">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
 
   </div>
 </nav>
